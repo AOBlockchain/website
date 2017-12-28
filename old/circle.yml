@@ -1,0 +1,23 @@
+deployment:  
+  production:
+    branch: master    
+    commands:
+      - ./deploy.sh
+      
+
+dependencies:
+    post:
+        - wget https://d2nkw87yt5k0to.cloudfront.net/downloads/sc-latest-linux.tar.gz && tar -xvf sc-latest-linux.tar.gz
+
+test:
+    override:
+        # Start Sauce Connect
+        - cd sc-*-linux && ./bin/sc -u ${SAUCEUSER} -k ${SAUCEKEY}:
+            background: true
+
+        # Start whatever server you need here
+         - node keystone.js:
+            background: true
+        
+        # Run tests, after waiting for server to start
+        - test_wrapper.sh

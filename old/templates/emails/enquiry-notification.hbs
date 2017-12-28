@@ -1,0 +1,25 @@
+<h1>Hi {{first_name}}</h1>
+<p class="text-larger">An user was just submitted to {{brand}}:</p>
+{{#if user.email}}
+	<p class="text-larger">From
+	{{#if user.name.full}}
+		<strong>{{user.name.full}}</strong>
+	{{/if}}
+	
+	{{#if user.email}}
+		(<a href="mailto:{{user.email}}">{{user.email}}</a>)			
+	{{/if}}
+	</p>
+	
+	{{#if user.twitter}}
+		<p class="text-larger">Phone: {{user.twitter}}</p>
+	{{/if}}
+	
+	{{#if user.bctUser}}
+		<p class="text-larger">{{user.bctUser}}</p>
+	{{/if}}
+	
+	<button url="https://rise.vision/ico?aff={{user.id}}" label="Affiliate Link" />
+	
+    <p class="text-muted">Sent {{underscoreFormat user 'createdAt'}}</p>
+{{/if}}

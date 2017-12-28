@@ -1,0 +1,43 @@
+<div class="body">
+	<section class="section bg-white" id="team">
+		<div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h2 class="title">Our Team</h2>
+                    <p class="title-alt">We are a collection of Crypto-enthusiasts and business owners.
+						
+					</p>
+                </div>
+            </div>
+        	<div class="row">
+				{{#each data.team}}
+
+                    <div class="col-md-4">
+                        <div class="author-content text-center">
+                            <h2 class="title">{{name.first}} {{name.last}}</h2>
+                            <p class="title-alt">{{title}}</p>
+							<br />
+                            <img src="{{image.secure_url}}" alt="author" class="img-circle author-img center-block">
+							
+                            <ul class="list-inline footer-social-one m-b-0 author-social">
+								{{#if github}}<li><a href="{{github}}"><i class="pe-so-github"></i></a></li>{{/if}}
+								{{#if facebook}}<li><a href="{{facebook}}"><i
+                                        class="pe-so-facebook"></i></a></li>{{/if}}
+								{{#if twitter}}<li><a href="{{twitter}}"><i class="pe-so-twitter"></i></a></li>{{/if}}
+								{{#if linkedIn}}<li><a href="{{linkedIn}}"><i
+                                        class="pe-so-linkedin"></i></a></li>{{/if}}
+								{{#if google}}<li><a href="{{google}}"><i class="pe-so-google-plus"></i></a></li>{{/if}}
+								{{#if skype}}<li><a href="{{skype}}"><i class="pe-so-skype"></i></a></li>{{/if}}
+                            </ul>
+							
+                            <p class="text-muted">{{{bio.html}}}</p>
+                            
+							<br />
+                            <br />
+                        </div>
+                    </div>
+				{{/each}}
+            </div>
+		</div>
+	</section>
+</div>
