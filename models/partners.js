@@ -11,7 +11,7 @@ Partner.add({
 	partner: { type: String, initial: true },
 	url: { type: Types.Url, initial: true },
 	logo: { type: Types.CloudinaryImage },
-	description: { type: Types.Textarea}
+	description: { type: Types.Textarea },
 });
 
 Partner.defaultColumns = 'partner, url, description';

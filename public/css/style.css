@@ -19,7 +19,7 @@ body {
 }
 
 .logo {
-	max-width: 148px;
+	max-width: 250px;
 }
 
 a{
@@ -59,7 +59,7 @@ a{
 }
 
 .btn-custom,.btn-custom:hover,.btn-custom:focus {
-  background-color: #43cea2;
+  background-color: #bcbcbd;
   color: #fff !important;
   padding: 9px 20px !important;
   text-transform: uppercase;
@@ -73,7 +73,7 @@ a{
 }
 
 .btn-dark:hover,.btn-white:hover {
-	background-color: #43cea2;
+	background-color: #bcbcbd;
 	color: #fff !important;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 }
@@ -115,9 +115,9 @@ a{
 .btn-app-download {
   padding: 10px 22px 10px 65px;
   position: relative;
-  border: 2px solid #43cea2;
+  border: 2px solid #bcbcbd;
   display: inline-block;
-  color: #43cea2;
+  color: #bcbcbd;
   margin-right: 10px;
   text-align: left;
 }
@@ -125,7 +125,7 @@ a{
 .btn-app-download:hover,.btn-app-download:focus{
   color: #fff;
   outline: none;
-  background: #43cea2;
+  background: #bcbcbd;
 }
 
 .btn-app-download i {
@@ -263,7 +263,7 @@ a{
 }
 
 .bg-solid-2 {
-  background-color: #43CEA2 !important;
+  background-color: #bcbcbd !important;
   background-image: url("../images/bg-pattern.png");
   background-repeat: repeat;
 }
@@ -282,7 +282,7 @@ a{
 }
 
 .text-colored {
-  color: #43cea2;
+  color: #bcbcbd;
 }
 
 iframe {
@@ -301,30 +301,24 @@ iframe {
 .navbar-default .navbar-nav>li>a {
 	font-weight: 700;
 	font-size: 16px;
-	color: #182433;
+	color: #d6be8c;
 	letter-spacing: 0.03em;
 	font-family: 'Josefin Sans', sans-serif;
 }
 
 .navbar-default .navbar-nav>li>a:hover,.navbar-custom-dark.navbar-default .navbar-nav>li>a {
-	color: #43cea2;
+	color: #bcbcbd;
 }
 
 .navbar-custom {
-	background-color: #f2f6fa;
+	background-color: #313131;
 	border: none;
-	padding: 10px 0px;
-	margin-bottom: 0px;
 	border-radius: 0px;
   z-index: 9999;
   -webkit-transition: background-color 1s ease-in-out, border 1s ease-in-out;
      -moz-transition: background-color 1s ease-in-out, border 1s ease-in-out;
        -o-transition: background-color 1s ease-in-out, border 1s ease-in-out;
           transition: background-color 1s ease-in-out, border 1s ease-in-out;
-}
-
-.navbar-custom .navbar-brand {
-	height: auto;
 }
 
 .navbar-custom-dark.navbar-default .navbar-nav>li>a {
@@ -349,7 +343,7 @@ iframe {
 }
 
 .is-sticky .navbar-custom{
-  background-color: #ffffff !important;
+  background-color: #313131 !important;
   z-index: 999;
   width: 100%;
   -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.1);
@@ -366,7 +360,7 @@ iframe {
 }
 
 .is-sticky .navbar-custom .navbar-nav li a {
-  color: #333;
+  color: #d6be8c;
 }
 
 
@@ -427,9 +421,9 @@ iframe {
 }
 
 .text-tran-box {
-	background: #43cea2; /* fallback for old browsers */
-	background: -webkit-linear-gradient(to left, #43cea2 , #185a9d); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to left, #43cea2 , #185a9d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #bcbcbd; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #bcbcbd , #185a9d); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #bcbcbd , #185a9d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .text-tran-box-dark {
@@ -570,7 +564,7 @@ iframe {
 }
 
 .feat-facts .feat-facts-box h2 {
-  color: #43cea2;
+  color: #bcbcbd;
 }
 
 .feat-facts .feat-facts-box h4 {
@@ -620,7 +614,7 @@ iframe {
 .pricing-column .plan-title {
   font-size: 16px;
   margin-bottom: 10px;
-  color: #43cea2;
+  color: #bcbcbd;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 400;
@@ -700,7 +694,7 @@ iframe {
   border: none;
   color: #fff;
   font-size: 17px;
-  background: #43cea2;
+  background: #bcbcbd;
   padding: 11px 30px;
 }
 
@@ -755,7 +749,7 @@ iframe {
   font-size: 16px;
 }
 .gal-detail h4 a{
-  color: #43cea2;
+  color: #bcbcbd;
 }
 .gal-detail p {
   font-size: 13px;
@@ -792,7 +786,7 @@ iframe {
 }
 
 .team-member-social a:hover {
-  background-color: #43cea2 !important;
+  background-color: #bcbcbd !important;
 }
 
 
@@ -932,7 +926,7 @@ textarea.form-control {
 }
 
 .footer-one a:hover{
-  color: #43cea2;
+  color: #bcbcbd;
 }
 
 .footer-one ul li {
@@ -971,7 +965,7 @@ textarea.form-control {
 }
 .footer-social-one a:hover {
   color: #ffffff;
-  background-color: #43cea2;
+  background-color: #bcbcbd;
 }
 
 
@@ -1018,7 +1012,7 @@ textarea.form-control {
   width: 42px;
   line-height: 30px;
   color: #fff;
-  background: #43cea2;
+  background: #bcbcbd;
   text-align: center;
   border-radius: 50%;
   position: absolute;
@@ -1116,7 +1110,7 @@ textarea.form-control {
 
 .author-content .author-social a{
   background-color: #F2F6FA;
-  color: #43CEA2;
+  color: #bcbcbd;
 }
 
 

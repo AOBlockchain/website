@@ -1,12 +1,15 @@
 var keystone = require('keystone');
-var Types = keystone.Field.Types;
 
-var Setting = new keystone.List('Setting', {});
+var Setting = new keystone.List('Setting', {
+	noedit: true,
+	nocreate: true,
+	nodelete: true,
+});
 
 Setting.add(
 	{
-		key: { type: String },
-		value: { type: String }
+		key: { type: String, noedit: true },
+		value: { type: String },
 	}
 );
 

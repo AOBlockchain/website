@@ -1,17 +1,17 @@
 var keystone = require('keystone');
-var User = keystone.list('User');
 var _ = require('lodash');
 
-exports = module.exports = function(req, res) {
+exports = module.exports = function (req, res) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 	var settings = {};
+	var investments = [];
 	var affiliate = req.query.aff || false;
 	if (affiliate) {
-		res.cookie('affiliate', affiliate, { maxAge: 900000 } );
+		res.cookie('affiliate', affiliate, { maxAge: 900000 });
 	};
-	
+
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
 	locals.section = 'stats';
@@ -20,7 +20,7 @@ exports = module.exports = function(req, res) {
 		investedBTC: 0,
 		totalReferred: 0,
 		btcRefBonus: 0,
-		btcBonus: 0
+		btcBonus: 0,
 	};
 	locals.investments = [];
 	locals.investmentInterval = [];
@@ -32,9 +32,9 @@ exports = module.exports = function(req, res) {
 		15: new Date('2016-05-24T10:00:00'),
 		10: new Date('2016-05-31T10:00:00'),
 	};
-	view.on('init', function(next) {
-		keystone.list('Setting').model.find().sort('-date').exec(function(err, data) {
-			if (err) {console.log(err)}
+	view.on('init', function (next) {
+		keystone.list('Setting').model.find().sort('-date').exec(function (err, data) {
+			if (err) { console.log(err); }
 			for (var i = 0; i < data.length; i++) {
 				var setting = data[i];
 				settings[setting.key] = setting.value;
@@ -54,7 +54,7 @@ exports = module.exports = function(req, res) {
 		});
 	});
 	view.on('get', function (next) {
-		var dt =new Date().getTime();
+		var dt = new Date().getTime();
 		if (dt <= bonus['25']) {
 			locals.summary.bonus = 25;
 			locals.summary.bonusEndTime = bonus['25'].getTime();
@@ -76,11 +76,11 @@ exports = module.exports = function(req, res) {
 
 		// Calculate Investments
 
-		for (var i=0; i < investments.length; i++) {
+		for (var i = 0; i < investments.length; i++) {
 			var investment = investments[i];
 			var idt = investment.createdAt;
 			var investBonus = 0;
-			
+
 			if (idt <= bonus['25']) {
 				investBonus = 25;
 			} else
@@ -100,20 +100,20 @@ exports = module.exports = function(req, res) {
 				locals.summary.btcBonus += investment.btcBonus;
 			}
 			if (investment.referrer) {
-				investment.btcRefBonus = (investment.btcAmount *.03);
+				investment.btcRefBonus = (investment.btcAmount * .03);
 				locals.summary.btcRefBonus += investment.btcRefBonus;
 				locals.summary.totalReferred += investment.btcAmount;
 			}
-			
+
 			investment.btcBonus = _.round(investment.btcBonus, 8);
 			investment.btcRefBonus = _.round(investment.btcRefBonus, 8);
 			investment.btcAmount = _.round(investment.btcAmount, 8);
 			var newDate = investment.createdAt.getFullYear().toString() + '-' + (investment.createdAt.getMonth()+1).toString() + '-' + investment.createdAt.getDate().toString() + ' ' + investment.createdAt.getHours().toString() + ':' + investment.createdAt.getMinutes().toString() + ':' + investment.createdAt.getSeconds().toString();
-			
+
 			investment.goodDate = newDate;
 			locals.investments.push(investment);
 		}
-		
+
 		locals.summary.btcAmount = _.round(investment.btcAmount, 8);
 		locals.summary.totalBTC = locals.summary.investedBTC + locals.summary.btcBonus + locals.summary.btcRefBonus;
 
@@ -128,7 +128,7 @@ exports = module.exports = function(req, res) {
 		// Invested / Total = percent
 		// 88000000*percent = Rise + Bounties = Total Rise
 
-		locals.summary.rise = 88000000 * ( locals.summary.totalBTC / locals.totalBTC);
+		locals.summary.rise = 88000000 * (locals.summary.totalBTC / locals.totalBTC);
 
 		// clean up numbers
 		locals.summary.rise = _.round(locals.summary.rise, 4);
@@ -141,13 +141,10 @@ exports = module.exports = function(req, res) {
 
 		next();
 	});
-	
-	
+
 	// Render the view
 	view.render('stats');
 
 };
-
-
 
 // TODO: Add request parser for submitting form

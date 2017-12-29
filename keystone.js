@@ -24,7 +24,7 @@ keystone.init({
 		layoutsDir: 'templates/views/layouts',
 		partialsDir: 'templates/views/partials',
 		defaultLayout: 'default',
-		helpers: new require('./templates/views/helpers')(),
+		helpers: require('./templates/views/helpers')(),
 		extname: '.hbs',
 	}).engine,
 
