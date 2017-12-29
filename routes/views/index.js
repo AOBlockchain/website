@@ -74,7 +74,6 @@ exports = module.exports = function (req, res) {
 				return next(err);
 			}
 			locals.data.investments = result;
-			console.log(result);
 			next();
 		});
 	});

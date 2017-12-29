@@ -22,7 +22,7 @@ exports.get = function(req, res) {
 			next();
 		} else {
 			user.otpKey = randomValueHex(32);
-//			user.otpURI = totp.create(user.otpKey, 'RiseVision Investor Profile');
+//			user.otpURI = totp.create(user.otpKey, 'AOBlockchain Investor Profile');
 //			user.otpSecret = user.otpURI.substr(user.otpURI.indexOf('=') + 1);
 			user.save(function (err) {
 				if (err) {

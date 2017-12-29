@@ -14,7 +14,7 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 	locals.section = 'profile';
 	locals.summary = {
-		rise: 0,
+		aoCoin: 0,
 		riseBTC: 0,
 		riseUSD: 0,
 		investedBTC: 0,
@@ -185,16 +185,16 @@ exports = module.exports = function (req, res) {
 			
 			locals.summary.totalBTC = locals.summary.investedBTC + locals.summary.btcBonus + locals.summary.btcRefBonus;
 
-			// Calculate Rise/BTC
+			// Calculate AOCoin/BTC
 			
 			locals.summary.riseBTC = (settings.btcAmount / 88000000.00).toFixed(8);
-			// Calculate Rise/USD
+			// Calculate AOCoin/USD
 			locals.summary.riseUSD = (settings.btcAmount * settings.btcValue / 88000000)
 			
-			// Calculate Total Rise
+			// Calculate Total AOCoin
 			// Count Total BTC invested
 			// Invested / Total = share
-			// 88000000*share = Rise + Bounties = Total Rise
+			// 88000000*share = AOCoin + Bounties = Total AOCoin
 			
 			
 			// clean up numbers
@@ -204,8 +204,8 @@ exports = module.exports = function (req, res) {
 			locals.summary.btcRefBonus = _.round(locals.summary.btcRefBonus, 8);
 			locals.summary.investedBTC = _.round(locals.summary.investedBTC, 8);
 			locals.summary.riseUSD = _.round(locals.summary.riseUSD, 4);
-			locals.summary.rise = ((88000000 / locals.totalBTC) * locals.summary.totalBTC);
-			locals.summary.rise = _.round(locals.summary.rise, 8);
+			locals.summary.aoCoin = ((88000000 / locals.totalBTC) * locals.summary.totalBTC);
+			locals.summary.aoCoin = _.round(locals.summary.aoCoin, 8);
 
 			next();
 		});

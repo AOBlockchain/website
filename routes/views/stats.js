@@ -117,21 +117,21 @@ exports = module.exports = function (req, res) {
 		locals.summary.btcAmount = _.round(investment.btcAmount, 8);
 		locals.summary.totalBTC = locals.summary.investedBTC + locals.summary.btcBonus + locals.summary.btcRefBonus;
 
-		// Calculate Rise/BTC
+		// Calculate AOCoin/BTC
 
 		locals.summary.riseBTC = (settings.btcAmount / 88000000.00).toFixed(8);
-		// Calculate Rise/USD
+		// Calculate AOCoin/USD
 		locals.summary.riseUSD = (settings.btcAmount * settings.btcValue / 88000000)
 
-		// Calculate Total Rise
+		// Calculate Total AOCoin
 		// Count Total BTC invested
 		// Invested / Total = percent
-		// 88000000*percent = Rise + Bounties = Total Rise
+		// 88000000*percent = AOCoin + Bounties = Total AOCoin
 
-		locals.summary.rise = 88000000 * (locals.summary.totalBTC / locals.totalBTC);
+		locals.summary.aoCoin = 88000000 * (locals.summary.totalBTC / locals.totalBTC);
 
 		// clean up numbers
-		locals.summary.rise = _.round(locals.summary.rise, 4);
+		locals.summary.aoCoin = _.round(locals.summary.aoCoin, 4);
 		locals.summary.totalBTC = _.round(locals.summary.totalBTC, 8);
 		locals.summary.btcBonus = _.round(locals.summary.btcBonus, 8);
 		locals.summary.refBTC = _.round(locals.summary.refBTC, 8);
