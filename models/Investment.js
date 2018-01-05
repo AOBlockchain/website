@@ -4,22 +4,138 @@
 
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
+var Client = require('coinbase').Client;
+var client = new Client({
+	'apiKey': process.env.CB_API_KEY,
+	'apiSecret': process.env.CB_API_SECRET
+});
 
 var Investment = new keystone.List('Investment');
 
-Investment.add(
-	{
-		investor: { type: Types.Relationship, ref: 'User', initial: true },
-		referrer: { type: Types.Relationship, ref: 'User', initial: true },
-		currency: { type: Types.Relationship, ref: 'Currency', initial: true },
-		address: { type: String, initial: true },
-		Amount: { type: Types.Number, initial: true },
-		usdValue: { type: Types.Number, initial: true },
-		confirmed: { type: Boolean, initial: true },
-		transID: { type: String, initial: true },
-		createdAt: { type: Types.Datetime, default: Date.now },
-	}
-);
+Investment.add({
+	investor: {
+		type: Types.Relationship,
+		ref: 'User',
+		initial: true
+	},
+	currency: {
+		type: Types.Select,
+		options: 'BTC, BCH, ETH, LTC',
+		initial: true
+	},
+	address: {
+		type: String,
+		initial: true
+	},
+	amount: {
+		type: Types.Number,
+		initial: true
+	},
+	type: {
+		type: Types.Select,
+		options: 'Investment, Referral Bonus, Bonus, Bounty',
+		initial: true
+	},
+	usdValue: {
+		type: Types.Money,
+		initial: true
+	},
+	totalValue: {
+		type: Types.Money,
+		initial: true
+	},
+	confirmed: {
+		type: Boolean,
+		initial: true
+	},
+	transID: {
+		type: String,
+		initial: true
+	},
+	createdAt: {
+		type: Types.Datetime,
+		default: Date.now,
+		noedit: true
+	},
+});
 
-Investment.defaultColumns = 'investor, btcAddress, btcAmount, referrer, confirmed';
+Investment.schema.post('save', function () {
+	var id = this.id;
+	var amount = this.amount;
+	var currency = this.currency;
+	var type = this.type;
+
+	if (this.amount / this.usdValue !== this.totalValue) {
+		keystone.list('User').model.findOne({
+			_id: this.investor
+		}, function (err, user) {
+			if (err) {
+				console.log(err);
+			}
+
+			client.getExchangeRates({
+				'currency': 'USD'
+			}, function (err, rates) {
+				if (err) {
+					console.log(err);
+				}
+				var rate = rates.data.rates;
+				rate = rate[currency];
+				Investment.model.findOne({
+					_id: id
+				}, function (findError, investment) {
+					if (findError) {
+						// console.log(findError);
+					} else {
+						investment.usdValue = rate;
+						investment.totalValue = amount / rate;
+					}
+					investment.save(function (err) {
+						if (err) {
+							//console.log(err);
+						}
+						if (type === 'Investment') {
+							switch (currency) {
+								case 'BTC':
+									user.investedBTC = parseFloat(user.investedBTC) + parseFloat(amount);
+									user.investedBTC = user.investedBTC.toPrecision(9);
+									break;
+								case 'BCH':
+									user.investedBCH = parseFloat(user.investedBCH) + parseFloat(amount);
+									user.investedBCH = user.investedBCH.toPrecision(9);
+									break;
+								case 'ETH':
+									user.investedETH = parseFloat(user.investedETH) + parseFloat(amount);
+									user.investedETH = user.investedETH.toPrecision(9);
+									break;
+								case 'LTC':
+									user.investedLTC = parseFloat(user.investedLTC) + parseFloat(amount);
+									user.investedETH = user.investedETH.toPrecision(9);
+									break;
+
+								default:
+									break;
+							}
+							user.totalUSD += investment.totalValue;
+							user.totalUSD = user.totalUSD.toFixed(2);
+						}
+						if (type === 'Referral Bonus') {
+							var refBonus = amount / investment.usdValue;
+							user.referralBonus += refBonus;
+							user.referralBonus = user.referralBonus.toFixed(2);
+							user.referredUSD = (user.referralBonus / 0.03).toFixed(2);
+						}
+						user.save(function (err) {
+							if (err) {
+								console.log(err);
+							}
+						});
+					});
+				});
+			});
+		});
+	}
+})
+
+Investment.defaultColumns = 'investor, currency, amount, usdAmount, totalValue, type, confirmed';
 Investment.register();

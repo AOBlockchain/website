@@ -19,10 +19,10 @@ var _ = require('lodash');
 */
 exports.initLocals = function (req, res, next) {
 	res.locals.navLinks = [
-		{ label: 'ICO', 		key: 'ico',			href: '/ico' },
-		{ label: 'Stats',		key: 'stats',		href: '/stats' },
+		//{ label: 'ICO', 		key: 'ico',			href: '/ico' },
+		{ label: 'Pre-Sale', 	key: 'pre-sale',	href: '/pre-sale' },
+		//{ label: 'Stats',		key: 'stats',		href: '/stats' },
 		{ label: 'Team', 		key: 'team',		href: '/team' },
-		{ label: 'Forum',		key: 'forum', 		href: '/forum' },
 		{ label: 'Blog',		key: 'blog',		href: '/blog' },
 		{ label: 'Contact',		key: 'contact',		href: '/contact' },
 	];

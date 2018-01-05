@@ -3,6 +3,10 @@
     body {
         padding-top: 0px;
     }
+    
+    .list-group-item i {
+    opacity: 1;
+    }
 </style>
 
 <section class="section">
@@ -11,10 +15,13 @@
             <div class="row">
                 <div class="col-xs-12 col-md-8">
                     <h1>Profile - {{user.name.first}} {{user.name.last}}</h1>
-                    <div id="riseValue" style="margin:20px; font-size: 25px; font-style:bold;">
+                    <div id="aoCoinValue" style="margin:20px; font-size: 25px; font-style:bold;">
                         <ul>
-                            <li>฿ {{summary.riseBTC}} BTC/RISE</li>
-                            <li>$ {{summary.riseUSD}} USD/RISE</li>
+                            <li>฿ {{summary.aoCoinBTC}} BTC/AOC - As Of {{date summary.currentDate format='MM/DD/YYYY HH:MM:SS'}}</li>
+                            <li>฿ {{summary.aoCoinBCH}} BCH/AOC - As Of {{date summary.currentDate format='MM/DD/YYYY HH:MM:SS'}}</li>
+                            <li>Ξ {{summary.aoCoinETC}} ETC/AOC - As Of {{date summary.currentDate format='MM/DD/YYYY HH:MM:SS'}}</li>
+                            <li>Ł {{summary.aoCoinLTC}} LTC/AOC - As Of {{date summary.currentDate format='MM/DD/YYYY HH:MM:SS'}}</li>
+                            <li>$ {{summary.aoCoinUSD}} USD/AOC - As Of {{date summary.currentDate format='MM/DD/YYYY HH:MM:SS'}}</li>
                         </ul>
                     </div>
                 </div>
@@ -39,39 +46,91 @@
                             </a>
                         </div>
                         <div class="list-group">				
+                            {{#if icoEnded}}
                                 <div class="list-group-item">
-									{{#if user.riseWithdrew}}
-                                        <h4 class="list-group-item-heading">You have already withdrawn your rise to 
-											{{user.riseAddress}}
-										</h4>
-									{{else}}
-										{{#if validationErrors.riseWithdrew}}
+                                    {{#if user.aoCoinWithdrew}}
+                                        <h4 class="list-group-item-heading">You have already withdrawn your AOCoin to 
+                                            {{user.aoCoinAddress}}
+                                        </h4>
+                                    {{else}}
+                                        {{#if validationErrors.aoCoinWithdrew}}
                                         <h4 class="list-group-item-heading">
-											Thank you for withdrawing your RISE! Enjoy!
-										</h4>
-										{{else}}
+                                            Thank you for withdrawing your AOCoin! Enjoy!
+                                        </h4>
+                                        {{else}}
                                             <form method="post" id='submitWithdraw'>
                                                 <input type="hidden" name="action" value="withdrawRISE"/>
-                                                <div class="form-group {{#if validationErrors.riseAddress}}has-error{{/if}}">
-                                                    <label>Withdraw RISE</label>
-                                                    <input id="riseAddress" type="text" name="riseAddress" class="form-control"
-                                                           value="{{riseAddress}}" placeholder="RISE Wallet or Exchange Address"/>
-													{{#if validationErrors.riseAddress}}<span
-                                                            class="help-block">{{validationErrors.riseAddress}}</span>{{/if}}
+                                                <div class="form-group {{#if validationErrors.aoCoinAddress}}has-error{{/if}}">
+                                                    <label>Withdraw AOCoin</label>
+                                                    <input id="aoCoinAddress" type="text" name="aoCoinAddress" class="form-control"
+                                                        value="{{aoCoinAddress}}" placeholder="RISE Wallet or Exchange Address"/>
+                                                    {{#if validationErrors.aoCoinAddress}}<span
+                                                            class="help-block">{{validationErrors.aoCoinAddress}}</span>{{/if}}
                                                 </div>
                                                 <button id="withdrawBTN" type="submit"
-                                                        class="btn btn-primary">Withdraw</button>
+                                                        class="btn btn-primary" disabled>Withdraw</button>
                                             </form>
-										{{/if}}
-									{{/if}}
+                                        {{/if}}
+                                    {{/if}}
                                 </div>
-							{{#if user.otpKey}} 
+                            {{ else }}
+                                <div class="list-group-item">
+                                    <p class="list-group-item-text">Bitcoin Address<i class="pe-7s-help1" data-toggle="popover" data-trigger="hover" title="What is this BTC Address for?" data-placement="bottom"
+												data-content="In order to be credited with your investment to the AOC Blockchain project, you must send your Bitcoin to this address. This is generated when you click 'Get BTC Address'."></i></p>
+                                    {{#if user.btcAddress}}
+                                        <h4 class="list-group-item-heading">{{user.btcAddress}}</h4>
+                                    {{else}}
+                                        <form method="post">
+                                            <input type="hidden" name="action" value="getBTCAddress">
+                                            <button id="getBTCAddress" type="submit" class="btn btn-primary">Get BTC Address</button>
+                                        </form>
+                                    {{/if}}
+                                </div>
+                                <div class="list-group-item">
+                                    <p class="list-group-item-text">Bitcoin Cash Address<i class="pe-7s-help1" data-toggle="popover" data-trigger="hover" title="What is this BCH Address for?" data-placement="bottom"
+												data-content="In order to be credited with your investment to the AOC Blockchain project, you must send your Bitcoin Cash to this address. This is generated when you click 'Get BCH Address'."></i></p>
+                                    {{#if user.bchAddress}}
+                                        <h4 class="list-group-item-heading">{{user.bchAddress}}</h4>
+                                    {{else}}
+                                        <form method="post">
+                                            <input type="hidden" name="action" value="getBCHAddress">
+                                            <button id="getBCHAddress" type="submit" class="btn btn-primary">Get BCH Address</button>
+                                        </form>
+                                    {{/if}}
+                                </div>
+                                <div class="list-group-item">
+                                    <p class="list-group-item-text">Etherium Address<i class="pe-7s-help1" data-toggle="popover" data-trigger="hover" title="What is this ETC Address for?" data-placement="bottom"
+												data-content="In order to be credited with your investment to the AOC Blockchain project, you must send your Ethereum to this address. This is generated when you click 'Get ETC Address'."></i></p>
+                                    {{#if user.ethAddress}}
+                                        <h4 class="list-group-item-heading">{{user.ethAddress}}</h4>
+                                    {{else}}
+                                        <form method="post">
+                                            <input type="hidden" name="action" value="getETCAddress">
+                                            <button id="getETCAddress" type="submit" class="btn btn-primary">Get ETC Address</button>
+                                        </form>
+                                    {{/if}}
+                                </div>
+                                <div class="list-group-item">
+                                    <p class="list-group-item-text">Litecoin Address<i class="pe-7s-help1" data-toggle="popover" data-trigger="hover" title="What is this LTC Address for?" data-placement="bottom"
+												data-content="In order to be credited with your investment to the AOC Blockchain project, you must send your Litecoin to this address. This is generated when you click 'Get LTC Address'."></i></p>
+                                    {{#if user.ltcAddress}}
+                                        <h4 class="list-group-item-heading">{{user.ltcAddress}}</h4>
+                                    {{else}}
+                                        <form method="post">
+                                            <input type="hidden" name="action" value="getLTCAddress">
+                                            <button id="getLTCAddress" type="submit" class="btn btn-primary">Get LTC Address</button>
+                                        </form>
+                                    {{/if}}
+                                </div>
+                            {{/if}}
+							{{#if user.otpKey}}
+                                <div>configured</div>
 							{{ else }} 
 								<div id="qrOTP" class="list-group-item">
 									<p class="list-group-item-text">2-Factor Authentication</p>
 									<button  type="button" data-toggle="modal" data-target="#otpQR" 
 											class="btn 
-									btn-primary">Configure</button>
+									btn-primary" disabled>Configure</button> - Not Available
 								</div>	
 							{{/if}}
                             <div class="list-group-item">
@@ -87,10 +146,6 @@
                                 <h4 class="list-group-item-heading">{{user.github}}</h4>
                             </div>
                             <div class="list-group-item">
-                                <p class="list-group-item-text">Facebook</p>
-                                <h4 class="list-group-item-heading">{{user.facebook}}</h4>
-                            </div>
-                            <div class="list-group-item">
                                 <p class="list-group-item-text">LinkedIn</p>
                                 <h4 class="list-group-item-heading">{{user.linkedIn}}</h4>
                             </div>
@@ -104,10 +159,10 @@
                             </div>
                             <div class="list-group-item">
                                 <p class="list-group-item-text">Affiliate URL</p>
-                                <h5 class="list-group-item-heading"><a href="https://rise.vision/ico?aff={{user
-								._id}}">https://rise.vision/ico?aff={{user._id}}</a>
+                                <h5 class="list-group-item-heading"><a href="https://aoCoin.vision/ico?aff={{user
+								._id}}">https://aoCoin.vision/ico?aff={{user._id}}</a>
                                 </h5>
-								<a href="/blog/post/a-quick-guide-rise-affiliate-marketing-program">Affiliate 
+								<a href="/blog/post/a-quick-guide-aoCoin-affiliate-marketing-program">Affiliate 
 									Marketing Guide</a>
                             </div>
                         </div>
@@ -124,81 +179,104 @@
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6">
                                         <a class="bootcards-summary-item" href="#">
-                                            <h1>{{user.totalRise}}</h1>
-                                            <h4 data-toggle="popover" title="Why is my RISE Decreasing?" 
+                                            <h1>Ω{{user.totalAOC}}</h1>
+                                            <h4 data-toggle="popover" title="Why is my AOC Decreasing?" 
 												data-placement="bottom"
-												data-content="This is one of our biggest questions we get asked. We have a fixed amount of RISE (88 million) that we are distributing proportionately to all of our investors. Each time a new investor participates in the ICO, the amount of RISE distributed among everyone is recalculated and then redistributed. Each investor will see the amount of RISE decrease up until the last day of the ICO. But... have no fear. Even though your RISE count is going 
-												down, the value of them is going up. ">Your Available RISE <i 
+												data-content="This is one of our biggest questions we get asked. We have a fixed amount of AOC that we are distributing proportionately to all of our investors. Each time a new investor participates in the ICO, the amount of RISE distributed among everyone is recalculated and then redistributed. Each investor will see the amount of AOC decrease up until the last day of the ICO. But... have no fear. Even though your AOC count is going 
+												down, the value of them is going up. ">Your Available AOCoin <i 
 													class="pe-7s-help1"></i></h4>
                                         </a>
                                     </div>
                                     <div class="col-xs-6 col-sm-6">
                                         <a class="bootcards-summary-item" href="#">
-                                            <h1>{{user.totalBTC}}</h1>
-                                            <h4>Total BTC</h4>
+                                            <h1>${{user.totalUSD}}</h1>
+                                            <h4>Total Investment</h4>
                                         </a>
                                     </div>
                                     <div class="col-xs-6 col-sm-6">
                                         <a class="bootcards-summary-item" href="#">
-                                            <h1>{{user.investedBTC}}</h1>
+                                            <h1>฿{{user.investedBTC}}</h1>
                                             <h4>Invested BTC</h4>
                                         </a>
                                     </div>
                                     <div class="col-xs-6 col-sm-6">
                                         <a class="bootcards-summary-item" href="#">
-                                            <h1>{{summary.refBTC}}</h1>
-                                            <h4>Referred BTC</h4>
+                                            <h1>฿{{user.investedBCH}}</h1>
+                                            <h4>Invested BCH</h4>
                                         </a>
                                     </div>
                                     <div class="col-xs-6 col-sm-6">
                                         <a class="bootcards-summary-item" href="#">
-                                            <h1>{{user.BTCBonus}}</h1>
-                                            <h4>Bonus BTC</h4>
+                                            <h1>Ξ{{user.investedETH}}</h1>
+                                            <h4>Invested ETH</h4>
                                         </a>
                                     </div>
                                     <div class="col-xs-6 col-sm-6">
                                         <a class="bootcards-summary-item" href="#">
-                                            <h1>{{user.referralBonus}}</h1>
-                                            <h4>Referral Bonus BTC</h4>
+                                            <h1>Ł{{user.investedLTC}}</h1>
+                                            <h4>Invested LTC</h4>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6">
+                                        <a class="bootcards-summary-item" href="#">
+                                            <h1>${{user.investedUSD}}</h1>
+                                            <h4>Invested USD</h4>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6">
+                                        <a class="bootcards-summary-item" href="#">
+                                            <h1>${{user.referredUSD}}</h1>
+                                            <h4>Referred USD</h4>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6">
+                                        <a class="bootcards-summary-item" href="#">
+                                            <h1>${{user.USDBonus}}</h1>
+                                            <h4>Bonus USD</h4>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6">
+                                        <a class="bootcards-summary-item" href="#">
+                                            <h1>${{user.referralBonus}}</h1>
+                                            <h4>Referral Bonus USD</h4>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Transactions</h3>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr class="active">
-                                        <th>Investor</th>
-                                        <th>BTC Amount</th>
-                                        <th>Ref Bonus</th>
-                                        <th>BTC Bonus</th>
-                                        <th>Type</th>
-                                        <th>Confirmed?</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-									{{#each summary.investments}}
-                                        <tr>
-                                            <td>{{investor}}</td>
-                                            <td>{{btcAmount}}</td>
-                                            <td>{{btcRefBonus}}</td>
-                                            <td>{{btcBonus}}</td>
-                                            <td>{{type}}</td>
-                                            <td>{{confirmed}}</td>
-                                        </tr>
-									{{/each}}
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Transactions</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr class="active">
+                                <th>Amount</th>
+                                <th>Currency</th>
+                                <th>USD Value</th>
+                                <th>Total USD Value</th>
+                                <th>Type</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each summary.investments}}
+                                <tr>
+                                    <td>{{amount}}</td>
+                                    <td>{{currency}}</td>
+                                    <td>{{usdValue}} USD/{{currency}}</td>
+                                    <td>{{totalValue}}</td>
+                                    <td>{{type}}</td>
+                                </tr>
+                            {{/each}}
 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
