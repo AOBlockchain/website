@@ -19,9 +19,9 @@ User.add(
 	{
 		bio: { type: Types.Markdown },
 		title: { type: String },
-		twitter: { type: String, initial: true },
-		linkedIn: { type: String, initial: true },
-		github: { type: String, initial: true },
+		twitter: { type: Types.Url, initial: true, note:'Requires full URL to work.' },
+		linkedIn: { type: Types.Url, initial: true, note:'Requires full URL to work.' },
+		github: { type: Types.Url, initial: true, note:'Requires full URL to work.' },
 		bctUser: { type: String, label: 'Bitcoin Talk Account', initial: true },
 	},
 	'Investment Details',
