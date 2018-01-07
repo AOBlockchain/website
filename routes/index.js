@@ -40,6 +40,7 @@ exports = module.exports = function (app) {
 	app.get('/ico', routes.views.ico);
 	app.get('/pre-sale', routes.views.preSale);
 	app.get('/team', routes.views.team);
+	app.get('/join-team', routes.views.joinTeam);
 	//app.get('/stats', routes.views.stats);
 	app.all('/contact', routes.views.contact);
 	// app.all('/profile', routes.views.profile);
