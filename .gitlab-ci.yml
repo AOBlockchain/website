@@ -26,3 +26,17 @@ dast:
     - cp /zap/wrk/gl-dast-report.json .
   artifacts:
     paths: [gl-dast-report.json]
+    
+performance:
+  image: docker:git
+  services:
+    - docker:dind
+  script:
+    - mkdir gitlab-exporter
+    - wget -O ./gitlab-exporter/index.js https://gitlab.com/gitlab-org/gl-performance/raw/master/index.js
+    - mkdir sitespeed-results
+    - docker run --shm-size=1g --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io --plugins.add ./gitlab-exporter --outputFolder sitespeed-results https://my.website.com
+    - mv sitespeed-results/data/performance.json performance.json
+  artifacts:
+    paths:
+    - [performance.json]
