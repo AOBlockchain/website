@@ -17,3 +17,12 @@ sast:
     - /app/bin/run .
   artifacts:
     paths: [gl-sast-report.json]
+    
+dast:
+  image: owasp/zap2docker-stable
+  script:
+    - mkdir /zap/wrk/
+    - /zap/zap-baseline.py -J gl-dast-report.json -t http://dzaporozhets.me/ || true
+    - cp /zap/wrk/gl-dast-report.json .
+  artifacts:
+    paths: [gl-dast-report.json]
