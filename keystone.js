@@ -32,6 +32,7 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
+	'signin logo': ['/images/icon.png', 180, 180],
 });
 
 // Load your project's Models

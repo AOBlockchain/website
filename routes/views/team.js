@@ -10,6 +10,7 @@ exports = module.exports = function(req, res) {
 
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
+	locals.pageTitle = "Meet the Team";
 	locals.section = 'team';
 
 	locals.data = {

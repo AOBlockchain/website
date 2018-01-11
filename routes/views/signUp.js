@@ -7,6 +7,7 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 
 	// Set locals
+	locals.pageTitle = "Sign Up";
 	locals.section = 'signUp';
 	locals.formData = req.body || {};
 	locals.validationErrors = {
@@ -27,14 +28,15 @@ exports = module.exports = function (req, res) {
 					updater = newUser.getUpdateHandler(req);
 				updater.process(req.body, {
 					flashErrors: false,
-					fields: 'name, email, twitter, bctUser, password, referrer',
+					fields: 'name, email, address, twitter, bctUser, password, referrer',
 					errorMessage: 'There was a problem submitting your request:'
 				}, function (err) {
 					if (err) {
-						locals.validationErrors = err.errors;
+						locals.validationErrors = err.error;
 						if (err.name === 'MongoError') {
 							locals.validationErrors = {email: 'This email is already in use'};
 						}
+						console.log(err);
 					} else {
 						locals.signedUp = true;
 					}

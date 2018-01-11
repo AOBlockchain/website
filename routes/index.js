@@ -43,19 +43,19 @@ exports = module.exports = function (app) {
 	app.get('/join-team', routes.views.joinTeam);
 	//app.get('/stats', routes.views.stats);
 	app.all('/contact', routes.views.contact);
-	// app.all('/profile', routes.views.profile);
+	app.all('/profile', middleware.requireUser, routes.views.profile);
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
-	// app.all('/signUp', routes.views.signUp);
+	app.all('/signUp', routes.views.signUp);
 	// app.all('/settings', routes.views.settings);
 	// app.get('/next-generation-economy', routes.views.nge);
-	// app.all('/requestReset', routes.views.requestReset);
-	// app.all('/passwordReset/:id', routes.views.passwordReset);
+	app.all('/requestReset', routes.views.requestReset);
+	app.all('/passwordReset/:id', routes.views.passwordReset);
 	// APIs
 	// app.get('/api/investments', keystone.middleware.api, routes.api.investments.get);
 	// app.get('/api/referrals', keystone.middleware.api, routes.api.referrals.get);
 	// app.get('/api/bonuses', keystone.middleware.api, routes.api.bonuses.get);
-	// app.post('/api/coinbase', keystone.middleware.api, routes.api.coinbase.post);
+	app.post('/api/coinbase', keystone.middleware.api, routes.api.coinbase.post);
 	// app.get('/api/configQR', keystone.middleware.api, routes.api.bonuses.get);
 	// app.get('/api/checkOTP', keystone.middleware.api, routes.api.otpValidate.get);
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:

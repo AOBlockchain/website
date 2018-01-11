@@ -6,6 +6,7 @@ exports = module.exports = function(req, res) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
+	locals.pageTitle = "Pre-Sale Info";
 	var affiliate = req.query.aff || false;
 	if (affiliate) {
 		res.cookie('affiliate', affiliate, { maxAge: 900000 } );

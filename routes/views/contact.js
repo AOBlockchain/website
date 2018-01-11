@@ -7,6 +7,7 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 
 	// Set locals
+	locals.pageTitle = "Contact Us";
 	locals.section = 'contact';
 	locals.enquiryTypes = Enquiry.fields.enquiryType.ops;
 	locals.formData = req.body || {};

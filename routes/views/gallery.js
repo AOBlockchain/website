@@ -6,6 +6,7 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 
 	// Set locals
+	locals.pageTitle = "Gallery";
 	locals.section = 'gallery';
 
 	// Load the galleries by sortOrder

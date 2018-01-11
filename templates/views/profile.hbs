@@ -376,10 +376,18 @@
                                     <input type="hidden" name="action" value="editProfile">
                                     <div class="form-group {{#if validationErrors.name}}has-error{{/if}}">
                                         <label>Name</label>
-                                        <input type="text" name="name.full" class="form-control"
-                                               value="{{user.name.first}} {{user.name.last}}">
+                                        <div class="form-row">
+                                        <div class="col-md-6">
+                                            <input type="text" name="firstName" class="form-control"
+                                               value="{{user.name.first}}">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" name="lastName" class="form-control"
+                                               value="{{user.name.last}}">
+                                        </div>
 										{{#if validationErrors.name}}<span
                                                 class="help-block">{{validationErrors.name}}</span>{{/if}}
+                                        </div>
                                     </div>
                                     <div class="form-group {{#if validationErrors.email}}has-error{{/if}}">
                                         <label>Email</label>

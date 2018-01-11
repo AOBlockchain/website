@@ -3,7 +3,15 @@ var User = keystone.list('User');
 var PWReset = keystone.list('PasswordReset');
 var _ = require('lodash');
 var nodemailer = require('nodemailer');
+var mg = require('nodemailer-mailgun-transport');
 
+var auth = {
+	auth: {
+	  api_key: process.env.MAILGUN_APIKEY,
+	  domain: process.env.MAILGUN_DOMAIN,
+	}
+  }
+  var transporter = nodemailer.createTransport(mg(auth));
 
 exports = module.exports = function (req, res) {
 
@@ -11,6 +19,7 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 
 	// Set locals
+	locals.pageTitle = "Request Password Reset";
 	locals.section = 'requestReset';
 	locals.formData = req.body || {};
 	locals.validationErrors = {
@@ -39,22 +48,22 @@ exports = module.exports = function (req, res) {
     		            if(err){
     		                console.log(err);
     		            }
-						var transporter = nodemailer.createTransport('smtps://RiseVision:r1s3v1sion@smtp.sendgrid.net');
+						
 						var mailOptions = {
-							from: '"Rise Vision Foundation" <no-reply@rise.vision>',// sender address
+							from: '"AOBlockchain" <PasswordReset@noreply.aoblockchain.io>',// sender address
 							to: req.body.email,// list of receivers
 							subject: 'Your Requested Password Reset',// Subject line
-							html: '<h1>You requested a password reset</h1><p>If you did not request a password' +
+							html: '<h1>You requested a password reset from AOBlockchain.io</h1><p>If you did not request a password' +
 							' reset, ignore this email.</p><p>To reset your password, click on the following' +
-							' link:<br /><a href="https://rise.vision/passwordReset/' + pwr[0]._id + '"><h2>RESET' +
-							' PASSWORD and 2 Factor Authentication</h2></a></p><p>Please' +
-							' do not reply to this email, it is not a managed box.</p>'
+							' link:<br /><a href="https://aoblockchain.io/passwordReset/' + pwr[0]._id + '"><h2>RESET' +
+							' PASSWORD</h2></a></p><p>Please' +
+							' do not reply to this email, it is not a managed mailbox.</p>'
 						};
 						transporter.sendMail(mailOptions,function(error, info){
 							if(error){
+								
 								return console.log(error);
 							}
-							console.log('Message sent: ' + info.response);
 
 
 						});

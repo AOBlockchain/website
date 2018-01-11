@@ -1,6 +1,6 @@
 <section class="section">
 	<div class="container">
-		<h1>Sign up to support Rise.Vision</h1>
+		<h1>Sign up to support AO Blockchain</h1>
 	</div>
 	<div class="container">
 		<div class="row">			<!--
@@ -38,20 +38,43 @@
         <div class="col-sm-8 col-md-6">
 				
 				{{#if signedUp}}
-					<h3>Thanks for signing up to be an affiliate.</h3>
+					<h3>Thank you for signing up to support AO Blockchain.</h3>
 					<button class="btn btn-default"><a href="/keystone/signin">Sign In</a></button>
 				{{else}}
 				<form method="post">
 					<input type="hidden" name="action" value="contact">
-					<div class="form-group {{#if validationErrors.name}}has-error{{/if}}">
-						<label>Name</label>
-						<input type="text" name="name.full"  class="form-control" value="{{formData.[name.full]}}">
-						{{#if validationErrors.name}}<span class="help-block">{{validationErrors.name}}</span>{{/if}}
+					<div class="row">
+						<div class="form-group col-md-6 {{#if validationErrors.name}}has-error{{/if}}">
+							<label>First Name</label>
+							<input type="text" name="name.first"  class="form-control" value="{{formData.[name.first]}}">
+							{{#if validationErrors.name}}<span class="help-block">{{validationErrors.name}}</span>{{/if}}
+						</div>
+						<div class="form-group col-md-6 {{#if validationErrors.name}}has-error{{/if}}">
+							<label>Last Name</label>
+							<input type="text" name="name.last"  class="form-control" value="{{formData.[name.last]}}">
+							{{#if validationErrors.name}}<span class="help-block">{{validationErrors.name}}</span>{{/if}}
+						</div>
+						
 					</div>
 					<div class="form-group {{#if validationErrors.email}}has-error{{/if}}">
 						<label>Email</label>
 						<input type="email" name="email" class="form-control" value="{{formData.email}}">
 						{{#if validationErrors.email}}<span class="help-block">{{validationErrors.email}}</span>{{/if}}
+					</div>
+					<label>Address</label>
+					<div class="row form-group">
+						<div class="col-md-6">
+							<input type="text" name="address.name" placeholder="Building Name (optional)" class="form-control" value="{{formData.[address.name]}}">
+							<input type="text" name="address.number" placeholder="Unit or Shop # (optional)" class="form-control" value="{{formData.[address.number]}}">
+							<input type="text" name="address.street1" placeholder="Street Address Line 1" class="form-control" value="{{formData.[address.street1]}}">
+							<input type="text" name="address.street2" placeholder="Street Address Line 2 (optional)" class="form-control" value="{{formData.[address.street2]}}">
+						</div>
+						<div class="col-md-6">
+							<input type="text" name="address.suburb" placeholder="Suburb (optional)" class="form-control" value="{{formData.[address.suburb]}}">
+							<input type="text" name="address.state" placeholder="State" class="form-control" value="{{formData.[address.state]}}">
+							<input type="text" name="address.postcode" placeholder="Postal Code" class="form-control" value="{{formData.[address.postcode]}}">
+							<input type="text" name="address.country" placeholder="Country" class="form-control" value="{{formData.[address.country]}}">
+						</div>
 					</div>
 					<div class="form-group">
 						<label>Twitter</label>

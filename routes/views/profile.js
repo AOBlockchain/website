@@ -7,6 +7,7 @@ exports = module.exports = function (req, res) {
 	var view = new keystone.View(req, res);
 	var settings = {};
 	var locals = res.locals;
+	locals.pageTitle = "Supporter Profile";
 	locals.section = 'profile';
 	locals.key = 'profile';
 	locals.summary = {
@@ -162,6 +163,13 @@ exports = module.exports = function (req, res) {
 				console.log(findError);
 				next();
 			} else {
+				console.log(req.body);
+				if (req.body.firstName !== user.name.first) {
+					user.name.first = req.body.firstName;
+				}
+				if (req.body.lastName !== user.name.last) {
+					user.name.last = req.body.lastName;
+				}
 				if (req.body.email !== user.email) {
 					user.email = req.body.email;
 				}

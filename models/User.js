@@ -12,6 +12,7 @@ User.add(
 		image: { type: Types.CloudinaryImage },
 		name: { type: Types.Name, index: true },
 		email: { type: Types.Email, initial: true, required: true, index: true },
+		address: { type: Types.Location },
 		password: { type: Types.Password, initial: true, required: true },
 		referrer: { type: Types.Relationship, ref: 'User', filters: { isAffiliate: true } },
 	},
