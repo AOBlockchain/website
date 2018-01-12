@@ -8,7 +8,7 @@ var Investment = keystone.list('Investment');
 var User = keystone.list('User');
 var coinbase = require('coinbase');
 var client   = new coinbase.Client({'apiKey': process.env.CB_API_KEY, 'apiSecret': process.env.CB_API_SECRET});
-var debug = true;
+var debug = false;
 
 exports.post = function(req, res) {
 
