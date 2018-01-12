@@ -8,7 +8,7 @@ var Setting = new keystone.List('Setting', {
 
 Setting.add(
 	{
-		key: { type: String, noedit: true },
+		key: { type: String },
 		value: { type: String },
 	}
 );
