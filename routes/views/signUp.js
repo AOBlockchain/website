@@ -22,6 +22,7 @@ exports = module.exports = function (req, res) {
 	}
 	// On POST requests, add the User item to the database
 	view.on('post', {action: 'contact'}, function (next) {
+
 		User.model.find({email:req.body.email}).exec(function (err, result) {
 			if (err) {
 				console.log(err)
@@ -30,14 +31,14 @@ exports = module.exports = function (req, res) {
 				var newUser = new User.model(),
 					updater = newUser.getUpdateHandler(req);
 				req.body.referrerPercent = referrerPercent;
-				console.log(req.body);
 				updater.process(req.body, {
 					flashErrors: false,
 					fields: 'name, email, address, twitter, bctUser, password, referrer, referrerPercent',
 					errorMessage: 'There was a problem submitting your request:'
 				}, function (err) {
 					if (err) {
-						locals.validationErrors = err.error;
+						locals.validationErrors = err.detail;
+						console.log(err);
 						if (err.name === 'MongoError') {
 							locals.validationErrors = {email: 'This email is already in use'};
 						}

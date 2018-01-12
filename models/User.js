@@ -10,9 +10,9 @@ var User = new keystone.List('User');
 User.add(
 	{
 		image: { type: Types.CloudinaryImage },
-		name: { type: Types.Name, index: true },
+		name: { type: Types.Name, index: true, initial: true, required: true },
 		email: { type: Types.Email, initial: true, required: true, index: true },
-		address: { type: Types.Location },
+		address: { type: Types.Location, initial: true, required: true },
 		password: { type: Types.Password, initial: true, required: true },
 	},
 	'Social',

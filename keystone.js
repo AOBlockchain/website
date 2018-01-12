@@ -33,6 +33,7 @@ keystone.init({
 	'auth': true,
 	'user model': 'User',
 	'signin logo': ['/images/icon.png', 180, 180],
+	'signin redirect': '/profile',
 });
 
 // Load your project's Models
