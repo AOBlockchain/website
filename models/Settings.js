@@ -1,7 +1,6 @@
 var keystone = require('keystone');
 
 var Setting = new keystone.List('Setting', {
-	noedit: true,
 	nocreate: true,
 	nodelete: true,
 });
