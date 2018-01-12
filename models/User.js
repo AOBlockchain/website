@@ -14,7 +14,6 @@ User.add(
 		email: { type: Types.Email, initial: true, required: true, index: true },
 		address: { type: Types.Location },
 		password: { type: Types.Password, initial: true, required: true },
-		referrer: { type: Types.Relationship, ref: 'User', filters: { isAffiliate: true } },
 	},
 	'Social',
 	{
@@ -46,6 +45,8 @@ User.add(
 		referredUSD: { type: Types.Money, noedit: true, default: 0  },
 		referralBonus: { type: Types.Money, noedit: true, default: 0  },
 		USDBonus: { type: Types.Money, noedit: true, default: 0  },
+		referrer: { type: Types.Relationship, ref: 'User', filters: { isAffiliate: true } },
+		referrerPercent: { type: Types.Number },
 	},
 	'Permissions',
 	{

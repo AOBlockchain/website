@@ -13,6 +13,9 @@ exports = module.exports = function (req, res) {
 	locals.validationErrors = {
 		email: ''
 	};
+	var preSaleCutoff = new Date('2018-01-27T10:00:00');
+	var today = Date.now();
+	var referrerPercent = today < preSaleCutoff ? 0.05 : 0.03;
 	locals.signedUp = false;
 	if (req.cookies.affiliate) {
 		locals.formData.referrer = req.cookies.affiliate;
@@ -26,9 +29,11 @@ exports = module.exports = function (req, res) {
 			if ( result.length === 0) {
 				var newUser = new User.model(),
 					updater = newUser.getUpdateHandler(req);
+				req.body.referrerPercent = referrerPercent;
+				console.log(req.body);
 				updater.process(req.body, {
 					flashErrors: false,
-					fields: 'name, email, address, twitter, bctUser, password, referrer',
+					fields: 'name, email, address, twitter, bctUser, password, referrer, referrerPercent',
 					errorMessage: 'There was a problem submitting your request:'
 				}, function (err) {
 					if (err) {

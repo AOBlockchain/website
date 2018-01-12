@@ -60,13 +60,15 @@ exports.post = function(req, res) {
 				});
 			}
 			if(user.referred !== null) {
+				var trunkAmount = body.additional_data.amount.amount * user.referrerPercent;
+				trunkAmount = trunkAmount.toPrecision(9);
 				var investment = new Investment.model({
 					investor: user.referrer,
 					address: body.data.address,
 					transID: body.additional_data.transaction.id,
 					confirmed: true,
 					createdAt: body.createdAt,
-					amount: body.additional_data.amount.amount * 0.03,
+					amount: trunkAmount,
 					currency: body.additional_data.amount.currency,
 					type: 'Referral Bonus',
 				});
