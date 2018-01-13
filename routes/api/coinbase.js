@@ -8,7 +8,7 @@ var Investment = keystone.list('Investment');
 var User = keystone.list('User');
 var coinbase = require('coinbase');
 var client   = new coinbase.Client({'apiKey': process.env.CB_API_KEY, 'apiSecret': process.env.CB_API_SECRET});
-var debug = false;
+var debug = true;
 
 exports.post = function(req, res) {
 
@@ -26,7 +26,7 @@ exports.post = function(req, res) {
 		}).exec(function(err, user) {
 			var referred = false;
 			if (err) {
-				console.log(err);
+				console.log("user: " + err);
 				res.apiResponse({
 					success: false,
 					error: "error"
@@ -39,7 +39,7 @@ exports.post = function(req, res) {
 					transID: body.additional_data.transaction.id,
 					confirmed: true,
 					createdAt: body.createdAt,
-					amount: body.additional_data.amount.amount,
+					amount: parseFloat(body.additional_data.amount.amount),
 					currency: body.additional_data.amount.currency,
 					type: 'Investment',
 				});
@@ -59,8 +59,8 @@ exports.post = function(req, res) {
 					error: "unknown user"
 				});
 			}
-			if(user.referred !== null) {
-				var trunkAmount = body.additional_data.amount.amount * user.referrerPercent;
+			if(user.referrer !== null) {
+				var trunkAmount = parseFloat(body.additional_data.amount.amount) * parseFloat(user.referrerPercent);
 				trunkAmount = trunkAmount.toPrecision(9);
 				var investment = new Investment.model({
 					investor: user.referrer,
@@ -68,7 +68,7 @@ exports.post = function(req, res) {
 					transID: body.additional_data.transaction.id,
 					confirmed: true,
 					createdAt: body.createdAt,
-					amount: trunkAmount,
+					amount: parseFloat(trunkAmount),
 					currency: body.additional_data.amount.currency,
 					type: 'Referral Bonus',
 				});

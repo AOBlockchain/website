@@ -99,18 +99,58 @@ Investment.schema.post('save', function () {
 								case 'BTC':
 									user.investedBTC = parseFloat(user.investedBTC) + parseFloat(amount);
 									user.investedBTC = user.investedBTC.toPrecision(9);
+									keystone.list('Setting').model.findOne({
+										key: "btcAmount"
+									}, function (err, btcAmount) {
+										if(err){
+											console.log(err);
+										} else {
+											btcAmount.value = parseFloat(btcAmount.value) + parseFloat(amount);
+											btcAmount.save();
+										}
+									});
 									break;
 								case 'BCH':
 									user.investedBCH = parseFloat(user.investedBCH) + parseFloat(amount);
 									user.investedBCH = user.investedBCH.toPrecision(9);
+									keystone.list('Setting').model.findOne({
+										key: "bchAmount"
+									}, function (err, bchAmount) {
+										if(err){
+											console.log(err);
+										} else {
+											bchAmount.value = parseFloat(bchAmount.value) + parseFloat(amount);
+											bchAmount.save();
+										}
+									});
 									break;
 								case 'ETH':
 									user.investedETH = parseFloat(user.investedETH) + parseFloat(amount);
 									user.investedETH = user.investedETH.toPrecision(9);
+									keystone.list('Setting').model.findOne({
+										key: "ethAmount"
+									}, function (err, ethAmount) {
+										if(err){
+											console.log(err);
+										} else {
+											ethAmount.value = parseFloat(ethAmount.value) + parseFloat(amount);
+											ethAmount.save();
+										}
+									});
 									break;
 								case 'LTC':
 									user.investedLTC = parseFloat(user.investedLTC) + parseFloat(amount);
-									user.investedETH = user.investedETH.toPrecision(9);
+									user.investedLTC = user.investedLTC.toPrecision(9);
+									keystone.list('Setting').model.findOne({
+										key: "ltcAmount"
+									}, function (err, ltcAmount) {
+										if(err){
+											console.log(err);
+										} else {
+											ltcAmount.value = parseFloat(ltcAmount.value) + parseFloat(amount);
+											ltcAmount.save();
+										}
+									});
 									break;
 
 								default:
@@ -118,6 +158,16 @@ Investment.schema.post('save', function () {
 							}
 							user.totalUSD += investment.totalValue;
 							user.totalUSD = user.totalUSD.toFixed(2);
+							keystone.list('Setting').model.findOne({
+								key: "marketCap"
+							}, function (err, marketCap) {
+								if(err){
+									console.log(err);
+								} else {
+									marketCap.value = parseFloat(marketCap.value) + parseFloat(investment.totalValue);
+									marketCap.save();
+								}
+							});
 						}
 						if (type === 'Referral Bonus') {
 							var refBonus = amount / investment.usdValue;

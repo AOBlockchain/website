@@ -11,16 +11,15 @@ exports = module.exports = function (req, res) {
 	locals.section = 'home';
 	locals.data = {
 		team: [],
-		faq: [],
-		aoCoinUSD: 0.01,
-		aoCoinBTC: 0.0001,
+		faq: []
 	};
 	var settings = {};
 	var btcAmount = 0;
 	var bchAmount = 0;
-	var etcAmount = 0;
+	var ethAmount = 0;
 	var ltcAmount = 0;
 	var btcValue = 0;
+	var marketCap = 0;
 
 	view.on('init', function (next) {
 		keystone.list('Setting').model.find().exec(function (err, data) {
@@ -83,15 +82,14 @@ exports = module.exports = function (req, res) {
 		btcValue = settings.btcValue || 0;
 		btcAmount = settings.btcAmount || 0;
 		bchAmount = settings.bchAmount || 0;
-		etcAmount = settings.etcAmount || 0;
+		ethAmount = settings.ethAmount || 0;
 		ltcAmount = settings.ltcAmount || 0;
-		locals.data.aoCoinUSD = btcAmount * btcValue;
-		locals.data.btcAmount = _.round(parseFloat(btcAmount), 2);
-		locals.data.bchAmount = _.round(parseFloat(bchAmount), 2);
-		locals.data.etcAmount = _.round(parseFloat(etcAmount), 2);
-		locals.data.ltcAmount = _.round(parseFloat(ltcAmount), 2);
-		locals.data.aoCoinBTC = _.round(parseFloat(btcAmount) / 88000000, 2);
-		locals.data.aoCoinUSD = locals.data.aoCoinUSD.toFixed(2);
+		marketCap = settings.marketCap || 0;
+		locals.data.btcAmount = _.round(parseFloat(btcAmount), 10);
+		locals.data.bchAmount = _.round(parseFloat(bchAmount), 10);
+		locals.data.ethAmount = _.round(parseFloat(ethAmount), 10);
+		locals.data.ltcAmount = _.round(parseFloat(ltcAmount), 10);
+		locals.data.marketCap = _.round(parseFloat(marketCap), 2);
 		next();
 	});
 
