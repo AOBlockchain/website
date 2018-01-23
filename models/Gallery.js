@@ -1,12 +1,12 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
+var eden = require('edencms');
+var Types = eden.Field.Types;
 
 /**
  * Gallery Model
  * =============
  */
 
-var Gallery = new keystone.List('Gallery', {
+var Gallery = new eden.List('Gallery', {
 	autokey: { from: 'name', path: 'key', unique: true },
 });
 

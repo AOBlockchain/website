@@ -17,9 +17,9 @@ exports.create = {
 
 // This is the long-hand version of the functionality above:
 
-var keystone = require('keystone');
+var eden = require('edencms');
 var async = require('async');
-var User = keystone.list('User');
+var User = eden.list('User');
 
 var admins = [
 	{ email: 'user@keystonejs.com', password: 'admin', name: { first: 'Admin', last: 'User' } }

@@ -1,0 +1,118 @@
+<!-- Promo Banner -->
+<div class="g-min-height-450 g-flex-centered g-bg-img-hero g-bg-pos-top-center g-bg-size-cover g-pt-80" style="background-image: url(assets/img-temp/1920x800/img2.jpg);">
+	<div class="container g-pos-rel g-z-index-1">
+		<span class="d-block text-uppercase g-color-primary g-font-weight-500 g-font-size-13 mb-4">AO Blockchain Features and FAQ</span>
+		<h1 class="g-color-white g-font-size-60--lg mb-0">Common Features
+			<br>And Questions</h1>
+	</div>
+</div>
+<!-- End Promo Banner -->
+<!-- Help - Content -->
+<div class="container g-pt-50 g-pb-70">
+	<div class="g-mb-40">
+		<h2 class="mb-0">What Does AO Blockchain Do</h2>
+	</div>
+
+	<div class="row">
+		{{#if data.category}}
+		<div class="col-md-5 col-lg-4 g-mb-30">
+			<!-- Nav tabs -->
+			<ul class="nav g-bg-secondary rounded g-px-5 g-pt-10" role="tablist" data-target="nav-5-3-primary-ver" data-tabs-mobile-type="slide-up-down"
+			data-btn-classes="btn btn-md btn-block rounded-0 u-btn-outline-primary">
+				{{#each data.category}}
+				<li class="nav-item col-6 g-px-5 g-mb-10">
+					<a class="nav-link {{#if @first}}active{{/if}} g-brd-none g-color-main--hover g-bg-white g-bg-primary--hover text-center rounded g-px-10 g-py-30"
+					data-toggle="tab" href="#tabs-{{name}}" role="tab">
+						<span class="d-block u-icon-v3 u-icon-size--sm g-color-primary g-bg-main rounded-circle mx-auto mb-3">
+							<i class="{{icon}} u-line-icon-pro"></i>
+						</span>
+						{{name}}
+						<span class="d-block g-color-text g-font-size-12">{{count}} questions</span>
+					</a>
+				</li>
+				{{/each}}
+				<li class="nav-item col-12 g-px-5 g-mb-10">
+					<a class="nav-link g-brd-none g-color-main--hover g-bg-white g-bg-primary--hover text-center rounded g-px-10 g-py-20" href="http://docs.aoblockchain.io"
+					target="_blank">
+						<span class="d-block g-color-text g-font-size-12">Want more technical information?</span>
+						API and Code Documentation
+					</a>
+				</li>
+			</ul>
+			<!-- End Nav tabs -->
+		</div>
+
+		<div class="col-md-7 col-lg-8 g-mb-30">
+			<!-- Tab panes -->
+			<div id="tabs" class="tab-content g-pt-20 g-pt-0--md">
+				{{#each data.category}}
+				<div class="tab-pane fade{{#if @first}} show active{{/if}}" id="tabs-{{name}}" role="tabpanel">
+					<!-- Accordion -->
+					<div id="accordion-{{name}}" class="u-accordion u-accordion-color-primary" role="tablist" aria-multiselectable="true">
+						{{#each features}}
+						<!-- Card -->
+						<div class="card g-brd-none{{#ifodd @index}} g-bg-secondary{{/ifodd}} rounded-0">
+							<div id="accordion-{{../name}}-heading-{{_id}}" class="u-accordion__header g-color-text g-font-weight-500 g-font-size-16 g-pa-0"
+							role="tab">
+								<h5 class="g-font-size-15 mb-0">
+									<a class="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-pa-30 collapsed" href="#accordion-{{../name}}-body-{{_id}}"
+									data-toggle="collapse" data-parent="#accordion-{{../name}}" aria-expanded="false" aria-controls="accordion-{{../name}}-body-{{_id}}">
+										{{question}}
+										</a>
+								</h5>
+							</div>
+							<div id="accordion-{{../name}}-body-{{_id}}" class="collapsed collapse" role="tabpanel" aria-labelledby="accordion-{{../name}}-heading-{{_id}}">
+								<div class="u-accordion__body g-color-text g-pa-30 g-pt-0">
+									{{answer}}
+								</div>
+							</div>
+						</div>
+						<!-- End Card -->
+						{{/each}}
+					</div>
+					<!-- End Accordion -->
+				</div>
+				{{/each}}
+			</div>
+			<!-- End Tab panes -->
+		</div>
+		{{else}}
+		<div class="col-md-12 g-mb-30">
+			<h2 class="mb-4">Features Coming Soon</h2>
+		</div>
+		{{/if}}
+	</div>
+</div>
+<!-- End Help - Content -->
+
+<!-- Call to Action -->
+<div class="container g-mb-100">
+	<div class="g-bg-secondary g-pa-50">
+		<h3 class="g-mb-25">Want to talk to someone?</h3>
+
+		<div class="row">
+			<div class="col-md-6 g-mb-30 g-mb-0--md">
+				<h3 class="h5 mb-3">10-5 Eastern Customer Support:</h3>
+				<div class="mb-3">
+					<a class="g-color-main g-color-primary--hover g-font-size-13" href="http://support.aoblockchain.io" target="_blank">Support Site</a>
+					<span class="g-mx-15">|</span>
+					<a class="g-color-main g-color-primary--hover g-font-size-13" href="mailto:info@aoblockchain.io">info@aoblockchain.io</a>
+				</div>
+				<p class="g-font-size-12">Our Support and Investor Relations chats are currently staffed by our CTO and CEO, so we can provide the quickest, most accurate answers to interested parties.</p>
+			</div>
+
+			<div class="col-md-6">
+				<h3 class="h5 mb-3">Chat with Us</h3>
+				<div class="mb-3">
+					<a class="g-color-main g-color-primary--hover g-font-size-13 investChat" href="#">Investor Relations</a>
+					<span class="g-color-text g-font-size-13">(from 08.00 AM to 06.00 PM)</span>
+				</div>
+				<div class="mb-3">
+					<a class="g-color-main g-color-primary--hover g-font-size-13 supportChat" href="#">Support</a>
+					<span class="g-color-text g-font-size-13">(from 08.00 AM to 06.00 PM)</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Call to Action -->

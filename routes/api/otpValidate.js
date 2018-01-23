@@ -2,11 +2,11 @@
 /**
  * Created by justin on 5/27/16.
  */
-var keystone = require('keystone');
+var eden = require('edencms');
 // var totp = require('quickotp').TOTP;
 
 exports.get = function(req, res) {
-	keystone.list('User').model.findOne({_id: req.user.id}, function (findError, user) {
+	eden.list('User').model.findOne({_id: req.user.id}, function (findError, user) {
 		if (findError) {
 			next();
 		} else {

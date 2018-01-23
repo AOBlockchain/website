@@ -18,13 +18,13 @@
  * http://expressjs.com/api.html#app.VERB
  */
 
-var keystone = require('keystone');
+var eden = require('edencms');
 var middleware = require('./middleware');
-var importRoutes = keystone.importer(__dirname);
+var importRoutes = eden.importer(__dirname);
 
 // Common Middleware
-keystone.pre('routes', middleware.initLocals);
-keystone.pre('render', middleware.flashMessages);
+eden.pre('routes', middleware.initLocals);
+eden.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
 var routes = {
@@ -37,13 +37,18 @@ exports = module.exports = function (app) {
 	// Affiliate program details
 	// Views
 	app.get('/', routes.views.index);
-	app.get('/ico', routes.views.ico);
+	app.get('/ico', routes.views.comingSoon);
 	app.get('/pre-sale', routes.views.preSale);
-	app.get('/team', routes.views.team);
-	app.get('/join-team', routes.views.joinTeam);
-	//app.get('/stats', routes.views.stats);
+	app.get('/team', routes.views.comingSoon);
+	app.get('/join-team', routes.views.comingSoon);
+	app.get('/features', routes.views.features);
+	app.get('/solutions', routes.views.comingSoon);
+	app.get('/pre-sale/stats', routes.views.comingSoon);
+	app.get('/stats', routes.views.comingSoon);
 	app.all('/contact', routes.views.contact);
 	app.all('/profile', middleware.requireUser, routes.views.profile);
+	app.all('/profile/transactions', middleware.requireUser, routes.views.comingSoon);
+	app.all('/profile/settings', middleware.requireUser, routes.views.settings);
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.all('/signUp', routes.views.signUp);
@@ -52,12 +57,12 @@ exports = module.exports = function (app) {
 	app.all('/requestReset', routes.views.requestReset);
 	app.all('/passwordReset/:id', routes.views.passwordReset);
 	// APIs
-	// app.get('/api/investments', keystone.middleware.api, routes.api.investments.get);
-	// app.get('/api/referrals', keystone.middleware.api, routes.api.referrals.get);
-	// app.get('/api/bonuses', keystone.middleware.api, routes.api.bonuses.get);
-	app.post('/api/coinbase', keystone.middleware.api, routes.api.coinbase.post);
-	// app.get('/api/configQR', keystone.middleware.api, routes.api.bonuses.get);
-	// app.get('/api/checkOTP', keystone.middleware.api, routes.api.otpValidate.get);
+	// app.get('/api/investments', eden.middleware.api, routes.api.investments.get);
+	// app.get('/api/referrals', eden.middleware.api, routes.api.referrals.get);
+	// app.get('/api/bonuses', eden.middleware.api, routes.api.bonuses.get);
+	app.post('/api/coinbase', eden.middleware.api, routes.api.coinbase.post);
+	// app.get('/api/configQR', eden.middleware.api, routes.api.bonuses.get);
+	// app.get('/api/checkOTP', eden.middleware.api, routes.api.otpValidate.get);
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 };

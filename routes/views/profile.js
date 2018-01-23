@@ -1,10 +1,10 @@
-var keystone = require('keystone');
-var Settings = keystone.list('Setting');
+var eden = require('edencms');
+var Settings = eden.list('Setting');
 var _ = require('lodash');
 var cb = require('coinbase').Client;
 
 exports = module.exports = function (req, res) {
-	var view = new keystone.View(req, res);
+	var view = new eden.View(req, res);
 	var settings = {};
 	var locals = res.locals;
 	locals.pageTitle = "Supporter Profile";
@@ -14,7 +14,7 @@ exports = module.exports = function (req, res) {
 		aoCoin: 0,
 		aoCoinBTC: 0,
 		aoCoinBHC: 0,
-		aoCoinETC: 0,
+		aoCoinETH: 0,
 		aoCoinLTC: 0,
 		aoCoinUSD: 0,
 		currentTime: Date.now(),
@@ -25,7 +25,7 @@ exports = module.exports = function (req, res) {
 	if (req.user) {
 		locals.user = req.user;
 		view.on('init', function(next) {
-			keystone.list('Investment').model.find({investor: req.user._id}, function (findError, investments) {
+			eden.list('Investment').model.find({investor: req.user._id}, function (findError, investments) {
 				if (findError) {
 					console.log(findError);
 					next();
@@ -44,7 +44,7 @@ exports = module.exports = function (req, res) {
 					if (err) {
 						console.log(err);
 					} else {
-						keystone.list('User').model.findOne({_id: req.user._id}, function (findError, user) {
+						eden.list('User').model.findOne({_id: req.user._id}, function (findError, user) {
 							if (findError) {
 								console.log(findError);
 								next();
@@ -74,7 +74,7 @@ exports = module.exports = function (req, res) {
 					if (err) {
 						console.log(err);
 					} else {
-						keystone.list('User').model.findOne({_id: req.user._id}, function (findError, user) {
+						eden.list('User').model.findOne({_id: req.user._id}, function (findError, user) {
 							if (findError) {
 								console.log(findError);
 								next();
@@ -96,7 +96,7 @@ exports = module.exports = function (req, res) {
 			});
 		});
 
-		view.on('post', { action: 'getETCAddress' }, function (next) {
+		view.on('post', { action: 'getETHAddress' }, function (next) {
 			var client = new cb({'apiKey': process.env.CB_API_KEY,
 			'apiSecret': process.env.CB_API_SECRET});
 			client.getAccount(process.env.ETC_ACCOUNT, function(err, account) {
@@ -104,7 +104,7 @@ exports = module.exports = function (req, res) {
 					if (err) {
 						console.log(err);
 					} else {
-						keystone.list('User').model.findOne({_id: req.user._id}, function (findError, user) {
+						eden.list('User').model.findOne({_id: req.user._id}, function (findError, user) {
 							if (findError) {
 								console.log(findError);
 								next();
@@ -134,7 +134,7 @@ exports = module.exports = function (req, res) {
 					if (err) {
 						console.log(err);
 					} else {
-						keystone.list('User').model.findOne({_id: req.user._id}, function (findError, user) {
+						eden.list('User').model.findOne({_id: req.user._id}, function (findError, user) {
 							if (findError) {
 								console.log(findError);
 								next();
@@ -158,7 +158,7 @@ exports = module.exports = function (req, res) {
 	}
 	view.on('post', {action: 'editProfile'}, function (next) {
 
-		keystone.list('User').model.findOne({_id: req.user.id}, function (findError, user) {
+		eden.list('User').model.findOne({_id: req.user.id}, function (findError, user) {
 			if (findError) {
 				console.log(findError);
 				next();

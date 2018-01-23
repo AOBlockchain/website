@@ -1,7 +1,7 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
+var eden = require('edencms');
+var Types = eden.Field.Types;
 
-var PasswordReset = new keystone.List('PasswordReset', {});
+var PasswordReset = new eden.List('PasswordReset', {});
 
 PasswordReset.add({
 	uuid: { type: Types.Relationship, ref: 'User' },

@@ -1,11 +1,11 @@
 /**
  * Created by justin on 5/4/16.
  */
-var keystone = require('keystone');
+var eden = require('edencms');
 
 exports = module.exports = function(req, res) {
 
-	var view = new keystone.View(req, res);
+	var view = new eden.View(req, res);
 	var locals = res.locals;
 
 	// locals.section is used to set the currently selected
@@ -18,7 +18,7 @@ exports = module.exports = function(req, res) {
 	};
 
 	view.on('init', function(next) {
-		keystone.list('User').model.find().where('isTeamMember', true).exec(function(err, results) {
+		eden.list('User').model.find().where('isTeamMember', true).exec(function(err, results) {
 
 			if (err || !results.length) {
 				return next(err);

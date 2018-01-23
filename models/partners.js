@@ -2,10 +2,10 @@
  * Created by justin on 5/26/16.
  */
 
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
+var eden = require('edencms');
+var Types = eden.Field.Types;
 
-var Partner = new keystone.List('Partner');
+var Partner = new eden.List('Partner');
 
 Partner.add({
 	partner: { type: String, initial: true },

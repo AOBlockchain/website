@@ -1,103 +1,95 @@
-<section class="section">
+<div class="g-pos-rel g-py-30 g-mt-80">
 	<div class="container">
-		<h1>Sign up to support AO Blockchain</h1>
-	</div>
-	<div class="container">
-		<div class="col-md-offset-3 col-md-6 col-sm-12">
+		<div class="row justify-content-center">
+			<div class="col-md-7">
+				{{#if signedUp}}
+				<h3>Thank you for signing up to support AO Blockchain.</h3>
+				<button class="btn btn-default">
+					<a href="/admin/signin">Sign In</a>
+				</button>
+				{{else}}
+				<h1>Sign up to support AO Blockchain</h1>
+				<form method="post">
+					<input type="hidden" name="action" value="contact">
+						<div class="form-group {{#if validationErrors.name}}u-has-error{{/if}}">
+							<label>Full Name</label>
+							<input type="text" name="name.full" class="form-control form-control-md rounded-0" placeholder="Full Name" value="{{formData.[name.full]}}"> {{#if validationErrors.name}}
+						<small class="form-control-feedback d-block g-bg-red g-color-white g-font-size-12 g-px-14 g-py-3 mt-0">{{validationErrors.name.error}}</small>{{/if}}
+						</div>
+					<div class="form-group {{#if validationErrors.email}}has-error{{/if}}">
+						<label>Email</label>
+						<input type="email" name="email" class="form-control form-control-md rounded-0" placeholder="Email" value="{{formData.email}}"> {{#if validationErrors.email}}
+						<small class="form-control-feedback d-block g-bg-red g-color-white g-font-size-12 g-px-14 g-py-3 mt-0">{{validationErrors.email.error}}</small>{{/if}}
+					</div>
+					<label>Address</label>
+					<div class="row form-group">
+						<div class="col-md-6">
+							<div class="form-group {{#if validationErrors.address}}u-has-error{{/if}}">
+								<input type="text" name="address.street1" placeholder="Street Address Line 1" class="form-control form-control-md rounded-0 {{#if validationErrors.address}}has-error{{/if}}"
+								value="{{formData.[address.street1]}}">
+							</div>
+							<div class="form-group">
+								<input type="text" name="address.street2" placeholder="Street Address Line 2 (optional)" class="form-control form-control-md rounded-0" value="{{formData.[address.street2]}}">
+							</div>
+							<div class="form-group {{#if validationErrors.address}}u-has-error{{/if}}">
+								<input type="text" name="address.suburb" placeholder="Suburb / City" class="form-control form-control-md rounded-0 {{#if validationErrors.address}}has-error{{/if}}"
+								value="{{formData.[address.suburb]}}">
+							</div>
+							{{#if validationErrors.address}}
+							<div class="form-group has-error">
+								<small class="form-control-feedback d-block g-bg-red g-color-white g-font-size-12 g-px-14 g-py-3 mt-0">{{validationErrors.address.error}}</small>
+							</div>{{/if}}
 
-			{{#if signedUp}}
-			<h3>Thank you for signing up to support AO Blockchain.</h3>
-			<button class="btn btn-default">
-				<a href="/keystone/signin">Sign In</a>
-			</button>
-			{{else}}
-			<form method="post">
-				<input type="hidden" name="action" value="contact">
-				<div class="row">
-					<div class="form-group col-md-6 {{#if validationErrors.name}}has-error{{/if}}">
-						<label>First Name</label>
-						<input type="text" name="name.first" class="form-control" placeholder="First Name" value="{{formData.[name.first]}}"> {{#if validationErrors.name}}
-						<span class="help-block">First {{validationErrors.name.error}}</span>{{/if}}
+						</div>
+						<div class="col-md-6">
+							<div class="form-group {{#if validationErrors.address}}has-error{{/if}}">
+								<input type="text" name="address.state" placeholder="State / Province" class="form-control form-control-md rounded-0 {{#if validationErrors.address}}has-error{{/if}}"
+								value="{{formData.[address.state]}}">
+							</div>
+							<div class="form-group {{#if validationErrors.address}}has-error{{/if}}">
+								<input type="text" name="address.postcode" placeholder="Postal Code" class="form-control form-control-md rounded-0 {{#if validationErrors.address}}has-error{{/if}}"
+								value="{{formData.[address.postcode]}}">
+							</div>
+							<div class="form-group {{#if validationErrors.address}}has-error{{/if}}">
+								<input type="text" name="address.country" placeholder="Country" class="form-control form-control-md rounded-0 {{#if validationErrors.address}}has-error{{/if}}"
+								value="{{formData.[address.country]}}">
+							</div>
+						</div>
 					</div>
-					<div class="form-group col-md-6 {{#if validationErrors.name}}has-error{{/if}}">
-						<label>Last Name</label>
-						<input type="text" name="name.last" class="form-control" placeholder="Last Name" value="{{formData.[name.last]}}"> {{#if validationErrors.name}}
-						<span class="help-block">Last {{validationErrors.name.error}}</span>{{/if}}
+					<div class="form-group">
+						<label>Twitter</label>
+						<input type="text" name="twitter" placeholder="(optional)" class="form-control form-control-md rounded-0" value="{{formData.twitter}}"> {{#if validationErrors.twitter}}
+						<small class="form-control-feedback d-block g-bg-red g-color-white g-font-size-12 g-px-14 g-py-3 mt-0">{{validationErrors.twitter.error}}</small>{{/if}}
+					</div>
+					<div class="form-group {{#if validationErrors.bctUser}}has-error{{/if}}">
+						<label>Bitcoin Talk User</label>
+						<input type="text" name="bctUser" placeholder="(optional)" class="form-control form-control-md rounded-0" value="{{formData.bctUser}}"> {{#if validationErrors.bctUser}}
+						<small class="form-control-feedback d-block g-bg-red g-color-white g-font-size-12 g-px-14 g-py-3 mt-0">{{validationErrors.bctUser.error}}</small>{{/if}}
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6 {{#if validationErrors.password}}has-error{{/if}}">
+							<label>Password</label>
+							<input type="password" name="password" placeholder="(required)" class="form-control form-control-md rounded-0" value="{{formData.password}}"> {{#if validationErrors.password}}
+							<small class="form-control-feedback d-block g-bg-red g-color-white g-font-size-12 g-px-14 g-py-3 mt-0">{{validationErrors.password.error}}</small>{{/if}}
+						</div>
+						<div class="form-group col-md-6 {{#if validationErrors.password}}has-error{{/if}}">
+							<label>Confirm Password</label>
+							<input type="password" name="password_confirm" placeholder="(required)" class="form-control form-control-md rounded-0" value="{{formData.password_confirm}}"> 
+						</div>
 					</div>
 
-				</div>
-				<div class="form-group {{#if validationErrors.email}}has-error{{/if}}">
-					<label>Email</label>
-					<input type="email" name="email" class="form-control" placeholder="Email" value="{{formData.email}}"> {{#if validationErrors.email}}
-					<span class="help-block">{{validationErrors.email.error}}</span>{{/if}}
-				</div>
-				<label>Address</label>
-				<div class="row form-group">
-					<div class="col-md-6">
-						<div class="form-group {{#if validationErrors.address}}has-error{{/if}}">
-							<input type="text" name="address.street1" placeholder="Street Address Line 1" class="form-control {{#if validationErrors.address}}has-error{{/if}}"
-							value="{{formData.[address.street1]}}">
-						</div>
-						<div class="form-group">
-							<input type="text" name="address.street2" placeholder="Street Address Line 2 (optional)" class="form-control" value="{{formData.[address.street2]}}">
-						</div>
-						<div class="form-group {{#if validationErrors.address}}has-error{{/if}}">
-							<input type="text" name="address.suburb" placeholder="Suburb / City" class="form-control {{#if validationErrors.address}}has-error{{/if}}"
-							value="{{formData.[address.suburb]}}">
-						</div>
-						{{#if validationErrors.address}}
-						<div class="form-group has-error">
-							<span class="help-block">{{validationErrors.address.error}}</span>
-						</div>{{/if}}
-
+					<div class="form-group {{#if validationErrors.referrer}}has-error{{/if}}">
+						<label>referrer</label>
+						<input type="text" name="referrer" placeholder="(automated)" class="form-control form-control-md rounded-0" value="{{formData.referrer}}" disabled="disabled"> {{#if validationErrors.referrer}}
+						<small class="form-control-feedback d-block g-bg-red g-color-white g-font-size-12 g-px-14 g-py-3 mt-0">{{validationErrors.referrer.error}}</small>{{/if}}
 					</div>
-					<div class="col-md-6">
-						<div class="form-group {{#if validationErrors.address}}has-error{{/if}}">
-							<input type="text" name="address.state" placeholder="State / Province" class="form-control {{#if validationErrors.address}}has-error{{/if}}"
-							value="{{formData.[address.state]}}">
-						</div>
-						<div class="form-group {{#if validationErrors.address}}has-error{{/if}}">
-							<input type="text" name="address.postcode" placeholder="Postal Code" class="form-control {{#if validationErrors.address}}has-error{{/if}}"
-							value="{{formData.[address.postcode]}}">
-						</div>
-						<div class="form-group {{#if validationErrors.address}}has-error{{/if}}">
-							<input type="text" name="address.country" placeholder="Country" class="form-control {{#if validationErrors.address}}has-error{{/if}}"
-							value="{{formData.[address.country]}}">
-						</div>
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary">Send</button>
 					</div>
-				</div>
-				<div class="form-group">
-					<label>Twitter</label>
-					<input type="text" name="twitter" placeholder="(optional)" class="form-control" value="{{formData.twitter}}"> {{#if validationErrors.twitter}}
-					<span class="help-block">{{validationErrors.twitter}}</span>{{/if}}
-				</div>
-				<div class="form-group {{#if validationErrors.bctUser}}has-error{{/if}}">
-					<label>Bitcoin Talk User</label>
-					<input type="text" name="bctUser" placeholder="(optional)" class="form-control" value="{{formData.bctUser}}"> {{#if validationErrors.bctUser}}
-					<span class="help-block">{{validationErrors.bctUser}}</span>{{/if}}
-				</div>
-				<div class="row">
-					<div class="form-group col-md-6 {{#if validationErrors.password}}has-error{{/if}}">
-						<label>Password</label>
-						<input type="password" name="password" placeholder="(required)" class="form-control" value="{{formData.password}}"> {{#if validationErrors.password}}
-						<span class="help-block">{{validationErrors.password.error}}</span>{{/if}}
-					</div>
-					<div class="form-group col-md-6 {{#if validationErrors.password}}has-error{{/if}}">
-						<label>Confirm Password</label>
-						<input type="password" name="password_confirm" placeholder="(required)" class="form-control" value="{{formData.password_confirm}}">
-					</div>
-				</div>
-
-				<div class="form-group {{#if validationErrors.referrer}}has-error{{/if}}">
-					<label>referrer</label>
-					<input type="text" name="referrer" placeholder="(automated)" class="form-control" value="{{formData.referrer}}" disabled="disabled"> {{#if validationErrors.referrer}}
-					<span class="help-block">{{validationErrors.referrer}}</span>{{/if}}
-				</div>
-				<div class="form-actions">
-					<button type="submit" class="btn btn-primary">Send</button>
-				</div>
-			</form>
-			{{/if}}
+				</form>
+				{{/if}}
+			</div>
 		</div>
+		</section>
 	</div>
-</section>
+</div>

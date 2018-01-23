@@ -1,18 +1,18 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
+var eden = require('edencms');
+var Types = eden.Field.Types;
 
 /**
  * User Model
  * ==========
  */
-var User = new keystone.List('User');
+var User = new eden.List('User');
 
 User.add(
 	{
 		image: { type: Types.CloudinaryImage },
 		name: { type: Types.Name, index: true, initial: true, required: true },
 		email: { type: Types.Email, initial: true, required: true, index: true },
-		address: { type: Types.Location, initial: true, required: true },
+		address: { type: Types.Location },
 		password: { type: Types.Password, initial: true, required: true },
 	},
 	'Social',
@@ -53,6 +53,9 @@ User.add(
 		isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
 		isTeamMember: { type: Boolean },
 		isFounder: { type: Boolean },
+		isContributor: { type: Boolean },
+		isAuthor: { type: Boolean },
+		isEditor: { type: Boolean },
 	},
 	'System',
 	{
@@ -69,7 +72,26 @@ User.schema.virtual('canAccessKeystone').get(function () {
 	return this.isAdmin;
 });
 
-
+/*
+User.schema.post('save', function(next) {
+	var userEmail = {
+		from: '"AOBlockchain" <Enquiry@noreply.aoblockchain.io>',// sender address
+		to: this.email,// list of receivers
+		subject: 'Your AO Blockchain Enquiry',// Subject line
+		html: '<h1>We have received your Enquiry regarding AO Blockchain</h1><p>We will get back to you' +
+		' within 2 business days.</p><p>For more information about AO Blockchain, please visit our' +
+		' documentation:<br /><a href="https://docs.aoblockchain.io/"><h2>DOCUMENTATION' +
+		' & WHITE PAPER</h2></a></p><p>Please' +
+		' do not reply to this email, it is not a managed mailbox.</p>'
+	};
+	
+	transporter.sendMail(userEmail,function(error, info){
+		if(error){	
+			return console.log(error);
+		}
+	});
+});
+*/
 /**
  * Relationships
  */

@@ -1,8 +1,8 @@
-var keystone = require('keystone');
+var eden = require('edencms');
 
 exports = module.exports = function (req, res) {
 
-	var view = new keystone.View(req, res);
+	var view = new eden.View(req, res);
 	var locals = res.locals;
 
 	// Set locals
@@ -17,10 +17,10 @@ exports = module.exports = function (req, res) {
 	// Load the current post
 	view.on('init', function (next) {
 
-		var q = keystone.list('Post').model.findOne({
+		var q = eden.list('Post').model.findOne({
 			state: 'published',
 			slug: locals.filters.post,
-		}).populate('author categories');
+		}).populate('author category');
 
 		q.exec(function (err, result) {
 			locals.data.post = result;
@@ -33,7 +33,7 @@ exports = module.exports = function (req, res) {
 	// Load other posts
 	view.on('init', function (next) {
 
-		var q = keystone.list('Post').model.find().where('state', 'published').sort('-publishedDate').populate('author').limit('4');
+		var q = eden.list('Post').model.find().where('publishing.state', 'published').sort('-publishing.date').populate('author').limit('4');
 
 		q.exec(function (err, results) {
 			locals.data.posts = results;

@@ -2,15 +2,15 @@
  * Created by justin on 5/4/16.
  */
 
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
+var eden = require('edencms');
+var Types = eden.Field.Types;
 var Client = require('coinbase').Client;
 var client = new Client({
 	'apiKey': process.env.CB_API_KEY,
 	'apiSecret': process.env.CB_API_SECRET
 });
 
-var Investment = new keystone.List('Investment');
+var Investment = new eden.List('Investment');
 
 Investment.add({
 	investor: {
@@ -66,7 +66,7 @@ Investment.schema.post('save', function () {
 	var type = this.type;
 
 	if (this.amount / this.usdValue !== this.totalValue) {
-		keystone.list('User').model.findOne({
+		eden.list('User').model.findOne({
 			_id: this.investor
 		}, function (err, user) {
 			if (err) {
@@ -99,7 +99,7 @@ Investment.schema.post('save', function () {
 								case 'BTC':
 									user.investedBTC = parseFloat(user.investedBTC) + parseFloat(amount);
 									user.investedBTC = user.investedBTC.toPrecision(9);
-									keystone.list('Setting').model.findOne({
+									eden.list('Setting').model.findOne({
 										key: "btcAmount"
 									}, function (err, btcAmount) {
 										if(err){
@@ -113,7 +113,7 @@ Investment.schema.post('save', function () {
 								case 'BCH':
 									user.investedBCH = parseFloat(user.investedBCH) + parseFloat(amount);
 									user.investedBCH = user.investedBCH.toPrecision(9);
-									keystone.list('Setting').model.findOne({
+									eden.list('Setting').model.findOne({
 										key: "bchAmount"
 									}, function (err, bchAmount) {
 										if(err){
@@ -127,7 +127,7 @@ Investment.schema.post('save', function () {
 								case 'ETH':
 									user.investedETH = parseFloat(user.investedETH) + parseFloat(amount);
 									user.investedETH = user.investedETH.toPrecision(9);
-									keystone.list('Setting').model.findOne({
+									eden.list('Setting').model.findOne({
 										key: "ethAmount"
 									}, function (err, ethAmount) {
 										if(err){
@@ -141,7 +141,7 @@ Investment.schema.post('save', function () {
 								case 'LTC':
 									user.investedLTC = parseFloat(user.investedLTC) + parseFloat(amount);
 									user.investedLTC = user.investedLTC.toPrecision(9);
-									keystone.list('Setting').model.findOne({
+									eden.list('Setting').model.findOne({
 										key: "ltcAmount"
 									}, function (err, ltcAmount) {
 										if(err){
@@ -158,7 +158,7 @@ Investment.schema.post('save', function () {
 							}
 							user.totalUSD += investment.totalValue;
 							user.totalUSD = user.totalUSD.toFixed(2);
-							keystone.list('Setting').model.findOne({
+							eden.list('Setting').model.findOne({
 								key: "marketCap"
 							}, function (err, marketCap) {
 								if(err){
@@ -187,5 +187,5 @@ Investment.schema.post('save', function () {
 	}
 })
 
-Investment.defaultColumns = 'investor, currency, amount, usdAmount, totalValue, type, confirmed';
+Investment.defaultColumns = 'investor, currency, amount, totalValue, type, confirmed';
 Investment.register();

@@ -1,13 +1,27 @@
-<ul class="pagination">
-	<li {{#unless data.posts.previous}}class="disabled"{{/unless}}>
-		<a href="{{paginationPreviousUrl data.posts.previous}}">
-			<span class="glyphicon glyphicon-chevron-left"></span>
+<nav class="text-center" aria-label="Page Navigation">
+	<ul class="list-inline">
+		{{#if data.posts.previous}}
+			<li class="list-inline-item float-left g-hidden-xs-down">
+			<a class="u-pagination-v1__item u-pagination-v1-4 g-brd-gray-light-v3 g-brd-primary--hover g-rounded-50 g-pa-7-16" href="{{paginationPreviousUrl data.posts.previous}}" aria-label="Previous">
+				<span aria-hidden="true">
+				<i class="fa fa-angle-left g-mr-5"></i> Previous
+				</span>
+				<span class="sr-only">Previous</span>
+			</a>
+			</li>
+		{{/if}}
+		
+		{{{paginationNavigation data.posts.pages data.posts.currentPage data.posts.totalPages}}}
+
+		{{#if data.posts.next}}
+		<li class="list-inline-item float-right g-hidden-xs-down">
+		<a class="u-pagination-v1__item u-pagination-v1-4 g-brd-gray-light-v3 g-brd-primary--hover g-rounded-50 g-pa-7-16" href="{{paginationNextUrl data.posts.next data.posts.totalPages}}" aria-label="Next">
+			<span aria-hidden="true">
+			Next <i class="fa fa-angle-right g-ml-5"></i>
+			</span>
+			<span class="sr-only">Next</span>
 		</a>
-	</li>
-	{{{paginationNavigation data.posts.pages data.posts.currentPage data.posts.totalPages}}}
-	<li {{#unless data.posts.next}}class="disabled"{{/unless}}>
-		<a href="{{paginationNextUrl data.posts.next data.posts.totalPages}}">
-			<span class="glyphicon glyphicon-chevron-right"></span>
-		</a>
-	</li>
-</ul>
+		</li>
+		{{/if}}
+	</ul>
+</nav>

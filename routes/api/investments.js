@@ -2,9 +2,9 @@
  * Created by justin on 5/27/16.
  */
 var async = require('async'),
-	keystone = require('keystone');
+	eden = require('edencms');
 var _ = require('lodash');
-var Investment = keystone.list('Investment');
+var Investment = eden.list('Investment');
 
 exports.get = function(req, res) {
 	var body = (req.method == 'GET') ? req.body : req.query;

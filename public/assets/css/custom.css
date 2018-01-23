@@ -1,0 +1,9 @@
+/* Add here all your css styles (customizations) */
+.g-height-330 {
+    height: 330px;
+}
+
+.g-width-330 {
+    width: 330px !important;
+    max-width: 100%;
+}

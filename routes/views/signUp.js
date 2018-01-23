@@ -1,9 +1,9 @@
-var keystone = require('keystone');
-var User = keystone.list('User');
+var eden = require('edencms');
+var User = eden.list('User');
 
 exports = module.exports = function (req, res) {
 
-	var view = new keystone.View(req, res);
+	var view = new eden.View(req, res);
 	var locals = res.locals;
 
 	// Set locals
@@ -19,10 +19,10 @@ exports = module.exports = function (req, res) {
 	locals.signedUp = false;
 	if (req.cookies.affiliate) {
 		locals.formData.referrer = req.cookies.affiliate;
+		locals.formData.referrerPercent = referrerPercent;
 	}
 	// On POST requests, add the User item to the database
 	view.on('post', {action: 'contact'}, function (next) {
-
 		User.model.find({email:req.body.email}).exec(function (err, result) {
 			if (err) {
 				console.log(err)
@@ -30,7 +30,7 @@ exports = module.exports = function (req, res) {
 			if ( result.length === 0) {
 				var newUser = new User.model(),
 					updater = newUser.getUpdateHandler(req);
-				req.body.referrerPercent = referrerPercent;
+					console.log(req.body);
 				updater.process(req.body, {
 					flashErrors: false,
 					fields: 'name, email, address, twitter, bctUser, password, referrer, referrerPercent',
@@ -40,7 +40,7 @@ exports = module.exports = function (req, res) {
 						locals.validationErrors = err.detail;
 						console.log(err);
 						if (err.name === 'MongoError') {
-							locals.validationErrors = {email: 'This email is already in use'};
+							locals.validationErrors = {email: {error:"This Email is already in use"}};
 						}
 						console.log(err);
 					} else {
@@ -49,7 +49,7 @@ exports = module.exports = function (req, res) {
 					next();
 				});
 			} else {
-				locals.validationErrors = {email: "This Email is already in use"};
+				locals.validationErrors = {email: {error:"This Email is already in use"}};
 				next();
 			}
 		})
