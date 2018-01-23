@@ -1,9 +1,9 @@
-var keystone = require('keystone');
+var eden = require('edencms');
 var async = require('async');
 
 exports = module.exports = function (req, res) {
 
-	var view = new keystone.View(req, res);
+	var view = new eden.View(req, res);
 	var locals = res.locals;
 
 	// Init locals
@@ -20,7 +20,7 @@ exports = module.exports = function (req, res) {
 	// Load all categories
 	view.on('init', function (next) {
 
-		keystone.list('PostCategory').model.find().sort('name').exec(function (err, results) {
+		eden.list('PostCategory').model.find().sort('name').exec(function (err, results) {
 
 			if (err || !results.length) {
 				return next(err);
@@ -31,7 +31,7 @@ exports = module.exports = function (req, res) {
 			// Load the counts for each category
 			async.each(locals.data.categories, function (category, next) {
 
-				keystone.list('Post').model.count().where('categories').in([category.id]).exec(function (err, count) {
+				eden.list('Post').model.count().where('categories').in([category.id]).exec(function (err, count) {
 					category.postCount = count;
 					next(err);
 				});
@@ -46,7 +46,7 @@ exports = module.exports = function (req, res) {
 	view.on('init', function (next) {
 
 		if (req.params.category) {
-			keystone.list('PostCategory').model.findOne({ key: locals.filters.category }).exec(function (err, result) {
+			eden.list('PostCategory').model.findOne({ key: locals.filters.category }).exec(function (err, result) {
 				locals.data.category = result;
 				next(err);
 			});
@@ -58,7 +58,7 @@ exports = module.exports = function (req, res) {
 	// Load the posts
 	view.on('init', function (next) {
 
-		var q = keystone.list('Post').paginate({
+		var q = eden.list('Post').paginate({
 			page: req.query.page || 1,
 			perPage: 10,
 			maxPages: 10,
@@ -75,6 +75,7 @@ exports = module.exports = function (req, res) {
 
 		q.exec(function (err, results) {
 			locals.data.posts = results;
+			console.log(results);
 			next(err);
 		});
 	});

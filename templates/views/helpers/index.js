@@ -1,7 +1,7 @@
 var moment = require('moment');
 var _ = require('lodash');
 var hbs = require('handlebars');
-var keystone = require('keystone');
+var eden = require('edencms');
 var cloudinary = require('cloudinary');
 
 
@@ -10,6 +10,7 @@ var CLOUDINARY_HOST = 'http://res.cloudinary.com';
 
 // Collection of templates to interpolate
 var linkTemplate = _.template('<a href="<%= url %>"><%= text %></a>');
+var paginationLinkTemplate = _.template('<a class="u-pagination-v1__item u-pagination-v1-4 u-pagination-v1-4--active g-rounded-50 g-pa-7-14" href="<%= url %>"><%= text %></a>');
 var scriptTemplate = _.template('<script src="<%= src %>"></script>');
 var cssLinkTemplate = _.template('<link href="<%= href %>" rel="stylesheet">');
 var cloudinaryUrlLimit = _.template(CLOUDINARY_HOST + '/<%= cloudinaryUser %>/image/upload/c_limit,f_auto,h_<%= height %>,w_<%= width %>/<%= publicId %>.jpg');
@@ -27,13 +28,28 @@ module.exports = function() {
 	// standard hbs equality check, pass in two values from template
 	// {{#ifeq keyToCheck data.myKey}} [requires an else blockin template regardless]
 	_helpers.ifeq = function(a, b, options) {
-		if (a == b) {
+		if (a === b) {
 			return options.fn(this);
 		} else {
 			return options.inverse(this);
 		}
 	};
 	
+	_helpers.ifeven = function(conditional, options) {
+		if((conditional % 2) === 0) {
+		  return options.fn(this);
+		} else {
+		  return options.inverse(this);
+		}
+	};
+
+	_helpers.ifodd = function(conditional, options) {
+		if((conditional % 2) !== 0) {
+			return options.fn(this);
+		} else {
+			return options.inverse(this);
+		}
+	};
 	/**
 	 * Port of Ghost helpers to support cross-theming
 	 * ==============================================
@@ -144,23 +160,23 @@ module.exports = function() {
 	 * ===========================
 	 */
 	
-	// block rendering for keystone admin css
+	// block rendering for eden admin css
 	_helpers.isAdminEditorCSS = function(user, options) {
 		var output = '';
 		if (typeof(user) !== 'undefined' && user.isAdmin) {
 			output = cssLinkTemplate({
-				href: "/keystone/styles/content/editor.min.css"
+				href: "/admin/styles/content/editor.min.css"
 			});
 		}
 		return new hbs.SafeString(output);
 	};
 	
-	// block rendering for keystone admin js
+	// block rendering for eden admin js
 	_helpers.isAdminEditorJS = function(user, options) {
 		var output = '';
 		if (typeof(user) !== 'undefined' && user.isAdmin) {
 			output = scriptTemplate({
-				src: '/keystone/js/content/editor.js'
+				src: '/admin/js/content/editor.js'
 			});
 		}
 		return new hbs.SafeString(output);
@@ -168,7 +184,7 @@ module.exports = function() {
 	
 	// Used to generate the link for the admin edit post button
 	_helpers.adminEditableUrl = function(user, options) {
-		var rtn = keystone.app.locals.editable(user, {
+		var rtn = eden.app.locals.editable(user, {
 			'list': 'Post',
 			'id': options
 		});
@@ -254,16 +270,16 @@ module.exports = function() {
 		var html = '';
 		
 		// pages should be an array ex.  [1,2,3,4,5,6,7,8,9,10, '....']
-		// '...' will be added by keystone if the pages exceed 10
+		// '...' will be added by eden if the pages exceed 10
 		_.each(pages, function(page, ctr){
 			// create ref to page, so that '...' is displayed as text even though int value is required
 			var pageText = page,
 			// create boolean flag state if currentPage
 			isActivePage = ((page === currentPage)? true:false),
 			// need an active class indicator
-			liClass = ((isActivePage)? ' class="active"':'');
+			liClass = ((isActivePage)? ' active':'');
 
-			// if '...' is sent from keystone then we need to override the url
+			// if '...' is sent from eden then we need to override the url
 			if(page === '...'){
 				// check position of '...' if 0 then return page 1, otherwise use totalPages
 				page = ((ctr)? totalPages:1);
@@ -272,7 +288,7 @@ module.exports = function() {
 			// get the pageUrl using the integer value
 			var pageUrl = _helpers.pageUrl(page);
 			// wrapup the html
-			html += '<li'+liClass+'>'+ linkTemplate({url:pageUrl,text:pageText})+'</li>\n';
+			html += '<li class="list-inline-item'+liClass+'>'+ paginationLinkTemplate({url:pageUrl,text:pageText})+'</li>\n';
 		});
 		return html;
 	};

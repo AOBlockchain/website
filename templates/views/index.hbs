@@ -1,260 +1,479 @@
-{{!< default}}
-<section class="section-lg home home-alt bg-solid" id="home">
-    <div class="container">
-        <div class="row vertical-content">
-            <div class="col-md-6">
-                <div class="home-wrapper">
-                    <p class="">AO Blockchain System for Business and Investments</p>
-                    <div class="text-white">
-                        <h1 class="text-white">Business, Investment, and Banking on the Blockchain</h1>
+
+      <!-- Promo Block -->
+      <div class="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll loaded dzsprx-readyall" data-options='{direction: "reverse", settings_mode_oneelement_max_offset: "150"}'>
+        <div class="divimage dzsparallaxer--target w-100 g-bg-cover g-bg-black-opacity-0_3--after" style="height: 120%; background-image: url(assets/img-temp/1920x1080/img1.jpg);"></div>
+
+        <div class="container g-pt-170">
+          <div class="row justify-content-between align-items-center">
+            <div class="col-md-6 col-lg-7 g-mb-90">
+              <!-- Content Info -->
+              <div class="mb-5">
+                <h1 class="g-color-white g-font-weight-600 g-font-size-50 mb-3">Reserve your AOCoin Now!</h1>
+              </div>
+
+            <div class="shortcode-html">
+              <div class="row text-uppercase">
+                <div class="col-lg-12 g-mb-30">
+                  <div class="g-bg-primary g-color-white g-pa-30">
+                    <header class="d-flex g-mb-40 justify-content-center">
+
+                      <div class="g-line-height-1">
+                        <h4 class="h4 text-center">AOCoin Available</h4>
+                        <div class="js-counter g-font-size-40" data-comma-separated="true">{{data.avail}}</div>
+                      </div>
+                    </header>
+
+                    <div class="d-flex justify-content-between">
+                      <div class="g-line-height-1">
+                        <h5 class="h5 g-font-weight-600">Total Reserved</h5>
+                        <div class="js-counter g-font-size-20" data-comma-separated="true">{{data.reserved}}</div>
+                      </div>
+
+                      <div class="text-right g-line-height-1">
+                        <h5 class="h5 g-font-weight-600">Total Value</h5>
+                        <div class="js-counter g-font-size-20" data-comma-separated="true">{{data.marketValue}}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-12 g-mb-30">
+                  <div class="g-bg-main g-color-white g-pa-30">
+                    <header class="d-flex g-mb-40">
+                      <i class="et-icon-linegraph align-self-center g-font-size-40 g-mr-20"></i>
+
+                      <div class="g-line-height-1">
+                        <h4 class="h4">Total Investments</h4>
+                        <div class="js-counter g-font-size-30" data-comma-separated="true">{{data.investments}}</div>
+                      </div>
+                    </header>
+
+                    <div class="d-flex justify-content-between">
+                      <div class="g-line-height-1">
+                        <h5 class="h5 g-font-weight-600">BTC Raised</h5>
+                        <div class="js-counter g-font-size-20" data-comma-separated="true">{{data.btcAmount}}</div>
+                      </div>
+
+                      <div class="text-right g-line-height-1">
+                        <h5 class="h5 g-font-weight-600">BCH Raised</h5>
+                        <div class="js-counter g-font-size-20" data-comma-separated="true">{{data.bchAmount}}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12 g-mb-30">
+                  <div class="g-bg-main g-color-white g-pa-30">
+                    <header class="d-flex g-mb-40">
+                      <i class="et-icon-layers align-self-center g-font-size-40 g-mr-20"></i>
+
+                      <div class="g-line-height-1">
+                        <h4 class="h4">Revenue Raised</h4>
+                        <div class="js-counter g-font-size-30" data-comma-separated="true">{{data.marketCap}}</div>
+                      </div>
+                    </header>
+
+                    <div class="d-flex justify-content-between">
+                      <div class="g-line-height-1">
+                        <h5 class="h5 g-font-weight-600">ETH Raised</h5>
+                        <div class="js-counter g-font-size-20" data-comma-separated="true">{{data.ethAmount}}</div>
+                      </div>
+
+                      <div class="text-right g-line-height-1">
+                        <h5 class="h5 g-font-weight-600">LTC Raised</h5>
+                        <div class="js-counter g-font-size-20" data-comma-separated="true">{{data.ltcAmount}}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Content Info -->
+            </div>
+
+            <div class="col-md-6 col-lg-4 g-mb-90">
+              <!-- Join Form -->
+              <form class="g-bg-white rounded g-px-30 g-py-40" method="post" action="/signUp">
+				<input type="hidden" name="action" value="contact">
+                <input type="hidden" name="referrer" value="{{formData.referrer}}">
+                <input type="hidden" name="referrerPercent" value="{{referrerPercent}}">
+                <div class="text-center">
+                  <h2 class="h3 g-font-weight-600 g-mb-35">Pre-Buy AOCoin Now!</h2>
+                </div>
+
+                <input class="form-control rounded g-px-20 g-py-12 mb-3" name="name.full" type="text" placeholder="Your Name" value="{{formData.[name.full]}}">
+                <input class="form-control rounded g-px-20 g-py-12 mb-3" name="email" type="email" placeholder="Your Email" value="{{formData.email}}">
+                <input class="form-control rounded g-px-20 g-py-12 mb-3" name="password" type="password" placeholder="Your Password" value="{{formData.password}}">
+
+                <div class="g-mb-35">
+                  <button class="btn btn-block u-btn-black g-brd-main g-brd-primary--hover g-bg-main g-bg-primary--hover g-font-weight-600 g-font-size-12 text-uppercase g-px-25 g-py-13" type="submit">Sign Up</button>
+                </div>
+
+                <div class="text-center mb-3">
+                  <h3 class="h5">Need More Info?</h3>
+                </div>
+
+                <div class="row no-gutters">
+                  <div class="col">
+                    <a class="btn btn-block u-btn-primary g-font-weight-600 g-font-size-12 text-uppercase g-rounded-right-0 g-rounded-left-3 g-px-25 g-py-13" href="/features">
+                      Features
+                      <i class="g-pos-rel g-top-minus-1 ml-2 fa fa-angle-right"></i>
+                    </a>
+                  </div>
+                  <div class="col">
+                    <a class="btn btn-block u-btn-black g-font-weight-600 g-font-size-12 text-uppercase g-rounded-left-0 g-rounded-right-3 g-px-25 g-py-13" href="/solutions">
+                      Solutions
+                      <i class="g-pos-rel g-top-minus-1 ml-2 fa fa-angle-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </form>
+              <!-- End Join Form -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Promo Block -->
+
+      <!-- About -->
+      <div class="container g-pt-100 g-pb-70">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-lg-7 g-mb-50">
+            <!-- About Info -->
+            <div class="mb-5">
+              <span class="d-block text-uppercase g-color-dark-light-v1 g-font-weight-500 g-font-size-13 mb-4">What is the AO Blockchain System?</span>
+              <h2 class="mb-4">A Blockchain for Business, Banking, and Investments</h2>
+
+              <div class="row">
+                <div class="col-sm-3">
+                  <!-- Nav tabs -->
+                  <ul class="nav flex-column" role="tablist" data-target="nav-1-1-accordion-primary-ver">
+                    <li class="nav-item">
+                      <a class="nav-link active g-color-primary--hover g-color-primary--parent-active g-pl-0" data-toggle="tab" href="#nav-1-1-accordion-primary-ver--1" role="tab">Who we are</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link g-color-primary--hover g-color-primary--parent-active g-pl-0" data-toggle="tab" href="#nav-1-1-accordion-primary-ver--2" role="tab">Our vision</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link g-color-primary--hover g-color-primary--parent-active g-pl-0" data-toggle="tab" href="#nav-1-1-accordion-primary-ver--3" role="tab">Our mission</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link g-color-primary--hover g-color-primary--parent-active g-pl-0" data-toggle="tab" href="#nav-1-1-accordion-primary-ver--4" role="tab">Our history</a>
+                    </li>
+                  </ul>
+                  <!-- End Nav tabs -->
+                </div>
+
+                <div class="col-sm-9">
+                  <!-- Tab panes -->
+                  <div id="nav-1-1-accordion-primary-ver" class="tab-content">
+                    <div class="tab-pane fade show active" id="nav-1-1-accordion-primary-ver--1" role="tabpanel">
+                      <p class="g-line-height-2">We are AO Cyber Systems, an organization focused on bringing advanced technologies into the hands of everyone, by building easy to use systems to speed development, integration, and acceptance of advanced technologies.</p>
+                      <p class="g-line-height-2">We are backed, and lead by, the team at Don't Panic Consulting, a technology consultancy with experience spanning small non-profits, to fortune 500s and government. </p>
                     </div>
 
-                    <a href="/signUp" class="btn btn-custom">Sign Up</a>
-					<a href="/pre-sale" class="btn btn-custom pull-right">More Info</a>
+                    <div class="tab-pane fade" id="nav-1-1-accordion-primary-ver--2" role="tabpanel">
+                      <p class="g-line-height-2">The Vision of the AO Blockchain Project is a world where businesses, banks, and investors are able to quickly, easily, securely, and transparently conduct business worldwide, without limits.</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-1-1-accordion-primary-ver--3" role="tabpanel">
+                      <p class="g-line-height-2">The AO Blockchain System's mission is to provide Businesses, Banks, Investors, and Developers with the tools they need to support their clients in the utilization of blockchain technology to enhance their respective positions in business, banking, and investments.</p>
+                      <p class="g-line-height-2">This is to be achieved by: providing a publicly available blockchain system, a private blockchain system that can be implemented quickly, and the tools to build completely custom blockchains.</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-1-1-accordion-primary-ver--4" role="tabpanel">
+                      <p class="g-line-height-2">The AO Blockchain System was devised over the past 6 years by Justin R. Donnaruma, with the purpose of solving some of the largest problems faced by all cryptocurrencies on the market.</p>
+                      <p class="g-line-height-2">The high cost of mining, coupled with the lack of usefulness of cryptocurrencies, is driving the creation of the AO Blockchain System, and the AO Cyber Systems company. Both seek to provide mainstream acceptance to the wider cryptocurrency community as a whole. See the <a href="http://docs.aoblockchain.io">White Paper</a> for more information.</p>
+                    </div>
+                  </div>
+                  <!-- End Tab panes -->
                 </div>
+              </div>
+              <!-- End Tab -->
             </div>
 
-            <!--begin col-md-6
-            <div class="col-md-6 wow slideInRight" data-wow-delay="2.25s">
+            <a class="btn u-btn-black g-brd-main g-brd-primary--hover g-bg-main g-bg-primary--hover g-font-weight-600 g-font-size-12 text-uppercase g-px-25 g-py-13 mr-3" href="/team">
+              Our Team
+              <i class="g-pos-rel g-top-minus-1 ml-2 fa fa-angle-right"></i>
+            </a>
+            <a class="g-brd-bottom g-brd-main g-brd-primary--hover g-color-main g-color-primary--hover g-font-size-12 text-uppercase g-text-underline--none--hover g-pb-3" href="/contact">
+              Ask a Question
+            </a>
+            <!-- End About Info -->
+          </div>
 
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/9hN60Y6GTcU" frameborder="0" allowfullscreen></iframe>
-
+          <div class="col-sm-8 col-md-6 col-lg-4 mx-auto g-mb-50">
+            <!-- About Info -->
+            <div class="d-inline-block u-shadow-v20 g-width-330 g-height-330 g-brd-around g-brd-10 g-brd-white g-bg-cover g-rounded-circle--after text-center rounded-circle g-pa-50" style="background-image: url(/assets/img/icons/ms-icon-310x310.png);">
             </div>
-            end col-md-6-->
-
+            <!-- End About Info -->
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+      <!-- End About -->
 
+      <!-- Promo Banner -->
+      <div class="g-bg-img-hero g-bg-pos-top-center g-bg-size-cover g-bg-cover g-bg-white-gradient-opacity-v3--after" style="background-image: url(assets/img-temp/1920x800/img1.jpg);">
+        <div class="container g-pos-rel g-z-index-1">
+          <div class="row justify-content-end">
+            <div class="col-md-5 g-py-100">
+              <div class="mb-5">
+                <span class="d-block text-uppercase g-color-dark-light-v1 g-font-weight-500 g-font-size-13 mb-4">How does it work?</span>
+                <h2 class="mb-4">AO Blockchain System Details</h2>
+                <p class="g-font-size-16 g-line-height-2">A comprehensive system designed to cover all aspects of the blockchain from development, to delegation, to deployment, and everything in between. No matter if you are developing a new blockchain, or implementing a private iteration of the AO Blockchain, you will have the tools you need.</p>
+              </div>
+              <a class="btn u-btn-black g-brd-main g-brd-primary--hover g-bg-main g-bg-primary--hover g-font-weight-600 g-font-size-12 text-uppercase g-px-25 g-py-13" href="http://docs.aoblockchain.io" target="_blank">
+                Documentation
+                <i class="g-pos-rel g-top-minus-1 ml-2 fa fa-angle-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Promo Banner -->
 
-<section>
-    <div class="container">
+      <!-- Services -->
+      <div class="g-bg-secondary g-py-100">
+      <div class="container">
+        <h1>Features</h1>
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="facts-box text-center">
-                    <div class="row">
-                        <div class="col-sm-6 col-xs-6">
-                            <h2>฿{{data.btcAmount}}</h2>
-                            <p class="text-muted">BTC Raised</p>
-                        </div>
-						
-                        <div class="col-sm-6 col-xs-6">
-                            <h2>฿{{data.bchAmount}}</h2>
-                            <p class="text-muted">BHC Raised</p>
-                        </div>
+          <div class="col-md-6 col-lg-4 g-mb-30">
+            <!-- Services -->
+            <article class="u-block-hover u-shadow-v29--hover g-bg-main--hover rounded g-pa-35">
+              <div class="d-flex align-items-center g-brd-bottom g-brd-2 g-brd-primary g-pb-20 g-mb-20">
+                <span class="align-middle u-icon-v3 u-icon-size--xs g-color-white g-bg-primary rounded-circle mr-2">
+                  <i class="icon-education-102 u-line-icon-pro"></i>
+                </span>
+                <h3 class="d-inline-block g-color-white--hover g-font-weight-600 g-transition-0_3 mb-0">Assets</h3>
+              </div>
 
-                        <div class="col-sm-6 col-xs-6">
-                            <h2>Ξ{{data.ethAmount}}</h2>
-                            <p class="text-muted">ETH Raised</p>
-                        </div>
-						
-                        <div class="col-sm-6 col-xs-6">
-                            <h2>Ł{{data.ltcAmount}}</h2>
-                            <p class="text-muted">LTC Raised</p>
-                        </div>
-                        
-                        <div class="col-sm-6 col-xs-6">
-                            <h2>${{data.marketCap}}</h2>
-                            <p class="text-muted">Market Cap</p>
-                        </div>
-						
-                        <div class="col-sm-6 col-xs-6">
-                            <h2>{{data.investments}}</h2>
-                            <p class="text-muted">Investments</p>
-                        </div>
-						<!--
-                        <div class="col-sm-3 col-xs-6">
-                            <h2>3</h2>
-                            <p class="text-muted">Dapps</p>
-                        </div>
+              <span class="d-block g-color-primary--hover g-font-weight-600 g-font-size-12 text-uppercase g-transition-0_3 mb-2">The bedrock of the system</span>
+              <div class="mb-4">
+                <p class="g-color-white--hover g-transition-0_3">Assets are at the core of the AO Blockchain System. Track individual assets value over time, assign shares to assets to sell on the exchange, or transfer ownership of an entire asset, or a quantity of the asset to someone else with a smart contract, assets make everything possible.</p>
+              </div>
 
-                        <div class="col-sm-3 col-xs-6">
-                            <h2>101</h2>
-                            <p class="text-muted">Total Nodes</p>
-                        </div>
-                        -->
-                    </div>
-                </div>
-            </div>
+              <span class="u-link-v6 g-color-primary g-color-primary--hover g-font-size-12 text-uppercase g-text-underline--none--hover g-transition-0_3">
+                Read More
+                <span class="u-link-v6-arrow g-font-size-18">&rightarrow;</span>
+              </span>
+
+              <a class="u-link-v2" href="/features#assets"></a>
+            </article>
+            <!-- End Services -->
+          </div>
+
+          <div class="col-md-6 col-lg-4 g-mb-30">
+            <!-- Services -->
+            <article class="u-block-hover u-shadow-v29--hover g-bg-main--hover rounded g-pa-35">
+              <div class="d-flex align-items-center g-brd-bottom g-brd-2 g-brd-primary g-pb-20 g-mb-20">
+                <span class="align-middle u-icon-v3 u-icon-size--xs g-color-white g-bg-primary rounded-circle mr-2">
+                  <i class="icon-education-096 u-line-icon-pro"></i>
+                </span>
+                <h3 class="d-inline-block g-color-white--hover g-font-weight-600 g-transition-0_3 mb-0">Currency</h3>
+              </div>
+
+              <span class="d-block g-color-primary--hover g-font-weight-600 g-font-size-12 text-uppercase g-transition-0_3 mb-2">Make use of any currency</span>
+              <div class="mb-4">
+                <p class="g-color-white--hover g-transition-0_3">In addition to using AOCoin to run the network, AO Blockchain System can support any and all cryptocurrencies. Initially supporting BTC, LTC, ETH, and BCH, in conjunction with the built-in exchange, an AO Blockchain user will be able to buy, sell, trade, and otherwise use any currency.</p>
+              </div>
+
+              <span class="u-link-v6 g-color-primary g-color-primary--hover g-font-size-12 text-uppercase g-text-underline--none--hover g-transition-0_3">
+                Read More
+                <span class="u-link-v6-arrow g-font-size-18">&rightarrow;</span>
+              </span>
+
+              <a class="u-link-v2" href="/features#currency"></a>
+            </article>
+            <!-- End Services -->
+          </div>
+
+          <div class="col-md-6 col-lg-4 g-mb-30">
+            <!-- Services -->
+            <article class="u-block-hover u-shadow-v29--hover g-bg-main--hover rounded g-pa-35">
+              <div class="d-flex align-items-center g-brd-bottom g-brd-2 g-brd-primary g-pb-20 g-mb-20">
+                <span class="align-middle u-icon-v3 u-icon-size--xs g-color-white g-bg-primary rounded-circle mr-2">
+                  <i class="icon-education-121 u-line-icon-pro"></i>
+                </span>
+                <h3 class="d-inline-block g-color-white--hover g-font-weight-600 g-transition-0_3 mb-0">Voting</h3>
+              </div>
+
+              <span class="d-block g-color-primary--hover g-font-weight-600 g-font-size-12 text-uppercase g-transition-0_3 mb-2">Participate in the system</span>
+              <div class="mb-4">
+                <p class="g-color-white--hover g-transition-0_3">Everyone who holds AOCoin has a say. Participate in the network by voting on delegates, and the next new features. Delegates can even vote to help maintain the value of the currency by modifying the network or injecting AOCoin to keep inflation down.</p>
+              </div>
+
+              <span class="u-link-v6 g-color-primary g-color-primary--hover g-font-size-12 text-uppercase g-text-underline--none--hover g-transition-0_3">
+                Read More
+                <span class="u-link-v6-arrow g-font-size-18">&rightarrow;</span>
+              </span>
+
+              <a class="u-link-v2" href="/features#voting"></a>
+            </article>
+            <!-- End Services -->
+          </div>
+
+          <div class="col-md-6 col-lg-4 g-mb-30">
+            <!-- Services -->
+            <article class="u-block-hover u-shadow-v29--hover g-bg-main--hover rounded g-pa-35">
+              <div class="d-flex align-items-center g-brd-bottom g-brd-2 g-brd-primary g-pb-20 g-mb-20">
+                <span class="align-middle u-icon-v3 u-icon-size--xs g-color-white g-bg-primary rounded-circle mr-2">
+                  <i class="icon-media-007 u-line-icon-pro"></i>
+                </span>
+                <h3 class="d-inline-block g-color-white--hover g-font-weight-600 g-transition-0_3 mb-0">Exchange</h3>
+              </div>
+
+              <span class="d-block g-color-primary--hover g-font-weight-600 g-font-size-12 text-uppercase g-transition-0_3 mb-2">Buy, Sell, Trade, Use</span>
+              <div class="mb-4">
+                <p class="g-color-white--hover g-transition-0_3">The built-in Exchange of the AO Blockchain system is fully decentralized, taking advantage of the blockchain for processing trades, and smart contracts for scripting more complex trades, sells, and buys on the exchange. The exchange will initially support BTC, LTC, ETH, BCH, and of course, AOCoin. Following soon after with the banking gateway development will be USD and Euro.</p>
+              </div>
+
+              <span class="u-link-v6 g-color-primary g-color-primary--hover g-font-size-12 text-uppercase g-text-underline--none--hover g-transition-0_3">
+                Read More
+                <span class="u-link-v6-arrow g-font-size-18">&rightarrow;</span>
+              </span>
+
+              <a class="u-link-v2" href="/features#exchange"></a>
+            </article>
+            <!-- End Services -->
+          </div>
+
+          <div class="col-md-6 col-lg-4 g-mb-30">
+            <!-- Services -->
+            <article class="u-block-hover u-shadow-v29--hover g-bg-main--hover rounded g-pa-35">
+              <div class="d-flex align-items-center g-brd-bottom g-brd-2 g-brd-primary g-pb-20 g-mb-20">
+                <span class="align-middle u-icon-v3 u-icon-size--xs g-color-white g-bg-primary rounded-circle mr-2">
+                  <i class="icon-media-008 u-line-icon-pro"></i>
+                </span>
+                <h3 class="d-inline-block g-color-white--hover g-font-weight-600 g-transition-0_3 mb-0">Identity</h3>
+              </div>
+
+              <span class="d-block g-color-primary--hover g-font-weight-600 g-font-size-12 text-uppercase g-transition-0_3 mb-2">Baked in Identity and Compliance</span>
+              <div class="mb-4">
+                <p class="g-color-white--hover g-transition-0_3">Finally, baked into the blockchain, a complete identity solution. Useable by anyone on the AO Blockchain System, the blockchain itself is an identity provided. When coupled with identity verification services, AO Blockchain System can provide complete AML / KYC compliance for companies around the world. Identities are controlled by the identity owner, who can share their identity with anyone, or no-one.</p>
+              </div>
+
+              <span class="u-link-v6 g-color-primary g-color-primary--hover g-font-size-12 text-uppercase g-text-underline--none--hover g-transition-0_3">
+                Read More
+                <span class="u-link-v6-arrow g-font-size-18">&rightarrow;</span>
+              </span>
+
+              <a class="u-link-v2" href="/features#identity"></a>
+            </article>
+            <!-- End Services -->
+          </div>
+
+          <div class="col-md-6 col-lg-4 g-mb-30">
+            <!-- Services -->
+            <article class="u-block-hover u-shadow-v29--hover g-bg-main--hover rounded g-pa-35">
+              <div class="d-flex align-items-center g-brd-bottom g-brd-2 g-brd-primary g-pb-20 g-mb-20">
+                <span class="align-middle u-icon-v3 u-icon-size--xs g-color-white g-bg-primary rounded-circle mr-2">
+                  <i class="icon-media-107 u-line-icon-pro"></i>
+                </span>
+                <h3 class="d-inline-block g-color-white--hover g-font-weight-600 g-transition-0_3 mb-0">Contracts</h3>
+              </div>
+
+              <span class="d-block g-color-primary--hover g-font-weight-600 g-font-size-12 text-uppercase g-transition-0_3 mb-2">Automated Contracts for Everyone</span>
+              <div class="mb-4">
+                <p class="g-color-white--hover g-transition-0_3">The built-in smart contracts system enables standard actions to be taken across the AO Blockchain System. Everything from standard service contracts that are connected to project management tools, to managing your entire stock / currency portfolio on the built in exchange, contracts on the AO Blockchain System are easy to use, configure, and share with others around the world.</p>
+              </div>
+
+              <span class="u-link-v6 g-color-primary g-color-primary--hover g-font-size-12 text-uppercase g-text-underline--none--hover g-transition-0_3">
+                Read More
+                <span class="u-link-v6-arrow g-font-size-18">&rightarrow;</span>
+              </span>
+
+              <a class="u-link-v2" href="/features#contracts"></a>
+            </article>
+            <!-- End Services -->
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+      </div>
+      <!-- End Services -->
 
-<div class="clearfix"></div>
-
-
-<section class="section" id="features">
-    <div class="container">
-        <div class="row vertical-content">
-
-            <div class="col-sm-6">
-                <img src="images/imac.png" class="img-responsive" alt="img">
-            </div>
-
-            <div class="col-sm-6">
-                <div class="features-alt">
-                    <div class="feature-alt-icon">
-                        <i class="pe-7s-global"></i>
-                    </div>
-                    <h4 class="text-muted">Business Transaction Blockchain</h4>
-                    <h3>AO Blockchain is Business</h3>
-
-                    <p class="text-muted" data-ks-editable="editable">Designed with Business in mind, AO Blockchain supports Asset and Inventory Management, Accounting, Contracts, Payment distributions, procurement, and other transactions through its robust and simple to use asset and contract system.</p>
-                    <p class="text-muted">Whether you are using smart contracts to automate payments to suppliers, or contractors, or preparing quarterly or yearly accounting documents for owners, the SEC, or other shareholders, AO Blockchain is built for business.</p>
-                </div>
-            </div>
-
+      <!-- News -->
+      <div class="container g-pt-100 g-pb-70">
+        <!-- News - Heading -->
+        <div class="row align-items-center g-mb-40--lg">
+            <div class="col-sm-4 g-mb-30 g-mb-0--lg">
+            <span class="d-block text-uppercase g-color-dark-light-v1 g-font-weight-500 g-font-size-13 mb-4">News Section</span>
+            <h2 class="mb-4">Latest News &amp; Articles</h2>
+          </div>
         </div>
-    </div>
-</section>
-
-
-<section class="section" id="features">
-    <div class="container">
-        <div class="row vertical-content">
-
-            <div class="col-sm-6">
-                <div class="features-alt text-right">
-                    <div class="feature-alt-icon">
-                        <i class="pe-7s-cash"></i>
-                    </div>
-                    <h4 class="text-muted">Investments and Banking Revolutionized</h4>
-                    <h3>AO Blockchain is Banking and Investments</h3>
-
-                    <p class="text-muted">AO Blockchain System will support all banking and Investment transactions, across currencies, commodities, stocks, bonds, and real estate. Support for P2P loans, institutional loans, ICOs, and other investments are built in.
-					</p>
-
-                    <p class="text-muted">With support for multiple currencies, and the building of a gateway bank by the founders of AO Blockchain, you can manage all of your finances from one location. All of your crypto-currencies, all of your fiat currency, and all of your investments on the system. Keep track of your personal and business net worth from one location.
-					</p>
-                </div>
-            </div>
-
-            <div class="col-sm-6">
-                <img src="images/yellow.png" class="img-responsive" alt="img">
-            </div>
-
-        </div>
-    </div>
-</section>
-<section class="section" id="features">
-    <div class="container">
+        <!-- End News - Heading -->
 
         <div class="row">
-            <div class="col-sm-4">
-                <div class="features-box text-center">
-                    <div class="feature-icon">
-                        <i class="pe-7s-monitor"></i>
-                    </div>
-                    <h3>Responsive Web Interface and Mobile Apps</h3>
+          <div class="col-lg-6 g-mb-30">
+            {{#if data.posts}}
+            <!-- Article -->
+            <article class="g-min-height-360 g-bg-size-cover g-pos-rel" style="background-image: url({{data.featured.image.secure_url}});">
+              <label class="u-ribbon-v1 g-color-white g-bg-primary g-font-weight-500 g-font-size-10 text-uppercase rounded g-top-30 g-left-30 g-px-10 g-py-4">News of the Day</label>
 
-                    <p class="text-muted">The AO Blockchain Web Interface and Mobile Applications can connect to any AO Blockchain node or delegate. This allows for all of our users to keep a copy of the entire blockchain on a server they control, or use any AO Delegate or Node.</p>
+              <div class="g-bg-white-gradient-opacity-v1 g-pos-abs g-bottom-0 g-left-0 g-right-0 g-pa-30">
+                <h3><a class="u-link-v5 g-color-white g-color-primary--hover" href="{{postUrl data.featured.slug}}">{{data.featured.title}}</a></h3>
+
+                <!-- List -->
+                <ul class="list-inline mb-0">
+                  <li class="list-inline-item mr-1">
+                      <span class="d-inline-block g-color-white g-font-size-13 g-px-5 g-py-4">
+                          By: {{data.featured.author.name.full}}
+                      </span>
+                  </li>
+                  <li class="list-inline-item ml-1">
+                    <span class="d-inline-block g-color-white g-font-size-13 g-px-5 g-py-4">
+                      <i class="align-middle mr-1 icon-education-097 u-line-icon-pro"></i>
+                      {{date data.featured.publishing.date format='Do MMM YYYY hh:mm a'}}
+                    </span>
+                  </li>
+                </ul>
+                <!-- End List -->
+              </div>
+            </article>
+            <!-- End Article -->
+          </div>
+          
+          {{#each data.posts}}
+          <div class="col-sm-6 col-lg-3 g-mb-30">
+            <!-- Article -->
+            <article class="u-block-hover g-brd-around g-brd-gray-light-v4">
+              <figure class="g-pos-rel">
+                <img class="img-fluid w-100" src="{{{cloudinaryUrl image width=400 height=568 crop='fill' gravity="faces"}}}" alt="Image Description">
+
+                <figcaption>
+                  <label class="u-ribbon-v1 g-color-white g-bg-lightred g-font-weight-500 g-font-size-10 text-uppercase rounded g-top-20 g-left-20 g-px-10 g-py-4">{{category.name}}</label>
+                </figcaption>
+              </figure>
+
+              <div class="u-block-hover__additional--partially-slide-up g-bg-white g-z-index-1">
+                <div class="u-block-hover__visible g-pa-20">
+                  <h3 class="h5"><a class="u-link-v5 g-color-main g-color-primary--hover" href="{{postUrl slug}}">{{title}}</a></h3>
+                  <p class="g-mb-0">{{{content.brief}}}</p>
                 </div>
+
+                <!-- List -->
+                <ul class="d-flex list-inline g-brd-top g-brd-gray-light-v4 g-pos-rel g-z-index-1 g-px-20 g-py-10 mb-0">
+                  
+                  <li class="list-inline-item ml-auto ml-1">
+                    <span class="d-inline-block g-color-text g-font-size-12 g-px-5 g-py-4">
+                      By:
+                      {{author.name.full}}
+                    </span>
+                  </li><li class="list-inline-item ml-auto ml-1">
+                    <span class="d-inline-block g-color-text g-font-size-12 g-px-5 g-py-4">
+                      <i class="align-middle mr-1 icon-education-097 u-line-icon-pro"></i>
+                      {{date data.featured.publishing.date format='Do MMM YYYY'}}
+                    </span>
+                  </li>
+                </ul>
+                <!-- End List -->
+              </div>
+            </article>
+            <!-- End Article -->
+          </div>
+          {{/each}}
+          {{else}}
+            <h2 class="mb-4">News / Blog coming soon</h2>
             </div>
-
-            <div class="col-sm-4">
-                <div class="features-box text-center">
-                    <div class="feature-icon">
-                        <i class="pe-7s-way"></i>
-                    </div>
-                    <h3>Business-Driven with Community Input</h3>
-
-                    <p class="text-muted">Initial development, and the first few years of operation, will be managed by Don't Panic Consulting and its partners, while soliciting advice and recommendations from the community. Delegates have direct say in any major changes to the network.</p>
-                </div>
-            </div>
-
-            <div class="col-sm-4">
-                <div class="features-box text-center">
-                    <div class="feature-icon">
-                        <i class="pe-7s-id"></i>
-                    </div>
-                    <h3>Public, Private, and Permissioned Blockchain</h3>
-
-                    <p class="text-muted">AO Blockchain System supports multiple operating modes. Enable encryption of transaction payloads on a per-transaction basis, or keep everything in the open. A built in identity system supports KYC / AML and Enterprise Directory and SSO systems.
-					</p>
-                </div>
-            </div>
+          {{/if}}
         </div>
-
-    </div>
-</section>
-
-
-<section class="section bg-white" id="team">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-sm-12 text-center">
-                <h2 class="title">Our Founders</h2>
-                <p class="title-alt">Here's to the Crazy Ones, our Fearless Leaders
-					<br />Meet our entire <a href="/team">Team</a></p>
-				
-            </div>
-        </div>
-
-
-        <div class="row">
-			{{# each data.team}}
-            <div class="col-md-4">
-                <div class="team-box text-center">
-                    <img src="{{image.secure_url}}" class="author-img center-block img-circle">
-
-                    <h4>{{name.first}} {{name.last}}</h4>
-                    <p>{{title}}</p>
-                    <ul class="list-inline footer-social-one team-member-social m-b-0">
-						{{#if github}}<li><a href="{{github}}"><i class="pe-so-github"></i></a></li>{{/if}}
-                        <li><a href="{{twitter}}"><i class="pe-so-twitter"></i></a></li>
-                        <li><a href="{{linkedIn}}"><i class="pe-so-linkedin"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-			{{/each}}
-        </div>
-
-    </div>
-</section>
-<section class="section" id="partners">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 text-center">
-				<h2 class="title">Our Partners</h2>
-				<p class="title-alt">Companies who have provided a service, or are supporting us in some way.
-					<br />See our <a href="https://risevisionfoundation.atlassian.net/wiki/display/RC/Technical+White+Paper" target="_blank">technology stack</a>.</p>
-			</div>
-		</div>
-        <div class="row">
-			{{# each data.partner}}
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <a href="{{url}}" target="_blank"><img src="{{logo.secure_url}}" alt="{{partner}} image"></a>
-                        <div class="caption">
-                            <h3>{{partner}}</h3>
-                            <p>{{description}}</p>
-                        </div>
-                    </div>
-                </div>
-			{{/each}}
-        </div>
-	</div>
-</section>
-<section class="section bg-white" id="faqs">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-sm-12">
-                <h2 class="title">FAQ</h2>
-
-                <div class="row text-left">
-					{{# each data.faq}}
-                        <div class="col-sm-6">
-                            <div class="question-box">
-                                <h4><span class="text-colored">Q.</span>{{title}}</h4>
-                                <p><span><b>A. </b></span>{{answer}}</p>
-                            </div>
-                        </div>
-					{{/each}}
-
-                </div>
-            </div> <!-- end Col -->
-        </div>
-
-    </div>
-</section>
+      </div>
+      <!-- End News -->

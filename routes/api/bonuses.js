@@ -5,7 +5,7 @@
  * Created by justin on 5/27/16.
  */
 var async = require('async'),
-	keystone = require('keystone');
+	eden = require('edencms');
 var _ = require('lodash');
 // var totp = require('quickotp').TOTP;
 var crypto = require('crypto');
@@ -17,7 +17,7 @@ function randomValueHex (len) {
 }
 
 exports.get = function(req, res) {
-	keystone.list('User').model.findOne({_id: req.user.id}, function (findError, user) {
+	eden.list('User').model.findOne({_id: req.user.id}, function (findError, user) {
 		if (findError) {
 			next();
 		} else {

@@ -1,463 +1,304 @@
-<link href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.1.1/css/bootcards-desktop.min.css" rel="stylesheet">
-<style>
-    body {
-        padding-top: 0px;
-    }
-    
-    .list-group-item i {
-    opacity: 1;
-    }
-</style>
+<!-- Services -->
+<div class="container g-pt-100 g-pb-70">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Profile - {{user.name.first}} {{user.name.last}}</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-9 g-mb-30">
+			<div class="row g-mb-40">
+				<div class="col-md-3 g-mb-30 g-mb-0--md">
+					<div class="g-bg-main g-color-white g-pa-25">
+						<header class="d-flex text-uppercase g-mb-40">
+							<i class="icon-people align-self-center display-4 g-mr-20"></i>
 
-<section class="section">
-    <div class="container">
-		{{#if user}}
-            <div class="row">
-                <div class="col-xs-12 col-md-8">
-                    <h1>Profile - {{user.name.first}} {{user.name.last}}</h1>
-                    <div id="aoCoinValue" style="margin:20px; font-size: 25px; font-style:bold;">
-                        <ul>
-                            <li>฿ {{summary.aoCoinBTC}} BTC/AOC - As Of {{date summary.currentDate format='MM/DD/YYYY HH:MM:SS'}}</li>
-                            <li>฿ {{summary.aoCoinBCH}} BCH/AOC - As Of {{date summary.currentDate format='MM/DD/YYYY HH:MM:SS'}}</li>
-                            <li>Ξ {{summary.aoCoinETC}} ETC/AOC - As Of {{date summary.currentDate format='MM/DD/YYYY HH:MM:SS'}}</li>
-                            <li>Ł {{summary.aoCoinLTC}} LTC/AOC - As Of {{date summary.currentDate format='MM/DD/YYYY HH:MM:SS'}}</li>
-                            <li>$ {{summary.aoCoinUSD}} USD/AOC - As Of {{date summary.currentDate format='MM/DD/YYYY HH:MM:SS'}}</li>
-                        </ul>
-                    </div>
-                </div>
-				{{#if summary.bonusEndTime}}
-                    <div class="col-md-4">
-                        <h1>{{summary.bonus}}% Bonus has
-                            <div id="clock"></div>
-                            remaining!
-                        </h1>
-                    </div>
-				{{/if}}
-            </div>
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="panel panel-default">
-                        <div class="panel-heading clearfix">
-                            <h3 class="panel-title pull-left">Your Details</h3>
-                            <a class="btn btn-primary pull-right" data-toggle="modal" data-target="#editModal" 
-							   href="#">
-                                <i class="fa fa-pencil"></i>
-                                Edit
-                            </a>
-                        </div>
-                        <div class="list-group">				
-                            {{#if icoEnded}}
-                                <div class="list-group-item">
-                                    {{#if user.aoCoinWithdrew}}
-                                        <h4 class="list-group-item-heading">You have already withdrawn your AOCoin to 
-                                            {{user.aoCoinAddress}}
-                                        </h4>
-                                    {{else}}
-                                        {{#if validationErrors.aoCoinWithdrew}}
-                                        <h4 class="list-group-item-heading">
-                                            Thank you for withdrawing your AOCoin! Enjoy!
-                                        </h4>
-                                        {{else}}
-                                            <form method="post" id='submitWithdraw'>
-                                                <input type="hidden" name="action" value="withdrawRISE"/>
-                                                <div class="form-group {{#if validationErrors.aoCoinAddress}}has-error{{/if}}">
-                                                    <label>Withdraw AOCoin</label>
-                                                    <input id="aoCoinAddress" type="text" name="aoCoinAddress" class="form-control"
-                                                        value="{{aoCoinAddress}}" placeholder="RISE Wallet or Exchange Address"/>
-                                                    {{#if validationErrors.aoCoinAddress}}<span
-                                                            class="help-block">{{validationErrors.aoCoinAddress}}</span>{{/if}}
-                                                </div>
-                                                <button id="withdrawBTN" type="submit"
-                                                        class="btn btn-primary" disabled>Withdraw</button>
-                                            </form>
-                                        {{/if}}
-                                    {{/if}}
-                                </div>
-                            {{ else }}
-                                <div class="list-group-item">
-                                    <p class="list-group-item-text">Bitcoin Address<i class="pe-7s-help1" data-toggle="popover" data-trigger="hover" title="What is this BTC Address for?" data-placement="bottom"
-												data-content="In order to be credited with your investment to the AOC Blockchain project, you must send your Bitcoin to this address. This is generated when you click 'Get BTC Address'."></i></p>
+							<div class="g-line-height-1">
+								<h4 class="h5">BTC Spent</h4>
+								<div class="js-counter g-font-size-30" data-comma-separated="true">฿{{user.investedBTC}}</div>
+							</div>
+						</header>
+
+						<h6 class="g-mb-10">Percent of Spend
+							<span class="float-right g-ml-10">{{user.investedBTCPercent}}%</span>
+						</h6>
+						<div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-10">
+							<div class="js-hr-progress-bar-indicator progress-bar g-bg-white u-progress-bar--xs" role="progressbar" style="width: {{user.investedBTCPercent}}%;"
+							aria-valuenow="{{user.investedBTCPercent}}" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="g-bg-main g-color-white g-pa-25">
+						<header class="d-flex text-uppercase g-mb-40">
+							<i class="icon-layers align-self-center display-4 g-mr-20"></i>
+
+							<div class="g-line-height-1">
+								<h4 class="h5">ETH Spent</h4>
+								<div class="js-counter g-font-size-30" data-comma-separated="true">Ξ{{user.investedETH}}</div>
+							</div>
+						</header>
+
+
+						<h6 class="g-mb-10">Percent of Spend
+							<span class="float-right g-ml-10">{{user.investedETHPercent}}%</span>
+						</h6>
+						<div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-10">
+							<div class="js-hr-progress-bar-indicator progress-bar g-bg-white u-progress-bar--xs" role="progressbar" style="width: {{user.investedETHPercent}}%;"
+							aria-valuenow="{{user.investedETHPercent}}" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 g-mb-30 g-mb-0--md">
+					<div class="g-bg-primary g-color-white g-pa-25">
+						<header class="d-flex text-uppercase g-mb-40">
+							<i class="icon-people align-self-center display-4 g-mr-20"></i>
+
+							<div class="g-line-height-1">
+								<h4 class="h5">BCH Spent</h4>
+								<div class="js-counter g-font-size-30" data-comma-separated="true">฿{{user.investedBCH}}</div>
+							</div>
+						</header>
+
+						<h6 class="g-mb-10">Percent of Spend
+							<span class="float-right g-ml-10">{{user.investedBCHPercent}}%</span>
+						</h6>
+						<div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-10">
+							<div class="js-hr-progress-bar-indicator progress-bar g-bg-white u-progress-bar--xs" role="progressbar" style="width: {{user.investedBCHPercent}}%;"
+							aria-valuenow="{{user.investedBCHPercent}}" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="g-bg-primary g-color-white g-pa-25">
+						<header class="d-flex text-uppercase g-mb-40">
+							<i class="icon-layers align-self-center display-4 g-mr-20"></i>
+
+							<div class="g-line-height-1">
+								<h4 class="h5">LTC Spent</h4>
+								<div class="js-counter g-font-size-30" data-comma-separated="true">Ł{{user.investedLTC}}</div>
+							</div>
+						</header>
+
+						<h6 class="g-mb-10">Percent of Spend
+							<span class="float-right g-ml-10">{{user.investedLTCPercent}}%</span>
+						</h6>
+						<div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-10">
+							<div class="js-hr-progress-bar-indicator progress-bar g-bg-white u-progress-bar--xs" role="progressbar" style="width: {{user.investedLTCPercent}}%;"
+							aria-valuenow="{{user.investedLTCPercent}}" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row g-mb-40">
+				<div class="col-md-6 g-mb-30 g-mb-0--md">
+					<div class="g-bg-primary g-color-white g-pa-25">
+						<header class="d-flex text-uppercase g-mb-40">
+							<i class="icon-people align-self-center display-4 g-mr-20"></i>
+
+							<div class="g-line-height-1">
+								<h4 class="h5">USD Value</h4>
+								<div class="js-counter g-font-size-30" data-comma-separated="true">${{user.totalUSD}}</div>
+							</div>
+						</header>
+
+						<h6 class="g-mb-10">Percent of Revenue
+							<span class="float-right g-ml-10">{{user.percentRevenue}}%</span>
+						</h6>
+						<div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-10">
+							<div class="js-hr-progress-bar-indicator progress-bar g-bg-white u-progress-bar--xs" role="progressbar" style="width: {{user.percentRevenue}}%;"
+							aria-valuenow="{{user.percentRevenue}}" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="g-bg-main g-color-white g-pa-25">
+						<header class="d-flex text-uppercase g-mb-40">
+							<i class="icon-layers align-self-center display-4 g-mr-20"></i>
+
+							<div class="g-line-height-1">
+								<h4 class="h5">AOC Owned</h4>
+								<div class="js-counter g-font-size-30" data-comma-separated="true">Ω{{user.totalAOC}}</div>
+							</div>
+						</header>
+
+						<h6 class="g-mb-10">Percent of AOC
+							<span class="float-right g-ml-10">{{user.percentAOC}}%</span>
+						</h6>
+						<div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-10">
+							<div class="js-hr-progress-bar-indicator progress-bar g-bg-white u-progress-bar--xs" role="progressbar" style="width: {{user.percentAOC}}%;"
+							aria-valuenow="{{user.percentAOC}}" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row g-md-40">
+				<div class="col-md-6">
+					<ul class="list-unstyled">
+						<li class="g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-minus-1">
+							<div class="media">
+								<div class="d-flex g-mt-2 g-mr-15">
+									<img class="g-width-50 g-height-50 rounded" src="/assets/img/btc.png" alt="Bitcoin">
+								</div>
+								<div class="media-body">
+									<p class="m-0">
+										<strong>Bitcoin</strong> AOC Purchase Address</p>
                                     {{#if user.btcAddress}}
-                                        <h4 class="list-group-item-heading">{{user.btcAddress}}</h4>
+									<span class="g-font-size-12 g-color-gray">{{user.btcAddress}}</span>
                                     {{else}}
-                                        <form method="post">
-                                            <input type="hidden" name="action" value="getBTCAddress">
-                                            <button id="getBTCAddress" type="submit" class="btn btn-primary">Get BTC Address</button>
-                                        </form>
+                                    <form method="post">
+                                        <input type="hidden" name="action" value="getBTCAddress">
+                                        <button id="getBTCAddress" type="submit" class="btn btn-primary">Get BTC Address</button>
+                                    </form>
                                     {{/if}}
-                                </div>
-                                <div class="list-group-item">
-                                    <p class="list-group-item-text">Bitcoin Cash Address<i class="pe-7s-help1" data-toggle="popover" data-trigger="hover" title="What is this BCH Address for?" data-placement="bottom"
-												data-content="In order to be credited with your investment to the AOC Blockchain project, you must send your Bitcoin Cash to this address. This is generated when you click 'Get BCH Address'."></i></p>
-                                    {{#if user.bchAddress}}
-                                        <h4 class="list-group-item-heading">{{user.bchAddress}}</h4>
+								</div>
+							</div>
+						</li>
+						<li class="g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-minus-1">
+							<div class="media">
+								<div class="d-flex g-mt-2 g-mr-15">
+									<img class="g-width-50 g-height-50 rounded" src="/assets/img/bch.png" alt="Bitcoin Cash">
+								</div>
+								<div class="media-body">
+									<p class="m-0">
+										<strong>Bitcoin Cash</strong> AOC Purchase Address
+                                    </p>
+									{{#if user.bchAddress}}
+									<span class="g-font-size-12 g-color-gray">{{user.bchAddress}}</span>
                                     {{else}}
-                                        <form method="post">
-                                            <input type="hidden" name="action" value="getBCHAddress">
-                                            <button id="getBCHAddress" type="submit" class="btn btn-primary">Get BCH Address</button>
-                                        </form>
+                                    <form method="post">
+                                        <input type="hidden" name="action" value="getBCHAddress">
+                                        <button id="getBCHAddress" type="submit" class="btn btn-primary">Get BCH Address</button>
+                                    </form>
                                     {{/if}}
-                                </div>
-                                <div class="list-group-item">
-                                    <p class="list-group-item-text">Etherium Address<i class="pe-7s-help1" data-toggle="popover" data-trigger="hover" title="What is this ETC Address for?" data-placement="bottom"
-												data-content="In order to be credited with your investment to the AOC Blockchain project, you must send your Ethereum to this address. This is generated when you click 'Get ETC Address'."></i></p>
-                                    {{#if user.ethAddress}}
-                                        <h4 class="list-group-item-heading">{{user.ethAddress}}</h4>
+								</div>
+							</div>
+						</li>
+						<li class="g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-minus-1">
+							<div class="media">
+								<div class="d-flex g-mt-2 g-mr-15">
+									<img class="g-width-50 g-height-50 rounded" src="/assets/img/eth.png" alt="Ether">
+								</div>
+								<div class="media-body">
+									<p class="m-0">
+										<strong>Ethereum</strong> AOC Purchase Address</p>
+									{{#if user.ethAddress}}
+									<span class="g-font-size-12 g-color-gray">{{user.ethAddress}}</span>
                                     {{else}}
-                                        <form method="post">
-                                            <input type="hidden" name="action" value="getETCAddress">
-                                            <button id="getETCAddress" type="submit" class="btn btn-primary">Get ETC Address</button>
-                                        </form>
+                                    <form method="post">
+                                        <input type="hidden" name="action" value="getETHAddress">
+                                        <button id="getETHAddress" type="submit" class="btn btn-primary">Get ETH Address</button>
+                                    </form>
                                     {{/if}}
-                                </div>
-                                <div class="list-group-item">
-                                    <p class="list-group-item-text">Litecoin Address<i class="pe-7s-help1" data-toggle="popover" data-trigger="hover" title="What is this LTC Address for?" data-placement="bottom"
-												data-content="In order to be credited with your investment to the AOC Blockchain project, you must send your Litecoin to this address. This is generated when you click 'Get LTC Address'."></i></p>
-                                    {{#if user.ltcAddress}}
-                                        <h4 class="list-group-item-heading">{{user.ltcAddress}}</h4>
+								</div>
+							</div>
+						</li>
+						<li class="g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-minus-1">
+							<div class="media">
+								<div class="d-flex g-mt-2 g-mr-15">
+									<img class="g-width-50 g-height-50 rounded" src="/assets/img/ltc.png" alt="litecoin">
+								</div>
+								<div class="media-body">
+									<p class="m-0">
+										<strong>Litecoin</strong> AOC Purchase Address</p>
+									{{#if user.ltcAddress}}
+									<span class="g-font-size-12 g-color-gray">{{user.ltcAddress}}</span>
                                     {{else}}
-                                        <form method="post">
-                                            <input type="hidden" name="action" value="getLTCAddress">
-                                            <button id="getLTCAddress" type="submit" class="btn btn-primary">Get LTC Address</button>
-                                        </form>
+                                    <form method="post">
+                                        <input type="hidden" name="action" value="getLTCAddress">
+                                        <button id="getLTCAddress" type="submit" class="btn btn-primary">Get LTC Address</button>
+                                    </form>
                                     {{/if}}
-                                </div>
-                            {{/if}}
-							{{#if user.otpKey}}
-                                <div>configured</div>
-							{{ else }} 
-								<div id="qrOTP" class="list-group-item">
-									<p class="list-group-item-text">2-Factor Authentication</p>
-									<button  type="button" data-toggle="modal" data-target="#otpQR" 
-											class="btn 
-									btn-primary" disabled>Configure</button> - Not Available
-								</div>	
-							{{/if}}
-                            <div class="list-group-item">
-                                <p class="list-group-item-text">Bitcoin Talk</p>
-                                <h4 class="list-group-item-heading">{{user.bctUser}}</h4>
-                            </div>
-                            <div class="list-group-item">
-                                <p class="list-group-item-text">Twitter</p>
-                                <h4 class="list-group-item-heading">{{user.twitter}}</h4>
-                            </div>
-                            <div class="list-group-item">
-                                <p class="list-group-item-text">Github</p>
-                                <h4 class="list-group-item-heading">{{user.github}}</h4>
-                            </div>
-                            <div class="list-group-item">
-                                <p class="list-group-item-text">LinkedIn</p>
-                                <h4 class="list-group-item-heading">{{user.linkedIn}}</h4>
-                            </div>
-                            <div class="list-group-item">
-                                <p class="list-group-item-text">Email</p>
-                                <h4 class="list-group-item-heading">{{user.email}}</h4>
-                            </div>
-                            <div class="list-group-item">
-                                <p class="list-group-item-text">Referrer</p>
-                                <h4 class="list-group-item-heading">{{user.referrer}}</h4>
-                            </div>
-                            <div class="list-group-item">
-                                <p class="list-group-item-text">Affiliate URL</p>
-                                <h5 class="list-group-item-heading"><a href="https://aoCoin.vision/ico?aff={{user
-								._id}}">https://aoCoin.vision/ico?aff={{user._id}}</a>
-                                </h5>
-								<a href="/blog/post/a-quick-guide-aoCoin-affiliate-marketing-program">Affiliate 
-									Marketing Guide</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-7">
-                    <div class="row">
-                        <div class="panel panel-default bootcards-summary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Your
-                                    Investment</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-6">
-                                        <a class="bootcards-summary-item" href="#">
-                                            <h1>Ω{{user.totalAOC}}</h1>
-                                            <h4 data-toggle="popover" title="Why is my AOC Decreasing?" 
-												data-placement="bottom"
-												data-content="This is one of our biggest questions we get asked. We have a fixed amount of AOC that we are distributing proportionately to all of our investors. Each time a new investor participates in the ICO, the amount of RISE distributed among everyone is recalculated and then redistributed. Each investor will see the amount of AOC decrease up until the last day of the ICO. But... have no fear. Even though your AOC count is going 
-												down, the value of them is going up. ">Your Available AOCoin <i 
-													class="pe-7s-help1"></i></h4>
-                                        </a>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6">
-                                        <a class="bootcards-summary-item" href="#">
-                                            <h1>${{user.totalUSD}}</h1>
-                                            <h4>Total Investment</h4>
-                                        </a>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6">
-                                        <a class="bootcards-summary-item" href="#">
-                                            <h1>฿{{user.investedBTC}}</h1>
-                                            <h4>Invested BTC</h4>
-                                        </a>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6">
-                                        <a class="bootcards-summary-item" href="#">
-                                            <h1>฿{{user.investedBCH}}</h1>
-                                            <h4>Invested BCH</h4>
-                                        </a>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6">
-                                        <a class="bootcards-summary-item" href="#">
-                                            <h1>Ξ{{user.investedETH}}</h1>
-                                            <h4>Invested ETH</h4>
-                                        </a>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6">
-                                        <a class="bootcards-summary-item" href="#">
-                                            <h1>Ł{{user.investedLTC}}</h1>
-                                            <h4>Invested LTC</h4>
-                                        </a>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6">
-                                        <a class="bootcards-summary-item" href="#">
-                                            <h1>${{user.investedUSD}}</h1>
-                                            <h4>Invested USD</h4>
-                                        </a>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6">
-                                        <a class="bootcards-summary-item" href="#">
-                                            <h1>${{user.referredUSD}}</h1>
-                                            <h4>Referred USD</h4>
-                                        </a>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6">
-                                        <a class="bootcards-summary-item" href="#">
-                                            <h1>${{user.USDBonus}}</h1>
-                                            <h4>Bonus USD</h4>
-                                        </a>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6">
-                                        <a class="bootcards-summary-item" href="#">
-                                            <h1>${{user.referralBonus}}</h1>
-                                            <h4>Referral Bonus USD</h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Transactions</h3>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr class="active">
-                                <th>Amount</th>
-                                <th>Currency</th>
-                                <th>USD Value</th>
-                                <th>Total USD Value</th>
-                                <th>Type</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {{#each summary.investments}}
-                                <tr>
-                                    <td>{{amount}}</td>
-                                    <td>{{currency}}</td>
-                                    <td>{{usdValue}} USD/{{currency}}</td>
-                                    <td>{{totalValue}}</td>
-                                    <td>{{type}}</td>
-                                </tr>
-                            {{/each}}
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-6">
+					<ul class="list-unstyled">
+						<li class="g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-minus-1">
+							<div class="media">
+								<div class="media-body">
+									<p class="m-0">
+										<strong>Referral</strong> Address
+									</p>
+									<span class="g-font-size-12 g-color-gray">https://aoblockchain.io/pre-sale?aff={{user._id}}</span>
+									<span class="g-font-size-12 g-color-gray"><a href="/blog/post/affiliate-marketing-guide">Affiliate Marketing Guide</a></span>
+								</div>
+							</div>
+						</li>
+					<li class="d-flex justify-content-start g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-minus-1">
+                      <div class="align-self-center g-px-10">
+                        <h5 class="h6 g-font-weight-600 g-color-black g-mb-3">
+                          <p class="m-0">
+										<strong>Referred Value</strong> by Currency <br/><small>USD is total value of all other currency</small>
+									</p>
+                        </h5>
+                        {{#if user.referredUSD}}<span class="u-label u-label--sm g-bg-purple g-rounded-20 g-ml-5 ">${{user.referredUSD}}</span>{{/if}}
+						{{#if user.referredBTC}}<span class="u-label u-label--sm g-bg-purple g-rounded-20 g-ml-5 ">฿{{user.referredBTC}}</span>{{/if}}
+						{{#if user.referredBCH}}<span class="u-label u-label--sm g-bg-purple g-rounded-20 g-ml-5 ">฿{{user.referredBCH}}</span>{{/if}}
+						{{#if user.referredETH}}<span class="u-label u-label--sm g-bg-purple g-rounded-20 g-ml-5 ">${{user.referredETH}}</span>{{/if}}
+						{{#if user.referredLTC}}<span class="u-label u-label--sm g-bg-purple g-rounded-20 g-ml-5 ">${{user.referredLTC}}</span>{{/if}}
+                      </div>
+                      <div class="align-self-center ml-auto">
+                        <span class="g-font-size-12 g-color-purple">{{user.totalReferred}} referred</span>
+                      </div>
+                    </li>
+						<li class="g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-minus-1">
+							<div class="media">
+								<div class="media-body">
+									<p class="m-0">
+										<strong>Bonus USD</strong> From Referrals
+									</p>
+									<span class="g-font-size-12 g-color-gray">${{user.referralBonus}}</span>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		{{> profileSidebar}}
+	</div>
+	<div class="row">
+		<!-- Hover Rows -->
+		<div class="col-md-12">
+			<div class="card g-brd-darkpurple rounded-0 g-mb-30">
+				<h3 class="card-header g-bg-main g-brd-transparent g-color-white g-font-size-16 rounded-0 mb-0">
+					<i class="fa fa-gear g-mr-5"></i>
+					Transactions
+				</h3>
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-		
-            <div class="modal fade in" tabindex="-1" role="dialog" id="qrCode" style="top:100px;">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="btn-group pull-right">
-                                <button class="btn btn-default" data-dismiss="modal">
-                                    Close
-                                </button>
-                            </div>
-                            Scan the QR code with your mobile Bitcoin app to
-                            make the payment:
-                        </div>
-                        <div class="modal-body">
-							<div id="qrcode"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade in" tabindex="-1" role="dialog" id="otpQR" style="top:100px;">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="btn-group pull-right">
-                                <button class="btn btn-default" data-dismiss="modal">
-                                    Close
-                                </button>
-                            </div>
-                            Scan the QR code with your mobile authenticator. <br />
-							If you don't want to use the scanner, after clicking on the "Generate Key" button, the 
-							secret key will appear above the QR code. Enter that into your soft token.
-                        </div>
-                        <div class="modal-body">
-							<div class="row">
-								<div class="col-md-12">
-                                    <button id="genQRCode" class="btn btn-primary">Generate Key</button>
-								</div>
-							</div>
-							<div class="row">
-                                <div class="col-md-6 hidden qrConfig">
-									<h4>Scan QR Code</h4>
-                                    <div id="otpQRPNG"></div>
-                                </div>
-                                <div class="col-md-6 hidden qrConfig">
-									<h4> OR enter code into your authenticator</h4>
-									<span id="otpKeyString"></span>
-								</div>
-							</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade in" tabindex="-1" role="dialog" id="otpQRConfirm" style="top:100px;">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="btn-group pull-right">
-                                <button class="btn btn-default" data-dismiss="modal">
-                                    Close
-                                </button>
-                            </div>
-							Confirm you have configured your Authenticator:
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-12 text-center" id="otrConfirmBody">
-									<div class="form-group">
-                                        <label for="otrConfirm">Enter Token</label>
-										<input id="verifyToken" class="form-control" type="text" name="otrConfirm" 
-											   placeholder="Token"/>
-									</div>
-                                    <button type="button" class="btn btn-success" id="otpConfirmBtn">Check 
-										Token</button>
-								</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade in" tabindex="-1" role="dialog" id="editModal" style="top:100px;">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form class="form-horizontal" method="post">
-                            <div class="modal-header">
-                                <div class="btn-group pull-left">
-                                    <button class="btn btn-danger" data-dismiss="modal">
-                                        Cancel
-                                    </button>
-                                </div>
-                                <h3 class="modal-title">Update Profile</h3>
-                            </div>
-                            <div class="modal-body">
-                                <div style="margin:20px;">
-                                    <input type="hidden" name="action" value="editProfile">
-                                    <div class="form-group {{#if validationErrors.name}}has-error{{/if}}">
-                                        <label>Name</label>
-                                        <div class="form-row">
-                                        <div class="col-md-6">
-                                            <input type="text" name="firstName" class="form-control"
-                                               value="{{user.name.first}}">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="text" name="lastName" class="form-control"
-                                               value="{{user.name.last}}">
-                                        </div>
-										{{#if validationErrors.name}}<span
-                                                class="help-block">{{validationErrors.name}}</span>{{/if}}
-                                        </div>
-                                    </div>
-                                    <div class="form-group {{#if validationErrors.email}}has-error{{/if}}">
-                                        <label>Email</label>
-                                        <input type="email" name="email" class="form-control" value="{{user.email}}">
-										{{#if validationErrors.email}}<span
-                                                class="help-block">{{validationErrors.email}}</span>{{/if}}
-                                    </div>
-									<div class="form-group">
-										<label>OTP Key</label>
-                                        <input type="password" id="otpSecretKey" class="form-control" value="{{user
-									.otpSecret}}" readonly="readonly" autocomplete="off"/>
-                                        <input id="showOTPKey" type="checkbox" />Show Key
-									</div>
-                                    <div class="form-group">
-                                        <label>Twitter</label>
-                                        <input type="text" name="twitter" placeholder="(optional)" class="form-control"
-                                               value="{{user.twitter}}">
-										{{#if validationErrors.twitter}}<span
-                                                class="help-block">{{validationErrors.twitter}}</span>{{/if}}
-                                    </div>
-                                    <div class="form-group {{#if validationErrors.bctUser}}has-error{{/if}}">
-                                        <label>Bitcoin Talk User</label>
-                                        <input type="text" name="bctUser" placeholder="(optional)" class="form-control"
-                                               value="{{user.bctUser}}">
-										{{#if validationErrors.bctUser}}<span
-                                                class="help-block">{{validationErrors.bctUser}}</span>{{/if}}
-                                    </div>
-                                    <div class="form-group {{#if validationErrors.github}}has-error{{/if}}">
-                                        <label>Github</label>
-                                        <input type="text" name="github" placeholder="(optional)" class="form-control"
-                                               value="{{user.github}}">
-										{{#if validationErrors.github}}<span
-                                                class="help-block">{{validationErrors.github}}</span>{{/if}}
-                                    </div>
-                                    <div class="form-group {{#if validationErrors.linkedIn}}has-error{{/if}}">
-                                        <label>LinkedIn</label>
-                                        <input type="text" name="linkedIn" placeholder="(optional)" class="form-control"
-                                               value="{{user.linkedIn}}">
-										{{#if validationErrors.linkedIn}}<span
-                                                class="help-block">{{validationErrors.linkedIn}}</span>{{/if}}
-                                    </div>
-                                    <div class="form-group {{#if validationErrors.facebook}}has-error{{/if}}">
-                                        <label>Facebook</label>
-                                        <input type="text" name="facebook" placeholder="(optional)" class="form-control"
-                                               value="{{user.facebook}}">
-										{{#if validationErrors.facebook}}<span
-                                                class="help-block">{{validationErrors.facebook}}</span>{{/if}}
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-6 {{#if validationErrors.password}}has-error{{/if}}">
-                                            <a href="/requestReset"><label>Reset Password and 2FA</label></a>
-                                        </div>
-                                    </div>
-                                    <div class="form-actions">
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-		{{else}}
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <h1>For Investors and Affiliates ONLY, please sign up, or sign in.</h1>
-                    <button class="btn btn-default"><a href="/keystone/signin">Sign In</a></button>
-                    <button class="btn btn-default"><a href="/signUp">Sign Up</a></button>
-                </div>
-            </div>
-		{{/if}}
-    </div>
-</section>
+				<div class="table-responsive">
+					<table class="table table-hover u-table--v1 mb-0">
+						<thead>
+							<tr>
+								<th>Amount</th>
+								<th>Currency</th>
+								<th>USD Value</th>
+								<th class="hidden-sm">Total USD Value</th>
+								<th class="hidden-sm">Type</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each summary.investments}}
+							<tr>
+								<td>{{amount}}</td>
+								<td>{{currency}}</td>
+								<td>{{usdValue}} {{currency}} / USD</td>
+								<td class="hidden-sm">{{totalValue}}</td>
+								<td class="hidden-sm">{{type}}</td>
+							</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!-- End Hover Rows -->
+	</div>
+</div>

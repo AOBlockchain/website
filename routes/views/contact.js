@@ -1,9 +1,9 @@
-var keystone = require('keystone');
-var Enquiry = keystone.list('Enquiry');
+var eden = require('edencms');
+var Enquiry = eden.list('Enquiry');
 
 exports = module.exports = function (req, res) {
 
-	var view = new keystone.View(req, res);
+	var view = new eden.View(req, res);
 	var locals = res.locals;
 
 	// Set locals
@@ -26,7 +26,7 @@ exports = module.exports = function (req, res) {
 			errorMessage: 'There was a problem submitting your enquiry:',
 		}, function (err) {
 			if (err) {
-				locals.validationErrors = err.errors;
+				locals.validationErrors = err.detail;
 			} else {
 				locals.enquirySubmitted = true;
 			}

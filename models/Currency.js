@@ -1,7 +1,7 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
+var eden = require('edencms');
+var Types = eden.Field.Types;
 
-var Currency = new keystone.List('Currency', {
+var Currency = new eden.List('Currency', {
 	map: { name: 'currency' },
 	defaultSort: '-createdAt',
 });

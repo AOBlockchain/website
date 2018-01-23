@@ -1,10 +1,10 @@
 /**
  * Created by justin on 4/28/16.
  */
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
+var eden = require('edencms');
+var Types = eden.Field.Types;
 
-var Bounty = new keystone.List('Bounty', {
+var Bounty = new eden.List('Bounty', {
 	map: { name: 'bounty' },
 });
 

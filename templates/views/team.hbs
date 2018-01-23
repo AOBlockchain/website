@@ -1,43 +1,78 @@
-<div class="body">
-	<section class="section bg-white" id="team">
-		<div class="container">
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <h2 class="title">Our Team</h2>
-                    <p class="title-alt">We are a collection of Crypto-enthusiasts and business owners.
-						
-					</p>
-                </div>
-            </div>
-        	<div class="row">
-				{{#each data.team}}
 
-                    <div class="col-md-4">
-                        <div class="author-content text-center">
-                            <h2 class="title">{{name.first}} {{name.last}}</h2>
-                            <p class="title-alt">{{title}}</p>
-							<br />
-                            <img src="{{image.secure_url}}" alt="author" class="img-circle author-img center-block">
-							
-                            <ul class="list-inline footer-social-one m-b-0 author-social">
-								{{#if github}}<li><a href="{{github}}"><i class="pe-so-github"></i></a></li>{{/if}}
-								{{#if facebook}}<li><a href="{{facebook}}"><i
-                                        class="pe-so-facebook"></i></a></li>{{/if}}
-								{{#if twitter}}<li><a href="{{twitter}}"><i class="pe-so-twitter"></i></a></li>{{/if}}
-								{{#if linkedIn}}<li><a href="{{linkedIn}}"><i
-                                        class="pe-so-linkedin"></i></a></li>{{/if}}
-								{{#if google}}<li><a href="{{google}}"><i class="pe-so-google-plus"></i></a></li>{{/if}}
-								{{#if skype}}<li><a href="{{skype}}"><i class="pe-so-skype"></i></a></li>{{/if}}
-                            </ul>
-							
-                            <p class="text-muted">{{{bio.html}}}</p>
-                            
-							<br />
-                            <br />
-                        </div>
-                    </div>
-				{{/each}}
-            </div>
-		</div>
-	</section>
-</div>
+
+<div class="cube-portfolio">
+						<!-- Cubeportfolio Filter -->
+						<ul id="filter-container" class="text-center u-filter-v1 g-mb-40">
+							<li class="list-inline-item cbp-filter-item g-cursor-pointer g-transition-0_2 cbp-filter-item-active" data-filter="*">All</li>
+                            {{#each data.category}}
+							<li class="list-inline-item cbp-filter-item g-cursor-pointer g-transition-0_2" data-filter=".{{_id}}">{{name}}</li>
+							{{/each}}
+						</ul>
+						<!-- End Cubeportfolio Filter -->
+
+						<!-- Cubeportfolio container -->
+						<div id="grid-container" class="cbp cbp-caption-active cbp-caption-fadeIn cbp-ready" data-controls="#filter-container" data-layout="grid"
+						data-animation="slideLeft" data-caption-animation="fadeIn" data-x-gap="0" data-y-gap="0">
+							<div class="cbp-wrapper-outer">
+								<div class="cbp-wrapper">
+									{{#each data.team}}
+									<div class="cbp-item{{#each category}} {{_id}}{{/each}}">
+										<div class="cbp-item-wrapper">
+											<!-- Figure -->
+											<figure class="text-center u-block-hover g-color-white mb-0">
+												<!-- Figure Image -->
+												<img class="w-100" src="{{{cloudinaryUrl image width=400 height=450 crop='fill' gravity="faces"}}}" alt="{{name.full}}">
+												<!-- End Figure Image -->
+
+												<!-- Figure Caption -->
+												<figcaption class="u-block-hover__additional--fade g-bg-primary-opacity-0_9 g-flex-middle">
+													<div class="g-flex-middle-item g-pa-20">
+														<!-- Figure Info -->
+														<em class="d-block g-font-style-normal g-font-size-11 text-uppercase g-color-white-opacity-0_7 g-mb-5">{{title}}</em>
+														<h4 class="h5 g-mb-15">{{name.first}} {{name.last}}</h4>
+														<p class="g-color-white-opacity-0_7 g-mb-20">{{{bio.html}}}</p>
+														<!-- End Figure Info -->
+
+														<!-- Figure Social Icons -->
+														<ul class="list-inline mb-0">
+                                                            {{#if github}}
+                                                            <li class="list-inline-item g-mx-3">
+                                                                <a class="u-icon-v3 u-icon-size--xs g-color-primary g-bg-white g-bg-black--hover" tabindex="0" href="{{github}}">
+                                                                    <i class="fa fa-github"></i>
+                                                                </a>
+                                                            </li>{{/if}} {{#if facebook}}
+                                                            <li class="list-inline-item g-mx-3">
+                                                                <a class="u-icon-v3 u-icon-size--xs g-color-primary g-bg-white g-bg-black--hover" tabindex="0" href="{{facebook}}">
+                                                                    <i class="fa fa-facebook"></i>
+                                                                </a>
+                                                            </li>{{/if}} {{#if twitter}}
+                                                            <li class="list-inline-item g-mx-3">
+                                                                <a class="u-icon-v3 u-icon-size--xs g-color-primary g-bg-white g-bg-black--hover" tabindex="0" href="{{twitter}}">
+                                                                    <i class="fa fa-twitter"></i>
+                                                                </a>
+                                                            </li>{{/if}} {{#if linkedIn}}
+                                                            <li class="list-inline-item g-mx-3">
+                                                                <a class="u-icon-v3 u-icon-size--xs g-color-primary g-bg-white g-bg-black--hover" tabindex="0" href="{{linkedIn}}">
+                                                                    <i class="fa fa-linkedin"></i>
+                                                                </a>
+                                                            </li>{{/if}} {{#if skype}}
+                                                            <li class="list-inline-item g-mx-3">
+                                                                <a class="u-icon-v3 u-icon-size--xs g-color-primary g-bg-white g-bg-black--hover" tabindex="0" href="{{skype}}">
+                                                                    <i class="fa fa-skype"></i>
+                                                                </a>
+                                                            </li>{{/if}}
+														</ul>
+														<!-- End Figure Social Icons -->
+													</div>
+												</figcaption>
+												<!-- End Figure Caption-->
+											</figure>
+											<!-- End Figure -->
+										</div>
+									</div>
+                                    {{/each}}
+								</div>
+							</div>
+						</div>
+						<!-- End Cubeportfolio container -->
+					</div>

@@ -1,6 +1,6 @@
-var keystone = require('keystone');
+var eden = require('edencms');
 
-var Setting = new keystone.List('Setting', {
+var Setting = new eden.List('Setting', {
 	nocreate: true,
 	nodelete: true,
 });

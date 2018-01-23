@@ -1,0 +1,99 @@
+<!-- Sidebar -->
+<div class="col-lg-3 g-mb-30">
+	<!-- Links -->
+	<ul class="list-unstyled g-hidden-md-down mb-5">
+		<li class="my-1">
+			<a class="{{#if preSale}}active {{/if}}d-block u-link-v5 g-brd-left g-brd-3 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-main g-color-primary--hover g-color-primary--parent-active g-bg-secondary g-font-weight-600 g-px-20 g-pl-25--hover g-pl-25--active g-py-12"
+			href="/pre-sale">
+				Pre-Sale Information
+				<i class="align-middle float-right icon-education-007 u-line-icon-pro"></i>
+			</a>
+		</li>
+		<li class="my-1">
+			<a class="{{#if statistics}}active {{/if}}d-block u-link-v5 g-brd-left g-brd-3 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-main g-color-primary--hover g-color-primary--parent-active g-bg-secondary g-font-weight-600 g-px-20 g-pl-25--hover g-pl-25--active g-py-12"
+			href="/stats">
+				Statistics
+				<i class="align-middle float-right icon-education-087 u-line-icon-pro"></i>
+			</a>
+		</li>
+		{{#if user}}
+		<li class="my-1">
+			<a class="{{#if profile}}active {{/if}}d-block u-link-v5 g-brd-left g-brd-3 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-main g-color-primary--hover g-color-primary--parent-active g-bg-secondary g-font-weight-600 g-px-20 g-pl-25--hover g-pl-25--active g-py-12"
+			href="/profile">
+				Profile
+				<i class="align-middle float-right icon-education-064 u-line-icon-pro"></i>
+			</a>
+		</li>
+		<li class="my-1">
+			<a class="{{#if transactions}}active {{/if}}d-block u-link-v5 g-brd-left g-brd-3 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-main g-color-primary--hover g-color-primary--parent-active g-bg-secondary g-font-weight-600 g-px-20 g-pl-25--hover g-pl-25--active g-py-12"
+			href="/profile/transactions">
+				Transactions
+				<i class="align-middle float-right icon-education-047 u-line-icon-pro"></i>
+			</a>
+		</li>
+		<li class="my-1">
+			<a class="{{#if setNav}}active {{/if}}d-block u-link-v5 g-brd-left g-brd-3 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-main g-color-primary--hover g-color-primary--parent-active g-bg-secondary g-font-weight-600 g-px-20 g-pl-25--hover g-pl-25--active g-py-12"
+			href="/profile/settings">
+				Settings
+				<i class="align-middle float-right icon-finance-168 u-line-icon-pro"></i>
+			</a>
+		</li>
+		<li class="my-1">
+			<a class="d-block u-link-v5 g-brd-left g-brd-3 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-main g-color-primary--hover g-color-primary--parent-active g-bg-secondary g-font-weight-600 g-px-20 g-pl-25--hover g-pl-25--active g-py-12"
+			href="/admin/signOut">
+				Sign Out
+				<i class="align-middle float-right icon-education-073 u-line-icon-pro"></i>
+			</a>
+		</li>
+		{{/if}}
+	</ul>
+	<!-- End Links -->
+
+	<!-- Helpful Resources -->
+	<article class="g-bg-primary g-hidden-md-down g-px-25 g-py-30 mb-5">
+		<div class="media align-items-center mb-2">
+			<div class="d-flex g-ml-minus-4 mr-2">
+				<span class="d-inline-block text-center g-font-size-35 g-color-white">
+					<i class="icon-finance-082 u-line-icon-pro"></i>
+				</span>
+			</div>
+			<div class="media-body">
+				<h4 class="h6 g-color-white text-uppercase">Helpful
+					<br>Resources</h4>
+			</div>
+		</div>
+
+		<!-- Links -->
+		<ul class="list-unstyled mb-0">
+			<li>
+				<i class="g-color-white mr-2 fa fa-angle-right"></i>
+				<a class="u-link-v5 g-color-white g-pl-7--hover" href="https://docs.aoblockchain.io">White Paper</a>
+			</li>
+			<li>
+				<i class="g-color-white mr-2 fa fa-angle-right"></i>
+				<a class="u-link-v5 g-color-white g-pl-7--hover" href="https://gitlab.com/aoblockchain">Source</a>
+			</li>
+		</ul>
+		<!-- End Links -->
+	</article>
+	<!-- End Helpful Resources -->
+
+	<!-- Fast Facts -->
+	<h3 class="h4 mb-3">Fast Facts</h3>
+
+	<ul class="list-unstyled">
+		<li class="g-brd-y g-brd-gray-light-v3 py-3">
+			<div class="js-counter g-color-primary g-font-weight-500 g-font-size-35">~9 Quintillion</div>
+			<p>Maximum number of coins supported by AO Blockchain.</p>
+		</li>
+		<li class="g-brd-bottom g-brd-gray-light-v3 py-3">
+			<div class="js-counter g-color-primary g-font-weight-500 g-font-size-35">101 Delegates</div>
+			<p>Minimum number of delegates. 1 Delegate per identity.</p>
+		</li>
+		<li class="g-brd-bottom g-brd-gray-light-v3 py-3">
+			<div class="js-counter g-color-primary g-font-weight-500 g-font-size-35">5 Blockchains</div>
+			<p>Multiple blockchains to increase delegate efficiency across the system.</p>
+		</li>
+	</ul>
+	<!-- End Fast Facts -->
+</div>

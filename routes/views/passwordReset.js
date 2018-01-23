@@ -1,11 +1,11 @@
-var keystone = require('keystone');
-var User = keystone.list('User');
-var PWReset = keystone.list('PasswordReset');
+var eden = require('edencms');
+var User = eden.list('User');
+var PWReset = eden.list('PasswordReset');
 var _ = require('lodash');
 
 exports = module.exports = function (req, res) {
 
-	var view = new keystone.View(req, res);
+	var view = new eden.View(req, res);
 	var locals = res.locals;
 
 	// Set locals

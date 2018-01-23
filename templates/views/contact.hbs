@@ -1,111 +1,207 @@
-<section class="section">
-    <div class="container">
-        <h1>Get in touch with our Community Management team!</h1>
-    </div>
-    <div class="container">
-        <div class="row">            <!--
+<!-- Address & Map -->
+<div class="g-pos-rel g-py-30 g-mt-80">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-7 align-self-center g-py-100">
+				<!-- Address -->
+				<h2 class="h1 g-mb-60">AO Blockchain</h2>
+                <p class="g-line-height-2">We have many ways to get in touch with us. We are very active on our chat, on BitcoinTalk, and through our support portal. Below is a list of methods by which to interact with the AO Blockchain Team.</p>
+				<div class="row justify-content-start">
+					<div class="col col-sm-5">
+						<div class="mb-5">
+							<h3 class="g-color-text g-font-weight-400 g-font-size-13 text-uppercase mb-3">Twitter</h3>
+							<address class="g-font-weight-500">
+								@AOBlockchain
+								<br> @jdr0dn3y
+							</address>
+						</div>
+
+						<h4 class="g-color-text g-font-weight-400 g-font-size-13 text-uppercase mb-3">Facebook</h4>
+						<address class="g-font-weight-500">
+							AOBlockchain
+                            <br> DontPanicllc
+						</address>
+					</div>
+
+					<div class="col col-sm-5">
+						<div class="mb-5">
+							<h4 class="g-color-text g-font-weight-400 g-font-size-13 text-uppercase mb-3">BitcoinTalk</h4>
+							<address class="g-font-weight-500">
+								@AOBlockchain
+								<br> @jdr0dn3y
+							</address>
+						</div>
+                        
+						<h4 class="g-color-text g-font-weight-400 g-font-size-13 text-uppercase mb-3">Slack</h4>
+						<span class="d-block g-color-main g-font-weight-500"><a href="https://aoblockchain.slack.com">AO Blockchain</a><br /><a href="https://join.slack.com/t/aoblockchain/shared_invite/enQtMjk1ODc0Nzc5NjIzLTA1YTQ2YjIyOWEwMDZlYTIyZjExMGEwOGEwM2VkZWIzZDA3MmMwYjU5YWNkZTkyYTQ1MGViMjgyMjkxZDEyOWI">Invite Link</a>
+					</div>
+				</div>
+				<!-- End Address -->
+			</div>
+
+			<div class="col-md-5 align-self-center h-100 g-pos-abs--md g-top-0 g-right-0 g-pr-0">
+				<!-- Google Map -->
+				<div id="GMapCustomized-light" class="js-g-map embed-responsive embed-responsive-21by9 h-100" data-type="custom" data-lat="43.9140"
+				data-lng="-69.9670" data-zoom="7" data-title="Agency" data-styles='[["", "", [{"saturation":-100},{"lightness":40}]], ["", "labels", [{"visibility":"on"}]], ["water", "", [{"color":"#575757"}]] ]'
+				data-pin="true" data-pin-icon="assets/img/icons/pin/marker.png">
+				</div>
+				<!-- End Google Map -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Address & Map -->
+
+<!-- Contact Form -->
+<div class="g-brd-y g-brd-gray-light-v4">
+	<div class="container g-py-100" style="color:#575757">
+		<div class="g-mb-60">
+			<!--
 				Flash messages allow you to display once-off status messages to users, e.g. form
 				validation errors, success messages, etc
 			-->
 			{{#if messages}}
-                <div id="flash-messages" class="container">
-					{{#if messages.info}}
-                        <div class="alert alert-info">
+			<div class="row">
+				<div class="col-md-12">
+					<div id="flash-messages" class="container">
+						{{#if messages.info}}
+						<div class="alert alert-info alert-dismissible fade show" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
 							{{{flashMessages messages.info}}}
-                        </div>
-					{{/if}}
-					{{#if messages.success}}
-                        <div class="alert alert-success">
+						</div>
+						{{/if}} {{#if messages.success}}
+						<div class="alert alert-success alert-dismissible fade show" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
 							{{{flashMessages messages.success}}}
-                        </div>
-					{{/if}}
-					{{#if messages.warning}}
-                        <div class="alert alert-warning">
+						</div>
+						{{/if}} {{#if messages.warning}}
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
 							{{{flashMessages messages.warning}}}
-                        </div>
-					{{/if}}
-					{{#if messages.error}}
-                        <div class="alert alert-danger">
+						</div>
+						{{/if}} {{#if messages.error}}
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
 							{{{flashMessages messages.error}}}
-                        </div>
-					{{/if}}
-                </div>
+						</div>
+						{{/if}}
+					</div>
+				</div>
+			</div>
 			{{/if}}
-            <!-- The content block should contain the body of your template's content-->
-			{{{body}}}
-        </div>
+			<h2 class="h1 mb-3">Have Questions?</h2>
+			<p class="g-line-height-2">If there is anything you have questions about, or want to reach out to offer your support in some way, fill out the contact
+				form below!</p>
+		</div>
+		{{#if enquirySubmitted}}
+		<h3>Thank you for submitting an enquiry. Someone will get back to you as soon as possible.</h3>
+		{{else}}
+		<form method="post">
+			<input type="hidden" name="action" value="contact">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-sm-6 g-mb-35">
+							<label class="g-color-main g-font-weight-500 mb-3">Your name*</label>
+							<input class="form-control g-color-main g-brd-gray-light-v4 g-brd-primary--focus g-bg-white rounded g-py-13 g-px-15" name="name.full"
+							class="form-control" value="{{formData.[name.full]}}" placeholder="John Doe"> {{#if validationErrors.name}}
+							<small class="form-control-feedback d-block g-bg-red g-color-white g-font-size-12 g-px-14 g-py-3 mt-0">{{validationErrors.name.error}}</small>{{/if}}
+						</div>
 
-        <div class="col-sm-8 col-md-6">
+						<div class="col-sm-6 g-mb-35">
+							<label class="g-color-main g-font-weight-500 mb-3">Your email*</label>
+							<input class="form-control g-color-main g-brd-gray-light-v4 g-brd-primary--focus g-bg-white rounded g-py-13 g-px-15" type="email"
+							name="email" class="form-control" value="{{formData.email}}" placeholder="John.Doe@gmail.com"> {{#if validationErrors.email}}
+							<small class="form-control-feedback d-block g-bg-red g-color-white g-font-size-12 g-px-14 g-py-3 mt-0">{{validationErrors.email.error}}</small>{{/if}}
+						</div>
 
-			{{#if enquirySubmitted}}
-                <h3>Thank you for submitting an enquiry. Someone will get back to you as soon as possible.</h3>
-                <button class="btn btn-default"><a href="/keystone/signin">Sign In</a></button>
-			{{else}}
-                <form method="post">
-                    <input type="hidden" name="action" value="contact">
-                    <div class="form-group {{#if validationErrors.name}}has-error{{/if}}">
-                        <label>Name</label>
-                        <input type="text" name="name.full" class="form-control" value="{{formData.[name.full]}}">
-						{{#if validationErrors.name}}<span class="help-block">{{validationErrors.name}}</span>{{/if}}
-                    </div>
-                    <div class="form-group {{#if validationErrors.email}}has-error{{/if}}">
-                        <label>Email</label>
-                        <input type="email" name="email" class="form-control" value="{{formData.email}}">
-						{{#if validationErrors.email}}<span
-                                class="help-block">{{validationErrors.email.message}}</span>{{/if}}
-                    </div>
-                    <div class="form-group">
-                        <label>Enquiry Type</label>
-                        <select name="enquiryType" class="form-control">
-							{{#each enquiryTypes}}
-                                <option value="{{value}}">{{label}}</option>
-							{{/each}}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea class="form-control" name="message"></textarea>
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">Send</button>
-                    </div>
-                </form>
-			{{/if}}
-        </div>
-        <div class="col-sm-4 col-md-6">
-            <div class="panel panel-default">
-                <!-- Default panel contents -->
-                <div class="panel-heading">How to Contact Us</div>
-                <div class="panel-body">
-                    <p>We have many ways to get in touch with us. We are very active on our chat, on BitcoinTalk, and through our support portal. Below is a list of methods by which to interact with the AO Blockchain Team.</p>
-                    <p>Our Community Slack: <a href="https://aoblockchain.slack.com">AOBlockchain.slack.com</a><br /><a href="https://join.slack.com/t/aoblockchain/shared_invite/enQtMjk1ODc0Nzc5NjIzLTA1YTQ2YjIyOWEwMDZlYTIyZjExMGEwOGEwM2VkZWIzZDA3MmMwYjU5YWNkZTkyYTQ1MGViMjgyMjkxZDEyOWI">Slack Invite Link</a></p>
-                </div>
+						<div class="col-sm-6 g-mb-35">
+							<label class="g-color-main g-font-weight-500 mb-3">Your phone</label>
+							<input class="form-control g-color-main g-brd-gray-light-v4 g-brd-primary--focus g-bg-white rounded g-py-13 g-px-15" type="phone"
+							name="phone" class="form-control" value="{{formData.phone}}" placeholder="+1 (207) 555-1212"> {{#if validationErrors.phone}}
+							<small class="form-control-feedback d-block g-bg-red g-color-white g-font-size-12 g-px-14 g-py-3 mt-0">{{validationErrors.phone.error}}</small>{{/if}}
+						</div>
 
-                <!-- Table -->
-                <table class="table">
-                    <tr>
-                        <th>Service</th>
-                        <th>Usernames</th>
-                    </tr>
-					<tr>
-						<td><a href="https://twitter.com/aoblockchain">Twitter</a></td>
-						<td>@AOBlockchain, @jdr0dn3y</td>
-					</tr>
-					<tr>
-						<td><a href="https://facebook.com/aoblockchain">Facebook</a></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td><a href="https://reddit.com/aoblockchain">Reddit</a></td>
-						<td>jdr0dn3y</td>
-					</tr>
-                    <tr>
-                        <td><a href="https://bitcointalk.org/">BitcoinTalk</a></td>
-                        <td>jdr0dn3y, AOBlockchain</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
+						<div class="col-sm-6 g-mb-35">
+							<label class="g-color-main g-font-weight-500 mb-3">Subject</label>
+							<select class="form-control g-color-main g-brd-gray-light-v4 g-brd-primary--focus g-bg-white rounded g-py-13 g-px-15" name="enquiryType"
+							style="height:49.87px">
+								{{#each enquiryTypes}}
+								<option value="{{value}}">{{label}}</option>
+								{{/each}}
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="mb-4">
+						<label class="g-color-main g-font-weight-500 mb-3">Your message*</label>
+						<textarea class="form-control g-color-main g-brd-gray-light-v4 g-brd-primary--focus g-bg-secondary rounded g-py-13 g-px-15"
+						name="message" vale="{{formData.message}}" rows="8" placeholder="Hi there, I would like to ..."></textarea>
+						{{#if validationErrors.message}}
+						<small class="form-control-feedback d-block g-bg-red g-color-white g-font-size-12 g-px-14 g-py-3 mt-0">{{validationErrors.message.error}}</small>{{/if}}
+					</div>
+
+					<div class="text-right">
+						<button class="btn u-btn-primary g-font-weight-600 g-font-size-13 text-uppercase rounded-3 g-py-12 g-px-35" type="submit"
+						role="button">Submit</button>
+
+					</div>
+				</div>
+			</div>
+		</form>
+		{{/if}}
+	</div>
+</div>
+<!-- End Contact Form -->
+
+<!-- Social Media -->
+<div class="container text-center g-py-100">
+	<h2 class="h1 g-mb-60">Social Media</h2>
+
+	<div class="row justify-content-center">
+		<div class="col-3 col-md-2">
+			<a class="g-text-underline--none--hover" href="https://facebook.com/aoblockchain">
+				<span class="u-icon-v2 g-brd-2 g-brd-main g-brd-primary--hover g-color-main g-color-primary--hover g-bg-main--hover rounded-circle mb-4">
+					<i class="fa fa-facebook"></i>
+				</span>
+				<span class="d-block g-color-text g-font-weight-400 g-font-size-13 text-uppercase">Facebook</span>
+			</a>
+		</div>
+
+		<div class="col-3 col-md-2">
+			<a class="g-text-underline--none--hover" href="https://twitter.com/aoblockchain">
+				<span class="u-icon-v2 g-brd-2 g-brd-main g-brd-primary--hover g-color-main g-color-primary--hover g-bg-main--hover rounded-circle mb-4">
+					<i class="fa fa-twitter"></i>
+				</span>
+				<span class="d-block g-color-text g-font-weight-400 g-font-size-13 text-uppercase">Twitter</span>
+			</a>
+		</div>
+
+		<div class="col-3 col-md-2">
+			<a class="g-text-underline--none--hover" href="https://gitlab.com/aoblockchain">
+				<span class="u-icon-v2 g-brd-2 g-brd-main g-brd-primary--hover g-color-main g-color-primary--hover g-bg-main--hover rounded-circle mb-4">
+					<i class="fa fa-gitlab"></i>
+				</span>
+				<span class="d-block g-color-text g-font-weight-400 g-font-size-13 text-uppercase">GitLab</span>
+			</a>
+		</div>
+		<div class="col-3 col-md-2">
+			<a class="g-text-underline--none--hover" href="https://aoblockchain.slack.com">
+				<span class="u-icon-v2 g-brd-2 g-brd-main g-brd-primary--hover g-color-main g-color-primary--hover g-bg-main--hover rounded-circle mb-4">
+					<i class="fa fa-slack"></i>
+				</span>
+				<span class="d-block g-color-text g-font-weight-400 g-font-size-13 text-uppercase">Slack</span>
+			</a>
+		</div>
+	</div>
+</div>

@@ -19,12 +19,22 @@ var _ = require('lodash');
 */
 exports.initLocals = function (req, res, next) {
 	res.locals.navLinks = [
-		//{ label: 'ICO', 		key: 'ico',			href: '/ico' },
-		{ label: 'Pre-Sale', 	key: 'pre-sale',	href: '/pre-sale' },
-		//{ label: 'Stats',		key: 'stats',		href: '/stats' },
-		{ label: 'Team', 		key: 'team',		href: '/team' },
-		{ label: 'Blog',		key: 'blog',		href: '/blog' },
-		{ label: 'Contact',		key: 'contact',		href: '/contact' },
+		{ label: 'Features',	key: 'features',	href: '/features' },
+		{ label: 'Solutions',	key: 'solutions', 	href: '/solutions'},
+		{ label: 'Pre-Sale', 	key: 'pre-sale',	pages: [
+			{ label: 'Pre-Sale', 	key: 'pre-sale', 	href: '/pre-sale' 	},
+			{ label: 'Stats',		key: 'stats',		href: '/stats' 		},
+		]},
+		{ label: 'About',		key: 'about', 		pages: [
+			{ label: 'Team',	key: 'team',		href: '/team' 		},
+			{ label: 'Blog',		key: 'blog',		href: '/blog' 		},
+			{ label: 'Contact',		key: 'contact',		href: '/contact'	},
+		]},
+		{ label: 'Support',		key: 'support',		pages: [
+			{ label: 'Knowledge Base',	key: 'knowledge-base',	href: 'http://support.aoblockchain.io', blank: true },
+			{ label: 'Documentation',	key: 'documentation',	href: 'http://docs.aoblockchain.io', blank: true	},
+			{ label: 'Source Code',		key: 'source-code',		href: 'https://gitlab.com/aocyber', blank: true },
+		]}
 	];
 	res.locals.user = req.user;
 	next();
@@ -52,7 +62,7 @@ exports.flashMessages = function (req, res, next) {
 exports.requireUser = function (req, res, next) {
 	if (!req.user) {
 		req.flash('error', 'Please sign in to access this page.');
-		res.redirect('/keystone/signin');
+		res.redirect('/admin/signin');
 	} else {
 		next();
 	}

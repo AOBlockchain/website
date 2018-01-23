@@ -1,9 +1,9 @@
-var keystone = require('keystone');
+var eden = require('edencms');
 var _ = require('lodash');
 
 exports = module.exports = function (req, res) {
 
-	var view = new keystone.View(req, res);
+	var view = new eden.View(req, res);
 	var locals = res.locals;
 	var settings = {};
 	var investments = [];
@@ -34,7 +34,7 @@ exports = module.exports = function (req, res) {
 		10: new Date('2016-05-31T10:00:00'),
 	};
 	view.on('init', function (next) {
-		keystone.list('Setting').model.find().sort('-date').exec(function (err, data) {
+		eden.list('Setting').model.find().sort('-date').exec(function (err, data) {
 			if (err) { console.log(err); }
 			for (var i = 0; i < data.length; i++) {
 				var setting = data[i];
@@ -45,7 +45,7 @@ exports = module.exports = function (req, res) {
 	});
 
 	view.on('init', function (next) {
-		keystone.list('Investment').model.find().exec(function (err, results) {
+		eden.list('Investment').model.find().exec(function (err, results) {
 			if (err || !results.length) {
 				return next(err);
 			}
