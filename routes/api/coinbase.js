@@ -8,13 +8,12 @@ var Investment = eden.list('Investment');
 var User = eden.list('User');
 var coinbase = require('coinbase');
 var client   = new coinbase.Client({'apiKey': process.env.CB_API_KEY, 'apiSecret': process.env.CB_API_SECRET});
-var validate = (process.env.NODE_ENV === 'production' ? client.verifyCallback(req.raw_body, req.headers['CB-SIGNATURE']) : true ) ;
-
 exports.post = function(req, res) {
 
 	var investment = new Investment.model();
 	var body = (req.method == 'POST') ? req.body : req.query;
 	var data = {};
+	var validate = (process.env.NODE_ENV === 'production' ? client.verifyCallback(req.raw_body, req.headers['CB-SIGNATURE']) : true ) ;
 	if (validate) { 
 		User.model.findOne().where({
 			$or: [
