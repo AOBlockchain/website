@@ -27,7 +27,7 @@ User.add(
 	'Investment Details',
 	{
 		totalUSD: { type: Types.Money, noedit: true, default: 0  },
-		totalAOC: { type: Types.Money, noedit: false, default: 0  },
+		totalAOC: { type: Types.Money, noedit: true, default: 0  },
 		investedUSD: { type: Types.Money, noedit: true, default: 0 },
 		btcAddress: { type: String, label: 'BTC Send Address', nodedit:true },
 		investedBTC: { type: Types.Number, noedit: true, default: 0  },
