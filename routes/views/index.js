@@ -2,7 +2,6 @@ var eden = require('edencms');
 var _ = require('lodash');
 
 exports = module.exports = function (req, res) {
-
 	var view = new eden.View(req, res);
 	var locals = res.locals;
 	// locals.section is used to set the currently selected
@@ -12,6 +11,7 @@ exports = module.exports = function (req, res) {
 	locals.data = {
 		posts: [],
 		featured: {},
+		token: {},
 	};
 	var settings = {};
 	var btcAmount = 0;
@@ -27,6 +27,12 @@ exports = module.exports = function (req, res) {
 		locals.formData.referrer = req.cookies.affiliate;
 		locals.formData.referrerPercent = referrerPercent;
 	}
+	view.on('init', function(next) {
+		eden.list('Token').model.availableCoin(function(err, data){
+			locals.data.token = data;
+			next();
+		});
+	});
 
 	view.on('init', function (next) {
 		eden.list('Setting').model.find().exec(function (err, data) {
@@ -75,12 +81,9 @@ exports = module.exports = function (req, res) {
 		bchAmount = settings.bchAmount || 0;
 		ethAmount = settings.ethAmount || 0;
 		ltcAmount = settings.ltcAmount || 0;
-		marketCap = settings.marketCap || 0;
-		coinAvail = settings.coinAvail || 0;
-		coinUSD = settings.coinUSD || 0;
 		coinReserved = settings.coinReserved || 0;
-		marketValue = parseFloat(coinReserved) * parseFloat(coinUSD);
-		locals.data.avail = coinAvail;
+		marketCap = parseFloat(settings.marketCap) || 0;
+		marketValue = parseFloat(coinReserved) * parseFloat(settings.coinUSD) || 0;
 		locals.data.reserved = coinReserved;
 		locals.data.marketValue = _.round(parseFloat(marketValue), 2)
 		locals.data.btcAmount = _.round(parseFloat(btcAmount), 4);
