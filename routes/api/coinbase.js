@@ -13,8 +13,8 @@ exports.post = function(req, res) {
 	var investment = new Investment.model();
 	var body = (req.method == 'POST') ? req.body : req.query;
 	var data = {};
-	var validate = (process.env.NODE_ENV === 'production' ? client.verifyCallback(req.raw_body, req.headers['CB-SIGNATURE']) : true ) ;
-	if (validate) { 
+	console.log(req.body);
+	if (client.verifyCallback(req.raw_body, req.headers['CB-SIGNATURE'])) { 
 		User.model.findOne().where({
 			$or: [
 				{btcAddress: body.data.address},
