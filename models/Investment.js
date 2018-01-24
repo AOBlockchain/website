@@ -339,7 +339,7 @@ Investment.schema.post('remove', function (next) {
 								console.log(err);
 								next();
 							} else {
-								coinReserved.value = parseInt(coinReserved.value) + parseInt(tokenPurchased);
+								coinReserved.value = parseInt(coinReserved.value) - parseInt(tokenPurchased);
 								coinReserved.save();
 							}
 						});

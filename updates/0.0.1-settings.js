@@ -9,8 +9,5 @@ exports.create = {
         { key: 'bchAmount',     value: '0' },
         { key: 'etcAmount',     value: '0' },
         { key: 'ltcAmount',     value: '0' },
-        { key: 'coinAvail',     value: '0' },
-        { key: 'coinReserved',  value: '0' },
-        { key: 'coinUSD',       value: '0' },
 	],
 };
