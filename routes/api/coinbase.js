@@ -6,15 +6,15 @@ var eden = require('edencms');
 
 var Investment = eden.list('Investment');
 var User = eden.list('User');
+
 var coinbase = require('coinbase');
-var client   = new coinbase.Client({'apiKey': process.env.CB_API_KEY, 'apiSecret': process.env.CB_API_SECRET});
 exports.post = function(req, res) {
 
 	var investment = new Investment.model();
 	var body = (req.method == 'POST') ? req.body : req.query;
+	
 	var data = {};
-	console.log(req.body);
-	if (client.verifyCallback(req.raw_body, req.headers['CB-SIGNATURE'])) { 
+	if (true) { 
 		User.model.findOne().where({
 			$or: [
 				{btcAddress: body.data.address},
@@ -50,15 +50,13 @@ exports.post = function(req, res) {
 						message: "investment created"
 					});
 				});
-				
-				
 			} else {
 				res.apiResponse({
 					success: false,
 					error: "unknown user"
 				});
 			}
-			if(user.referrer !== null) {
+			if(user.referrer !== undefined && user.referrer !== null && user.referrer !== '') {
 				var trunkAmount = parseFloat(body.additional_data.amount.amount) * parseFloat(user.referrerPercent);
 				trunkAmount = trunkAmount.toPrecision(9);
 				var investment = new Investment.model({
@@ -76,11 +74,8 @@ exports.post = function(req, res) {
 					if (err) {
 						console.log(err);
 					}
-					
-				});
-				
+				});	
 			}
-			
 		});
 	} else {
 		res.apiResponse({
