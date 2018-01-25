@@ -45,6 +45,7 @@
 	<link rel="stylesheet" href="/assets/vendor/hamburgers/hamburgers.min.css">
 	<link rel="stylesheet" href="/assets/vendor/fancybox/jquery.fancybox.css">
 	<link rel="stylesheet" href="/assets/vendor/slick-carousel/slick/slick.css">
+	<link  rel="stylesheet" href="/assets/vendor/cubeportfolio-full/cubeportfolio/css/cubeportfolio.min.css">
 
 	<!-- CSS Unify Theme -->
 	<link rel="stylesheet" href="/assets/css/styles.multipage-marketing.css">
@@ -428,6 +429,7 @@
 	<script src="/assets/vendor/slick-carousel/slick/slick.js"></script>
 	<script src="/assets/vendor/appear.js" ></script>
 	<script src="/assets/vendor/gmaps/gmaps.min.js"></script>
+	<script  src="/assets/vendor/cubeportfolio-full/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
 
 	<!-- JS Unify -->
 	<script src="/assets/js/hs.core.js"></script>
@@ -439,6 +441,7 @@
 	<script src="/assets/js/components/hs.go-to.js"></script>
 	<script src="/assets/js/components/gmap/hs.map.js"></script>
 	<script src="/assets/js/components/hs.tabs.js" ></script>
+	<script  src="/assets/js/components/hs.cubeportfolio.js"></script>
 
 	<!-- JS Customization -->
 	<script src="/assets/js/custom.js"></script>
@@ -473,6 +476,9 @@
 
 			 // Tabs
 			$.HSCore.components.HSTabs.init('[role="tablist"]');
+			
+			// initialization of cubeportfolio
+    		$.HSCore.components.HSCubeportfolio.init('.cbp');
 
 			$(window).on('resize', function () {
 				setTimeout(function () {

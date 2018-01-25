@@ -1,78 +1,190 @@
+<div class="g-min-height-450 g-flex-centered g-bg-img-hero g-bg-pos-top-center g-bg-size-cover g-pt-80" style="background-image: url(assets/img-temp/1920x800/img2.jpg);">
+	<div class="container g-pos-rel g-z-index-1">
+		<span class="d-block text-uppercase g-color-primary g-font-weight-500 g-font-size-13 mb-4">About AO Blockchain and the Team</span>
+		<h2 class="h1 g-color-white g-font-size-60--lg mb-0">Who and What we Are</h2>
+	</div>
+</div>
+<div class="g-pos-rel">
+	<!-- About -->
+	<div class="container g-pt-50 g-pb-70">
+		<div class="row justify-content-between align-items-center">
+			<div class="col-lg-7 g-mb-50">
+				<!-- About Info -->
+				<div class="mb-5">
+					<span class="d-block text-uppercase g-color-dark-light-v1 g-font-weight-500 g-font-size-13 mb-4">What is the AO Blockchain System?</span>
+					<h2 class="mb-4">A Blockchain for Business, Banking, and Investments</h2>
 
+					<div class="row">
+						<div class="col-sm-3">
+							<!-- Nav tabs -->
+							<ul class="nav flex-column" role="tablist" data-target="nav-1-1-accordion-primary-ver">
+								<li class="nav-item">
+									<a class="nav-link active g-color-primary--hover g-color-primary--parent-active g-pl-0" data-toggle="tab" href="#nav-1-1-accordion-primary-ver--1"
+									role="tab">Who we are</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link g-color-primary--hover g-color-primary--parent-active g-pl-0" data-toggle="tab" href="#nav-1-1-accordion-primary-ver--2"
+									role="tab">Our vision</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link g-color-primary--hover g-color-primary--parent-active g-pl-0" data-toggle="tab" href="#nav-1-1-accordion-primary-ver--3"
+									role="tab">Our mission</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link g-color-primary--hover g-color-primary--parent-active g-pl-0" data-toggle="tab" href="#nav-1-1-accordion-primary-ver--4"
+									role="tab">Our history</a>
+								</li>
+							</ul>
+							<!-- End Nav tabs -->
+						</div>
 
-<div class="cube-portfolio">
-						<!-- Cubeportfolio Filter -->
-						<ul id="filter-container" class="text-center u-filter-v1 g-mb-40">
-							<li class="list-inline-item cbp-filter-item g-cursor-pointer g-transition-0_2 cbp-filter-item-active" data-filter="*">All</li>
-                            {{#each data.category}}
-							<li class="list-inline-item cbp-filter-item g-cursor-pointer g-transition-0_2" data-filter=".{{_id}}">{{name}}</li>
-							{{/each}}
-						</ul>
-						<!-- End Cubeportfolio Filter -->
+						<div class="col-sm-9">
+							<!-- Tab panes -->
+							<div id="nav-1-1-accordion-primary-ver" class="tab-content">
+								<div class="tab-pane fade show active" id="nav-1-1-accordion-primary-ver--1" role="tabpanel">
+									<p class="g-line-height-2">We are AO Cyber Systems, an organization focused on bringing advanced technologies into the hands of everyone, by
+										building easy to use systems to speed development, integration, and acceptance of advanced technologies.</p>
+									<p class="g-line-height-2">We are backed, and lead by, the team at Don't Panic Consulting, a technology consultancy with experience spanning
+										small non-profits, to fortune 500s and government. </p>
+								</div>
 
-						<!-- Cubeportfolio container -->
-						<div id="grid-container" class="cbp cbp-caption-active cbp-caption-fadeIn cbp-ready" data-controls="#filter-container" data-layout="grid"
-						data-animation="slideLeft" data-caption-animation="fadeIn" data-x-gap="0" data-y-gap="0">
-							<div class="cbp-wrapper-outer">
-								<div class="cbp-wrapper">
-									{{#each data.team}}
-									<div class="cbp-item{{#each category}} {{_id}}{{/each}}">
-										<div class="cbp-item-wrapper">
-											<!-- Figure -->
-											<figure class="text-center u-block-hover g-color-white mb-0">
-												<!-- Figure Image -->
-												<img class="w-100" src="{{{cloudinaryUrl image width=400 height=450 crop='fill' gravity="faces"}}}" alt="{{name.full}}">
-												<!-- End Figure Image -->
+								<div class="tab-pane fade" id="nav-1-1-accordion-primary-ver--2" role="tabpanel">
+									<p class="g-line-height-2">The Vision of the AO Blockchain Project is a world where businesses, banks, and investors are able to quickly, easily,
+										securely, and transparently conduct business worldwide, without limits.</p>
+								</div>
 
-												<!-- Figure Caption -->
-												<figcaption class="u-block-hover__additional--fade g-bg-primary-opacity-0_9 g-flex-middle">
-													<div class="g-flex-middle-item g-pa-20">
-														<!-- Figure Info -->
-														<em class="d-block g-font-style-normal g-font-size-11 text-uppercase g-color-white-opacity-0_7 g-mb-5">{{title}}</em>
-														<h4 class="h5 g-mb-15">{{name.first}} {{name.last}}</h4>
-														<p class="g-color-white-opacity-0_7 g-mb-20">{{{bio.html}}}</p>
-														<!-- End Figure Info -->
+								<div class="tab-pane fade" id="nav-1-1-accordion-primary-ver--3" role="tabpanel">
+									<p class="g-line-height-2">The AO Blockchain System's mission is to provide Businesses, Banks, Investors, and Developers with the tools they
+										need to support their clients in the utilization of blockchain technology to enhance their respective positions
+										in business, banking, and investments.</p>
+									<p class="g-line-height-2">This is to be achieved by: providing a publicly available blockchain system, a private blockchain system that can
+										be implemented quickly, and the tools to build completely custom blockchains.</p>
+								</div>
 
-														<!-- Figure Social Icons -->
-														<ul class="list-inline mb-0">
-                                                            {{#if github}}
-                                                            <li class="list-inline-item g-mx-3">
-                                                                <a class="u-icon-v3 u-icon-size--xs g-color-primary g-bg-white g-bg-black--hover" tabindex="0" href="{{github}}">
-                                                                    <i class="fa fa-github"></i>
-                                                                </a>
-                                                            </li>{{/if}} {{#if facebook}}
-                                                            <li class="list-inline-item g-mx-3">
-                                                                <a class="u-icon-v3 u-icon-size--xs g-color-primary g-bg-white g-bg-black--hover" tabindex="0" href="{{facebook}}">
-                                                                    <i class="fa fa-facebook"></i>
-                                                                </a>
-                                                            </li>{{/if}} {{#if twitter}}
-                                                            <li class="list-inline-item g-mx-3">
-                                                                <a class="u-icon-v3 u-icon-size--xs g-color-primary g-bg-white g-bg-black--hover" tabindex="0" href="{{twitter}}">
-                                                                    <i class="fa fa-twitter"></i>
-                                                                </a>
-                                                            </li>{{/if}} {{#if linkedIn}}
-                                                            <li class="list-inline-item g-mx-3">
-                                                                <a class="u-icon-v3 u-icon-size--xs g-color-primary g-bg-white g-bg-black--hover" tabindex="0" href="{{linkedIn}}">
-                                                                    <i class="fa fa-linkedin"></i>
-                                                                </a>
-                                                            </li>{{/if}} {{#if skype}}
-                                                            <li class="list-inline-item g-mx-3">
-                                                                <a class="u-icon-v3 u-icon-size--xs g-color-primary g-bg-white g-bg-black--hover" tabindex="0" href="{{skype}}">
-                                                                    <i class="fa fa-skype"></i>
-                                                                </a>
-                                                            </li>{{/if}}
-														</ul>
-														<!-- End Figure Social Icons -->
-													</div>
-												</figcaption>
-												<!-- End Figure Caption-->
-											</figure>
-											<!-- End Figure -->
-										</div>
-									</div>
-                                    {{/each}}
+								<div class="tab-pane fade" id="nav-1-1-accordion-primary-ver--4" role="tabpanel">
+									<p class="g-line-height-2">The AO Blockchain System was devised over the past 6 years by Justin R. Donnaruma, with the purpose of solving some
+										of the largest problems faced by all cryptocurrencies on the market.</p>
+									<p class="g-line-height-2">The high cost of mining, coupled with the lack of usefulness of cryptocurrencies, is driving the creation of the
+										AO Blockchain System, and the AO Cyber Systems company. Both seek to provide mainstream acceptance to the wider
+										cryptocurrency community as a whole. See the
+										<a href="http://docs.aoblockchain.io">White Paper</a> for more information.</p>
 								</div>
 							</div>
+							<!-- End Tab panes -->
 						</div>
-						<!-- End Cubeportfolio container -->
 					</div>
+					<!-- End Tab -->
+				</div>
+
+				<a class="btn u-btn-black g-brd-main g-brd-primary--hover g-bg-main g-bg-primary--hover g-font-weight-600 g-font-size-12 text-uppercase g-px-25 g-py-13 mr-3"
+				href="/team">
+					Our Team
+					<i class="g-pos-rel g-top-minus-1 ml-2 fa fa-angle-right"></i>
+				</a>
+				<a class="g-brd-bottom g-brd-main g-brd-primary--hover g-color-main g-color-primary--hover g-font-size-12 text-uppercase g-text-underline--none--hover g-pb-3"
+				href="/contact">
+					Ask a Question
+				</a>
+				<!-- End About Info -->
+			</div>
+
+			<div class="col-sm-8 col-md-6 col-lg-4 mx-auto g-mb-50">
+				<!-- About Info -->
+				<div class="d-inline-block u-shadow-v20 g-width-330 g-height-330 g-brd-around g-brd-10 g-brd-white g-bg-cover g-rounded-circle--after text-center rounded-circle g-pa-50"
+				style="background-image: url(/assets/img/icons/ms-icon-310x310.png);">
+				</div>
+				<!-- End About Info -->
+			</div>
+		</div>
+	</div>
+	<!-- End About -->
+	<div class="container">
+		<div class="row justify-content-center g-mb-60">
+			<div class="col-lg-7">
+				<!-- Heading -->
+				<div class="text-center">
+					<h2 class="h3 g-color-black text-uppercase mb-2">Meet the AO Blockchain Team</h2>
+					<div class="d-inline-block g-width-35 g-height-2 g-bg-primary mb-2"></div>
+					<p class="mb-0">We are a diverse team of talented people, with the drive to make the world a better place.</p>
+				</div>
+				<!-- End Heading -->
+			</div>
+		</div>
+		<div class="row justify-content-center g-mb-40">
+			<div class="col-md-9">
+				<div class="cube-portfolio">
+					<!-- Cubeportfolio Filter -->
+					<ul id="filter-container" class="text-center u-filter-v1 g-mb-40">
+						<li class="list-inline-item cbp-filter-item g-cursor-pointer g-transition-0_2 cbp-filter-item-active" data-filter="*">All</li>
+						{{#each data.departments}}
+						<li class="list-inline-item cbp-filter-item g-cursor-pointer g-transition-0_2" data-filter=".{{name}}">{{name}}</li>
+						{{/each}}
+					</ul>
+					<!-- End Cubeportfolio Filter -->
+
+					<!-- Cubeportfolio container -->
+					<div id="grid-container" class="cbp" data-controls="#filter-container" data-layout="grid" data-animation="slideLeft" data-caption-animation="fadeIn"
+					data-x-gap="0" data-y-gap="0">
+						{{#each data.team}}
+						<div class="cbp-item{{#each departments}} {{name}}{{/each}}">
+							<div class="cbp-item-wrapper">
+								<!-- Figure -->
+								<figure class="text-center u-block-hover g-color-white mb-0">
+									<!-- Figure Image -->
+									<img class="w-100" src="{{{cloudinaryUrl image width=200 height=225 crop='fill' gravity='faces'}}}" alt="{{name.full}}">
+									<!-- End Figure Image -->
+
+									<!-- Figure Caption -->
+									<figcaption class="u-block-hover__additional--fade g-bg-primary-opacity-0_9 g-flex-middle">
+										<div class="g-flex-middle-item g-pa-20">
+											<!-- Figure Info -->
+											<em class="d-block g-font-style-normal g-font-size-11 text-uppercase g-color-white-opacity-0_7 g-mb-5">{{title}}</em>
+											<h4 class="h5 g-mb-15">{{name.first}} {{name.last}}</h4>
+											<p class="g-color-white-opacity-0_7 g-mb-20">{{{bio.html}}}</p>
+											<!-- End Figure Info -->
+
+											<!-- Figure Social Icons -->
+											<ul class="list-inline mb-0">
+												{{#if github}}
+												<li class="list-inline-item g-mx-3">
+													<a class="u-icon-v3 u-icon-size--xs g-color-primary g-bg-white g-bg-black--hover" tabindex="0" href="{{github}}">
+														<i class="fa fa-github"></i>
+													</a>
+												</li>{{/if}} {{#if facebook}}
+												<li class="list-inline-item g-mx-3">
+													<a class="u-icon-v3 u-icon-size--xs g-color-primary g-bg-white g-bg-black--hover" tabindex="0" href="{{facebook}}">
+														<i class="fa fa-facebook"></i>
+													</a>
+												</li>{{/if}} {{#if twitter}}
+												<li class="list-inline-item g-mx-3">
+													<a class="u-icon-v3 u-icon-size--xs g-color-primary g-bg-white g-bg-black--hover" tabindex="0" href="{{twitter}}">
+														<i class="fa fa-twitter"></i>
+													</a>
+												</li>{{/if}} {{#if linkedIn}}
+												<li class="list-inline-item g-mx-3">
+													<a class="u-icon-v3 u-icon-size--xs g-color-primary g-bg-white g-bg-black--hover" tabindex="0" href="{{linkedIn}}">
+														<i class="fa fa-linkedin"></i>
+													</a>
+												</li>{{/if}} {{#if skype}}
+												<li class="list-inline-item g-mx-3">
+													<a class="u-icon-v3 u-icon-size--xs g-color-primary g-bg-white g-bg-black--hover" tabindex="0" href="{{skype}}">
+														<i class="fa fa-skype"></i>
+													</a>
+												</li>{{/if}}
+											</ul>
+											<!-- End Figure Social Icons -->
+										</div>
+									</figcaption>
+									<!-- End Figure Caption-->
+								</figure>
+								<!-- End Figure -->
+							</div>
+						</div>
+						{{/each}}
+					</div>
+					<!-- End Cubeportfolio container -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

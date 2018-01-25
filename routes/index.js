@@ -39,7 +39,7 @@ exports = module.exports = function (app) {
 	app.get('/', routes.views.index);
 	app.get('/ico', routes.views.comingSoon);
 	app.get('/pre-sale', routes.views.preSale);
-	app.get('/team', routes.views.comingSoon);
+	app.get('/team', routes.views.team);
 	app.get('/join-team', routes.views.comingSoon);
 	app.get('/features', routes.views.features);
 	app.get('/solutions', routes.views.comingSoon);

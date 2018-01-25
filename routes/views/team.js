@@ -14,19 +14,28 @@ exports = module.exports = function(req, res) {
 	locals.section = 'team';
 
 	locals.data = {
-		team: []
+		team: [],
+		departments: [],
 	};
 
 	view.on('init', function(next) {
-		eden.list('User').model.find().where('isTeamMember', true).exec(function(err, results) {
-
+		eden.list('User').model.find().where('isTeamMember', true).populate('departments').exec(function(err, results) {
 			if (err || !results.length) {
 				return next(err);
 			}
 			locals.data.team = results;
 			next();
 		});
+	});
 
+	view.on('init', function(next) {
+		eden.list('Department').model.find().exec(function(err, results){
+			if (err || !results.length) {
+				return next(err);
+			}
+			locals.data.departments = results;
+			next();
+		})
 	});
 
 	// Render the view

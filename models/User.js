@@ -56,6 +56,7 @@ User.add(
 		isContributor: { type: Boolean },
 		isAuthor: { type: Boolean },
 		isEditor: { type: Boolean },
+		departments: { type: Types.Relationship, ref: 'Department', many: true },
 	},
 	'System',
 	{
