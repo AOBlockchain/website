@@ -39,7 +39,7 @@ Feature.add({
 	//category: { type: Types.Relationship, ref: 'FeatureCategory', many: false },
 	features: { type: Types.List, fields: {
 		question: { type: String },
-		answer: { type: String }
+		answer: { type: Types.Html, wysiwyg: true }
 	}},
 	createdAt: { type: Types.Datetime, default: Date.now, noedit: true },
 });
