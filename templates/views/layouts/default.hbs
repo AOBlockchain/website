@@ -55,6 +55,8 @@
 
 	<!-- ANALYTICS -->
 	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script src="/assets/vendor/jquery/jquery.min.js"></script>
+	<script src='//cdn.freshmarketer.com/202200/658330.js'></script>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112028191-1"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
@@ -264,37 +266,25 @@
 						</div>
 
 						<div class="col-6 col-md-3 g-mb-30">
-							<h3 class="h6 g-color-white text-uppercase">Features</h3>
+							<h3 class="h6 g-color-white text-uppercase">Policies</h3>
 
 							<!-- Links -->
 							<ul class="list-unstyled mb-0">
 								<li>
-									<a class="u-link-v6 g-color-text g-color-primary--hover g-font-weight-500 g-text-underline--none--hover g-py-3" href="/features#assets">
-										<span>Assets</span>
+									<a class="u-link-v6 g-color-text g-color-primary--hover g-font-weight-500 g-text-underline--none--hover g-py-3" href="/privacy">
+										<span>Privacy Policy</span>
 										<span class="u-link-v6-arrow g-font-size-18">&rightarrow;</span>
 									</a>
 								</li>
 								<li>
-									<a class="u-link-v6 g-color-text g-color-primary--hover g-font-weight-500 g-text-underline--none--hover g-py-3" href="/features#currency">
-										<span>Currency</span>
+									<a class="u-link-v6 g-color-text g-color-primary--hover g-font-weight-500 g-text-underline--none--hover g-py-3" href="/terms">
+										<span>Terms of Use</span>
 										<span class="u-link-v6-arrow g-font-size-18">&rightarrow;</span>
 									</a>
 								</li>
 								<li>
-									<a class="u-link-v6 g-color-text g-color-primary--hover g-font-weight-500 g-text-underline--none--hover g-py-3" href="/features#exchange">
-										<span>Exchange</span>
-										<span class="u-link-v6-arrow g-font-size-18">&rightarrow;</span>
-									</a>
-								</li>
-								<li>
-									<a class="u-link-v6 g-color-text g-color-primary--hover g-font-weight-500 g-text-underline--none--hover g-py-3" href="/features#identity">
-										<span>Identity</span>
-										<span class="u-link-v6-arrow g-font-size-18">&rightarrow;</span>
-									</a>
-								</li>
-								<li>
-									<a class="u-link-v6 g-color-text g-color-primary--hover g-font-weight-500 g-text-underline--none--hover g-py-3" href="/features#voting">
-										<span>Voting</span>
+									<a class="u-link-v6 g-color-text g-color-primary--hover g-font-weight-500 g-text-underline--none--hover g-py-3" href="/cookies">
+										<span>Cookies</span>
 										<span class="u-link-v6-arrow g-font-size-18">&rightarrow;</span>
 									</a>
 								</li>
@@ -415,7 +405,7 @@
 	</main>
 
 	<!-- JS Global Compulsory -->
-	<script src="/assets/vendor/jquery/jquery.min.js"></script>
+	
 	<script src="/assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
 	<script src="/assets/vendor/popper.min.js"></script>
 	<script src="/assets/vendor/bootstrap/bootstrap.min.js"></script>
@@ -441,6 +431,7 @@
 	<script src="/assets/js/components/hs.go-to.js"></script>
 	<script src="/assets/js/components/gmap/hs.map.js"></script>
 	<script src="/assets/js/components/hs.tabs.js" ></script>
+	<script src="../../assets/js/components/hs.sticky-block.js"></script>
 	<script  src="/assets/js/components/hs.cubeportfolio.js"></script>
 
 	<!-- JS Customization -->
@@ -485,6 +476,9 @@
 				$.HSCore.components.HSTabs.init('[role="tablist"]');
 				}, 200);
 			});
+	
+			// initialization of sticky blocks
+			$.HSCore.components.HSStickyBlock.init('.js-sticky-block');
 
 			// initialization of counters
             // $.HSCore.components.HSCounter.init('[class*="js-counter"]');
@@ -508,6 +502,7 @@
 		}
 	</script>
 	<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAtt1z99GtrHZt_IcnK-wryNsQ30A112J0&callback=initMap" async defer></script>
+
 	<script>
 		window.fcWidget.init({
 			token: "89822eaf-fc70-4351-8126-54559834b555",

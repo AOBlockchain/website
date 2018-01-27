@@ -29,7 +29,7 @@ User.add(
 		totalUSD: { type: Types.Money, noedit: true, default: 0  },
 		totalAOC: { type: Types.Money, noedit: true, default: 0  },
 		investedUSD: { type: Types.Money, noedit: true, default: 0 },
-		btcAddress: { type: String, label: 'BTC Send Address', noedit:true, unique:true },
+		btcAddress: { type: String, label: 'BTC Send Address', noedit:true },
 		investedBTC: { type: Types.Number, noedit: true, default: 0  },
 		bchAddress: { type: String, label: 'BCH Send Address', noedit:true, unique:true },
 		investedBCH: { type: Types.Number, noedit: true, default: 0  },

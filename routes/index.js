@@ -52,6 +52,9 @@ exports = module.exports = function (app) {
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.all('/signUp', routes.views.signUp);
+	app.get('/terms', routes.views.terms);
+	app.get('/privacy', routes.views.privacy);
+	app.get('/cookies', routes.views.cookies);
 	// app.all('/settings', routes.views.settings);
 	// app.get('/next-generation-economy', routes.views.nge);
 	app.all('/requestReset', routes.views.requestReset);

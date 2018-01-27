@@ -8,11 +8,18 @@ var Investment = eden.list('Investment');
 var User = eden.list('User');
 
 var coinbase = require('coinbase');
+var client   = new coinbase.Client({'apiKey': process.env.CB_API_KEY, 'apiSecret': process.env.CB_API_SECRET});
+
 exports.post = function(req, res) {
 
 	var investment = new Investment.model();
 	var body = (req.method == 'POST') ? req.body : req.query;
-	
+	var data = JSON.stringify(req.body);
+	/* console.log(req.headers['cb-signature']);
+	console.log(data);
+	console.log(typeof(data));
+	client.verifyCallback(data, req.headers['cb-signature']);
+	*/
 	var data = {};
 	if (true) { 
 		User.model.findOne().where({
