@@ -32,3 +32,5 @@ node_modules
 
 .vs
 .vscode
+
+.idea/*

@@ -34,6 +34,7 @@ eden.init({
 	'user model': 'User',
 	'signin logo': ['/assets/img/icons/apple-icon-180x180.png', 180, 180],
 	'signin redirect': '/profile',
+	'session store': 'mongo',
 });
 
 // Load your project's Models
