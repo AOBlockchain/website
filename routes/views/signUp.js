@@ -30,7 +30,6 @@ exports = module.exports = function (req, res) {
 			if ( result.length === 0) {
 				var newUser = new User.model(),
 					updater = newUser.getUpdateHandler(req);
-					console.log(req.body);
 				updater.process(req.body, {
 					flashErrors: false,
 					fields: 'name, email, address, twitter, bctUser, password, referrer, referrerPercent',
