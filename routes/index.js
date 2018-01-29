@@ -51,7 +51,7 @@ exports = module.exports = function (app) {
 	app.all('/profile/settings', middleware.requireUser, routes.views.settings);
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
-	app.all('/signUp', routes.views.signUp);
+	app.all('/signUp', routes.views.comingSoon);
 	app.get('/terms', routes.views.terms);
 	app.get('/privacy', routes.views.privacy);
 	app.get('/cookies', routes.views.cookies);
