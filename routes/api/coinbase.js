@@ -15,13 +15,14 @@ exports.post = function(req, res) {
 	var investment = new Investment.model();
 	var body = (req.method == 'POST') ? req.body : req.query;
 	var data = JSON.stringify(req.body);
+	console.log(req);
 	/* console.log(req.headers['cb-signature']);
 	console.log(data);
 	console.log(typeof(data));
 	client.verifyCallback(data, req.headers['cb-signature']);
 	*/
 	var data = {};
-	if (true) { 
+	if (client.verifyCallback(data, req.headers['cb-signature'])) { 
 		User.model.findOne().where({
 			$or: [
 				{btcAddress: body.data.address},
