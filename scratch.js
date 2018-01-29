@@ -6,4 +6,4 @@ var client = new cb({'apiKey': 'lOsA0YLJqDkb6a79',
 client.getAccount({}, function(err, accounts) {
     console.log(err);
     console.log(accounts);
-});
+})

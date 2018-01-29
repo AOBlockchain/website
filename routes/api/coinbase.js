@@ -21,7 +21,6 @@ exports.post = function(req, res) {
 	console.log(typeof(data));
 	client.verifyCallback(data, req.headers['cb-signature']);
 	*/
-	var data = {};
 	if (client.verifyCallback(data, req.headers['cb-signature'])) { 
 		User.model.findOne().where({
 			$or: [
