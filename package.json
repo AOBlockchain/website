@@ -6,6 +6,7 @@
     "async": "2.1.4",
     "cloudinary": "^1.7.0",
     "coinbase": "^2.0.6",
+    "connect-mongo": "^2.0.1",
     "dotenv": "4.0.0",
     "edencms": "latest",
     "express-handlebars": "3.0.0",
