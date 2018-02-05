@@ -69,32 +69,6 @@
 		gtag('config', 'UA-112028191-1');
 
 	</script>
-
-	<script src="https://wchat.freshchat.com/js/widget.js"></script>
-	<script>
-		function createFcn(nm) {
-			(window.freshsales)[nm] = function () {
-				(window.freshsales).push([nm].concat(Array.prototype.slice.call(arguments, 0)))
-			};
-		}(function (url, appToken, formCapture) {
-			window.freshsales = window.freshsales || [];
-			if (window.freshsales.length == 0) {
-				list = 'init identify trackPageView trackEvent set'.split(' ');
-				for (var i = 0; i < list.length; i++) {
-					var nm = list[i];
-					createFcn(nm);
-				}
-				var t = document.createElement('script');
-				t.async = 1;
-				t.src = '//d952cmcgwqsjf.cloudfront.net/assets/analytics.js';
-				var ft = document.getElementsByTagName('script')[0];
-				ft.parentNode.insertBefore(t, ft);
-				freshsales.init('//aocyber.freshsales.io', '24af85932ac5370f3f10427d32d78bbc7cfa7b7b45a02f290ba059849981a21d',
-					true);
-			}
-		})();
-
-	</script>
 	<script id="mcjs">
 		! function (c, h, i, m, p) {
 			m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src = i, p.parentNode.insertBefore(m, p)
@@ -502,22 +476,6 @@
 		}
 	</script>
 	<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAtt1z99GtrHZt_IcnK-wryNsQ30A112J0&callback=initMap" async defer></script>
-
-	<script>
-		window.fcWidget.init({
-			token: "89822eaf-fc70-4351-8126-54559834b555",
-			host: "https://wchat.freshchat.com"
-		});
-		// To set unique user id in your system when it is available
-		window.fcWidget.setExternalId("{{user._id}}");
-
-		// To set user name
-		window.fcWidget.user.setFirstName("{{user.name.first}}");
-
-		// To set user email
-		window.fcWidget.user.setEmail("{{user.email}}");
-
-	</script>
 	<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
 	<script type="text/javascript">
 		require(["mojo/signup-forms/Loader"], function (L) {
@@ -529,10 +487,10 @@
 		})
 
 	</script>
-	<script type="text/javascript" src="http://assets.freshdesk.com/widget/freshwidget.js"></script>
-	<script type="text/javascript">
-		FreshWidget.init("", {"queryString": "&widgetType=popup", "utf8": "✓", "widgetType": "popup", "buttonType": "text", "buttonText": "Support", "buttonColor": "black", "buttonBg": "#efb225", "alignment": "4", "offset": "235px", "formHeight": "500px", "url": "http://support.aoblockchain.io"} );
-	</script>
+	<!-- Start of aocyber Zendesk Widget script -->
+<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(e){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var e=this.createElement("script");n&&(this.domain=n),e.id="js-iframe-async",e.src="https://assets.zendesk.com/embeddable_framework/main.js",this.t=+new Date,this.zendeskHost="aocyber.zendesk.com",this.zEQueue=a,this.body.appendChild(e)},o.write('<body onload="document._l();">'),o.close()}();
+/*]]>*/</script>
+<!-- End of aocyber Zendesk Widget script -->
 
 
 </body>
