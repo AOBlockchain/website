@@ -30,6 +30,7 @@ exports = module.exports = function (req, res) {
 					console.log(findError);
 					next();
 				} else {
+
 					locals.summary.investments = investments;
 					next();
 				}

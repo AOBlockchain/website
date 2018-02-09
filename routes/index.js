@@ -64,6 +64,7 @@ exports = module.exports = function (app) {
 	// app.get('/api/referrals', eden.middleware.api, routes.api.referrals.get);
 	// app.get('/api/bonuses', eden.middleware.api, routes.api.bonuses.get);
 	app.post('/api/coinbase', eden.middleware.api, routes.api.coinbase.post);
+	app.post('/api/stripe', eden.middleware.api, routes.api.stripe.post);
 	// app.get('/api/configQR', eden.middleware.api, routes.api.bonuses.get);
 	// app.get('/api/checkOTP', eden.middleware.api, routes.api.otpValidate.get);
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:

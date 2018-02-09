@@ -147,14 +147,14 @@
 								<div class="media-body">
 									<p class="m-0">
 										<strong>Bitcoin</strong> AOC Purchase Address</p>
-                                    {{#if user.btcAddress}}
+									{{#if user.btcAddress}}
 									<span class="g-font-size-12 g-color-gray">{{user.btcAddress}}</span>
-                                    {{else}}
-                                    <form method="post">
-                                        <input type="hidden" name="action" value="getBTCAddress">
-                                        <button id="getBTCAddress" type="submit" class="btn btn-primary">Get BTC Address</button>
-                                    </form>
-                                    {{/if}}
+									{{else}}
+									<form method="post">
+										<input type="hidden" name="action" value="getBTCAddress">
+										<button id="getBTCAddress" type="submit" class="btn btn-primary">Get BTC Address</button>
+									</form>
+									{{/if}}
 								</div>
 							</div>
 						</li>
@@ -166,15 +166,15 @@
 								<div class="media-body">
 									<p class="m-0">
 										<strong>Bitcoin Cash</strong> AOC Purchase Address
-                                    </p>
+									</p>
 									{{#if user.bchAddress}}
 									<span class="g-font-size-12 g-color-gray">{{user.bchAddress}}</span>
-                                    {{else}}
-                                    <form method="post">
-                                        <input type="hidden" name="action" value="getBCHAddress">
-                                        <button id="getBCHAddress" type="submit" class="btn btn-primary">Get BCH Address</button>
-                                    </form>
-                                    {{/if}}
+									{{else}}
+									<form method="post">
+										<input type="hidden" name="action" value="getBCHAddress">
+										<button id="getBCHAddress" type="submit" class="btn btn-primary">Get BCH Address</button>
+									</form>
+									{{/if}}
 								</div>
 							</div>
 						</li>
@@ -188,12 +188,12 @@
 										<strong>Ethereum</strong> AOC Purchase Address</p>
 									{{#if user.ethAddress}}
 									<span class="g-font-size-12 g-color-gray">{{user.ethAddress}}</span>
-                                    {{else}}
-                                    <form method="post">
-                                        <input type="hidden" name="action" value="getETHAddress">
-                                        <button id="getETHAddress" type="submit" class="btn btn-primary">Get ETH Address</button>
-                                    </form>
-                                    {{/if}}
+									{{else}}
+									<form method="post">
+										<input type="hidden" name="action" value="getETHAddress">
+										<button id="getETHAddress" type="submit" class="btn btn-primary">Get ETH Address</button>
+									</form>
+									{{/if}}
 								</div>
 							</div>
 						</li>
@@ -207,16 +207,165 @@
 										<strong>Litecoin</strong> AOC Purchase Address</p>
 									{{#if user.ltcAddress}}
 									<span class="g-font-size-12 g-color-gray">{{user.ltcAddress}}</span>
-                                    {{else}}
-                                    <form method="post">
-                                        <input type="hidden" name="action" value="getLTCAddress">
-                                        <button id="getLTCAddress" type="submit" class="btn btn-primary">Get LTC Address</button>
-                                    </form>
-                                    {{/if}}
+									{{else}}
+									<form method="post">
+										<input type="hidden" name="action" value="getLTCAddress">
+										<button id="getLTCAddress" type="submit" class="btn btn-primary">Get LTC Address</button>
+									</form>
+									{{/if}}
+								</div>
+							</div>
+						</li>
+						<li class="g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-minus-1">
+							<div class="media">
+								<div class="d-flex g-mt-2 g-mr-15">
+									<img class="rounded" src="/assets/img/icons/paymentOptions.png" alt="">
+								</div>
+								<div class="media-body">
+									<p class="m-0">
+										Buy With
+										<strong>CC, Apple Pay, or Google Pay</strong>
+									</p>
+									{{#if user.address.postcode}}
+									<div class="row">
+									<div class="col-md-12">
+									<!-- Quantity -->
+									<div class="form-group">
+										<div class="input-group u-quantity-v1 w-100 g-brd-gray-light-v3 g-brd-primary--focus">
+											<div class="input-group-addon justify-content-center g-width-40 g-font-size-16 g-color-gray g-bg-gray-light-v5 rounded-0">$</div>
+											<input id="amount" class="form-control text-center g-font-size-16 rounded-0 g-pa-10-16" type="number" step="5" min="25" placeholder="Minimum $25">
+									</div>
+									<small id="amountError" class="form-control-feedback d-block g-bg-red g-color-white g-font-size-12 g-px-14 g-py-3 mt-0 invisible">Minimum Purchase is $25.</small>
+									</div>
+										<div class="col-md-12">
+											<button id="purchase" class="btn btn-block u-btn-black g-brd-main--hover g-bg-primary g-bg-main--hover btn-md g-mb-10 g-font-weight-800" disabled="disabled" >Buy with CC</button>
+											<div id="payment-request-button">
+											
+											<!-- A Stripe Element will be inserted here. -->
+										</div>
+										</div>
+										
+									</div>
+									<script src="https://checkout.stripe.com/checkout.js"></script>
+									<script src="https://js.stripe.com/v3/"></script>
+
+
+									<script type="text/javascript">
+										window.onload = function () {
+											var field = document.getElementById('amount')
+											var fieldError = document.getElementById('amountError');
+											var amount = field.value;
+											var button = document.getElementById('purchase');
+												
+											// Create a Stripe client
+											var stripe = Stripe('pk_test_RbT4Th8LWuVtMhKsLr2wRWps');
+											// Create an instance of Elements
+											var elements = stripe.elements();
+											function processCharge(t) {
+												var body = {
+													token: t,
+													user: '{{user.email}}',
+													amount: field.value*100,
+												};
+												if (t.token) {
+													body.token = t.token
+												}
+												fetch('/api/stripe', {
+													method: 'POST',
+													body: JSON.stringify(body),
+													headers: new Headers({
+														'Content-Type': 'application/json'
+													})
+												})
+												.then(function(res) {
+													if (res.ok) {
+
+														if (t.token) {
+															t.complete('success');
+														}
+														location.reload();
+													} else {
+
+														if (t.token) {
+															t.complete('fail');
+														}
+													}
+												})
+											} 
+											var paymentRequest = stripe.paymentRequest({
+												country: 'US',
+												currency: 'usd',
+												total: {
+													label: 'AOCoin',
+													amount: amount*100,
+												},
+											});
+											var prButton = elements.create('paymentRequestButton', {
+												paymentRequest: paymentRequest,
+											});
+											// Check the availability of the Payment Request API first.
+											paymentRequest.canMakePayment().then(function (result) {
+												if (result) {
+													prButton.mount('#payment-request-button');
+												} else {
+													document.getElementById('payment-request-button').style.display = 'none';
+												}
+											});
+											paymentRequest.on('token', function (ev) {
+												processCharge(ev);
+											});
+
+											var handler = StripeCheckout.configure({
+												key: 'pk_test_RbT4Th8LWuVtMhKsLr2wRWps',
+												image: '/assets/img/icons/favicon-96x96.png',
+												locale: 'auto',
+												token: function(token) {processCharge(token)},
+												zipCode: true,
+												billingAddress: true,
+												email: '{{user.email}}',
+											});
+
+											field.addEventListener('input', function(e) {
+												amount = field.value;
+												if (amount < 25) {
+													fieldError.classList.remove('invisible');
+													button.disabled = true;
+												} else {
+													fieldError.classList.add('invisible');
+													button.disabled = false;
+													paymentRequest.update({
+														total:{
+															label: 'AOCoin @ $0.00125/AOC',
+															amount: amount*100,
+														},
+													})
+												}
+											});
+											button.addEventListener('click', function(e) {
+											// Open Checkout with further options:
+												handler.open({
+													name: 'AO Blockchain System',
+													description: 'AOCoin @ $0.00125',
+													amount: amount*100,
+												});
+												e.preventDefault();
+											});
+											
+
+											// Close Checkout on page navigation:
+											window.addEventListener('popstate', function() {
+												handler.close();
+											});
+											
+										}
+
+									</script>
+									{{else}} Please add your address to your account in order to buy with CC, Apple Pay, or Google Pay. {{/if}}
 								</div>
 							</div>
 						</li>
 					</ul>
+
 				</div>
 				<div class="col-md-6">
 					<ul class="list-unstyled">
@@ -227,27 +376,32 @@
 										<strong>Referral</strong> Address
 									</p>
 									<span class="g-font-size-12 g-color-gray">https://aoblockchain.io/pre-sale?aff={{user._id}}</span>
-									<span class="g-font-size-12 g-color-gray"><a href="/blog/post/affiliate-marketing-guide">Affiliate Marketing Guide</a></span>
+									<span class="g-font-size-12 g-color-gray">
+										<a href="/blog/post/affiliate-marketing-guide">Affiliate Marketing Guide</a>
+									</span>
 								</div>
 							</div>
 						</li>
-					<li class="d-flex justify-content-start g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-minus-1">
-                      <div class="align-self-center g-px-10">
-                        <h5 class="h6 g-font-weight-600 g-color-black g-mb-3">
-                          <p class="m-0">
-										<strong>Referred Value</strong> by Currency <br/><small>USD is total value of all other currency</small>
+						<li class="d-flex justify-content-start g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-minus-1">
+							<div class="align-self-center g-px-10">
+								<h5 class="h6 g-font-weight-600 g-color-black g-mb-3">
+									<p class="m-0">
+										<strong>Referred Value</strong> by Currency
+										<br/>
+										<small>USD is total value of all other currency</small>
 									</p>
-                        </h5>
-                        {{#if user.referredUSD}}<span class="u-label u-label--sm g-bg-purple g-rounded-20 g-ml-5 ">${{user.referredUSD}}</span>{{/if}}
-						{{#if user.referredBTC}}<span class="u-label u-label--sm g-bg-purple g-rounded-20 g-ml-5 ">฿{{user.referredBTC}}</span>{{/if}}
-						{{#if user.referredBCH}}<span class="u-label u-label--sm g-bg-purple g-rounded-20 g-ml-5 ">฿{{user.referredBCH}}</span>{{/if}}
-						{{#if user.referredETH}}<span class="u-label u-label--sm g-bg-purple g-rounded-20 g-ml-5 ">${{user.referredETH}}</span>{{/if}}
-						{{#if user.referredLTC}}<span class="u-label u-label--sm g-bg-purple g-rounded-20 g-ml-5 ">${{user.referredLTC}}</span>{{/if}}
-                      </div>
-                      <div class="align-self-center ml-auto">
-                        <span class="g-font-size-12 g-color-purple">{{user.totalReferred}} referred</span>
-                      </div>
-                    </li>
+								</h5>
+								{{#if user.referredUSD}}
+								<span class="u-label u-label--sm g-bg-purple g-rounded-20 g-ml-5 ">${{user.referredUSD}}</span>{{/if}} {{#if user.referredBTC}}
+								<span class="u-label u-label--sm g-bg-purple g-rounded-20 g-ml-5 ">฿{{user.referredBTC}}</span>{{/if}} {{#if user.referredBCH}}
+								<span class="u-label u-label--sm g-bg-purple g-rounded-20 g-ml-5 ">฿{{user.referredBCH}}</span>{{/if}} {{#if user.referredETH}}
+								<span class="u-label u-label--sm g-bg-purple g-rounded-20 g-ml-5 ">${{user.referredETH}}</span>{{/if}} {{#if user.referredLTC}}
+								<span class="u-label u-label--sm g-bg-purple g-rounded-20 g-ml-5 ">${{user.referredLTC}}</span>{{/if}}
+							</div>
+							<div class="align-self-center ml-auto">
+								<span class="g-font-size-12 g-color-purple">{{user.totalReferred}} referred</span>
+							</div>
+						</li>
 						<li class="g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-minus-1">
 							<div class="media">
 								<div class="media-body">

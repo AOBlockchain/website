@@ -20,7 +20,7 @@ Investment.add({
 	},
 	currency: {
 		type: Types.Select,
-		options: 'BTC, BCH, ETH, LTC',
+		options: 'BTC, BCH, ETH, LTC, USD',
 		initial: true
 	},
 	address: {
@@ -205,9 +205,11 @@ Investment.schema.post('save', function () {
 										}
 										if (type === 'Referral Bonus') {
 											var refBonus = amount / investment.usdValue;
+											console.log(refBonus);
 											user.referralBonus += refBonus;
+											console.log(user.referralBonus);
 											user.referralBonus = user.referralBonus.toFixed(2);
-											user.referredUSD = (user.referralBonus / user.referralPercent).toFixed(2);
+											user.referredUSD = (user.referralBonus / .05).toFixed(2);
 										}
 										user.save(function (err) {
 											if (err) {
