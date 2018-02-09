@@ -258,7 +258,7 @@
 											var button = document.getElementById('purchase');
 												
 											// Create a Stripe client
-											var stripe = Stripe('pk_test_RbT4Th8LWuVtMhKsLr2wRWps');
+											var stripe = Stripe('{{stripe}}');
 											// Create an instance of Elements
 											var elements = stripe.elements();
 											function processCharge(t) {
@@ -316,7 +316,7 @@
 											});
 
 											var handler = StripeCheckout.configure({
-												key: 'pk_test_RbT4Th8LWuVtMhKsLr2wRWps',
+												key: '{{stripe}}',
 												image: '/assets/img/icons/favicon-96x96.png',
 												locale: 'auto',
 												token: function(token) {processCharge(token)},

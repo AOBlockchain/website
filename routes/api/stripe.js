@@ -7,7 +7,7 @@ var eden = require('edencms');
 var Investment = eden.list('Investment');
 var User = eden.list('User');
 
-var stripe = require("stripe")("sk_test_3KLVMvl31nsfJHdYLVqmCmuk");
+var stripe = require("stripe")(process.env.STRIPEPK);
 
 exports.post = function (req, res) {
 

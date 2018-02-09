@@ -10,6 +10,7 @@ exports = module.exports = function (req, res) {
 	locals.pageTitle = "Supporter Profile";
 	locals.section = 'profile';
 	locals.key = 'profile';
+	locals.stripe = process.env.STRIPEPK;
 	locals.summary = {
 		aoCoin: 0,
 		aoCoinBTC: 0,
