@@ -1,0 +1,37 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.12.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:debug:20170905':
+    - edencms > debug:
+        patched: '2018-08-21T13:34:23.642Z'
+    - edencms > mongoose > mquery > debug:
+        patched: '2018-08-21T13:34:23.642Z'
+  'npm:hoek:20180212':
+    - edencms > less-middleware > less > request > hawk > hoek:
+        patched: '2018-08-21T13:34:23.642Z'
+    - edencms > less-middleware > less > request > hawk > boom > hoek:
+        patched: '2018-08-21T13:34:23.642Z'
+    - edencms > less-middleware > less > request > hawk > sntp > hoek:
+        patched: '2018-08-21T13:34:23.642Z'
+    - edencms > less-middleware > less > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-08-21T13:34:23.642Z'
+  'npm:lodash:20180130':
+    - edencms > asyncdi > lodash:
+        patched: '2018-08-21T13:34:23.642Z'
+    - edencms > cloudinary > lodash:
+        patched: '2018-08-21T13:34:23.642Z'
+    - edencms > grappling-hook > lodash:
+        patched: '2018-08-21T13:34:23.642Z'
+  'npm:mime:20170907':
+    - edencms > embedly > superagent > mime:
+        patched: '2018-08-21T13:34:23.642Z'
+  'npm:moment:20170905':
+    - edencms > moment:
+        patched: '2018-08-21T13:34:23.642Z'
+  'npm:ms:20170412':
+    - edencms > mongoose > mquery > debug > ms:
+        patched: '2018-08-21T13:34:23.642Z'
+    - edencms > mongoose > ms:
+        patched: '2018-08-21T13:34:23.642Z'
