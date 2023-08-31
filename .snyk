@@ -1,0 +1,28 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:extend:20180424':
+    - edencms > less-middleware > less > request > extend:
+        patched: '2023-08-31T14:07:52.499Z'
+        id: 'npm:extend:20180424'
+        path: edencms > less-middleware > less > request > extend
+  'npm:hoek:20180212':
+    - edencms > less-middleware > less > request > hawk > hoek:
+        patched: '2023-08-31T14:07:52.499Z'
+        id: 'npm:hoek:20180212'
+        path: edencms > less-middleware > less > request > hawk > hoek
+    - edencms > less-middleware > less > request > hawk > boom > hoek:
+        patched: '2023-08-31T14:07:52.499Z'
+        id: 'npm:hoek:20180212'
+        path: edencms > less-middleware > less > request > hawk > boom > hoek
+    - edencms > less-middleware > less > request > hawk > sntp > hoek:
+        patched: '2023-08-31T14:07:52.499Z'
+        id: 'npm:hoek:20180212'
+        path: edencms > less-middleware > less > request > hawk > sntp > hoek
+  'npm:stringstream:20180511':
+    - edencms > less-middleware > less > request > stringstream:
+        patched: '2023-08-31T14:07:52.499Z'
+        id: 'npm:stringstream:20180511'
+        path: edencms > less-middleware > less > request > stringstream
